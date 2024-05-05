@@ -1,0 +1,48 @@
+// Destiny's Child released a compilation album about which topic?
+MATCH (g:Group {name: "Destiny's Child"})-[:RELEASED]->(a:CompilationAlbum)
+RETURN a.topic AS AlbumTopic
+
+// Beyonce's documentary movie was called what?
+MATCH (b:Beyonce)-[:FEATURED_IN]->(f:Film {type: "Documentary"})
+RETURN f.title AS DocumentaryTitle
+
+// What did Beyonce sign in 2013?
+MATCH (b:Beyonce)-[:SIGNED]->(d:Document {year: 2013})
+RETURN d.type AS SignedDocument
+
+// When did Destiny's Child release its album "Love Songs"?
+MATCH (g:Group {name: "Destiny's Child"})-[:RELEASED]->(a:Album {title: "Love Songs"})
+RETURN a.release_date AS ReleaseDate
+
+// What was the title of the added track in "Love Songs"?
+MATCH (g:Group {name: "Destiny's Child"})-[:RELEASED]->(a:Album {title: "Love Songs"})-[:CONTAINS]->(s:Song {is_added: true})
+RETURN s.title AS AddedTrack
+
+// At whose inauguration did she perform the National Anthem?
+MATCH (b:Beyonce)-[:PERFORMED_AT]->(e:Event {type: "Inauguration"})
+RETURN e.person_inaugurated AS InauguratedPerson
+
+// How many Tweets per minute did the halftime show get?
+MATCH (b:Beyonce)-[:PERFORMED_AT]->(e:Event {type: "Halftime Show"})
+RETURN e.tweets_per_minute AS TweetsPerMinute
+
+// When did Destiny's Child release "Love Songs"?
+MATCH (g:Group {name: "Destiny's Child"})-[:RELEASED]->(a:Album {title: "Love Songs"})
+RETURN a.release_date AS ReleaseDate
+
+// What was the new track for "Love Songs"?
+MATCH (g:Group {name: "Destiny's Child"})-[:RELEASED]->(a:Album {title: "Love Songs"})-[:CONTAINS]->(s:Song {is_new: true})
+RETURN s.title AS NewTrack
+
+// What did Beyoncé sing at President Obama's second inauguration?
+MATCH (b:Beyonce)-[:PERFORMED_AT]->(e:Event {type: "Inauguration", person_inaugurated: "President Obama"})
+RETURN e.song_performed AS SongTitle
+
+// What event did Beyoncé perform at one month after Obama's inauguration?
+MATCH (b:Beyonce)-[:PERFORMED_AT]->(e:Event)
+WHERE duration.between(e.date, "2013-01") = 1
+RETURN e.name AS PerformanceEvent
+
+// What is the name of Beyoncé's documentary film?
+MATCH (b:Beyonce)-[:FEATURED_IN]->(f:Film {type: "Documentary"})
+RETURN f.title AS DocumentaryTitle

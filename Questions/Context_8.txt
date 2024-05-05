@@ -1,0 +1,44 @@
+// What mental health issue did Beyonce go through?
+MATCH (b:Beyonce)-[:SUFFERED_FROM]->(m:MentalHealthIssue)
+RETURN m.name AS MentalHealthIssue
+
+// What event occurred after she was publicly criticized?
+MATCH (b:Beyonce)-[:CRITICIZED_IN]->(e1:Event)-[:FOLLOWED_BY]->(e2:Event)
+RETURN e2.name AS FollowingEvent
+
+// Who supported Beyonce through her depression?
+MATCH (b:Beyonce)-[:SUPPORTED_BY]->(p:Person)
+WHERE b.suffered_from = "Depression"
+RETURN p.name AS SupportingPerson
+
+// What event caused Beyonce's depression?
+MATCH (b:Beyonce)-[:CAUSED_BY]->(e:Event)
+WHERE b.suffered_from = "Depression"
+RETURN e.name AS CausingEvent
+
+// How long was Beyonce depressed?
+MATCH (b:Beyonce)
+WHERE b.suffered_from = "Depression"
+RETURN b.depression_duration AS DepressionDuration
+
+// Who helped Beyonce fight her depression the most?
+MATCH (b:Beyonce)-[:HELPED_BY]->(p:Person)
+WHERE b.suffered_from = "Depression"
+RETURN p.name AS MostHelpfulPerson
+
+// Who replaced Luckett and Roberson in Destiny's Child?
+MATCH (g:Group {name: "Destiny's Child"})-[:REPLACED]->(f:FormerMember {name: "Luckett"}), (r:FormerMember {name: "Roberson"})
+RETURN g.new_members AS ReplacingMembers
+
+// Who was blamed for Luckett and Roberson leaving Destiny's Child?
+MATCH (f1:FormerMember {name: "Luckett"}), (f2:FormerMember {name: "Roberson"})-[:LEFT_BECAUSE_OF]->(p:Person)
+RETURN p.name AS BlamedPerson
+
+// Who helped Beyoncé overcome her depression during the years following the Destiny's Child split?
+MATCH (b:Beyonce)-[:OVERCOME_DEPRESSION_WITH]->(p:Person)
+WHERE b.suffered_from = "Depression" AND b.depression_period = "post-Destiny's Child"
+RETURN p.name AS SupportingPerson
+
+// Which newest member was removed from Destiny's Child?
+MATCH (g:Group {name: "Destiny's Child"})-[:REMOVED]->(m:Member {status: "newest"})
+RETURN m.name AS RemovedMember

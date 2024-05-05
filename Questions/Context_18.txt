@@ -1,0 +1,43 @@
+// Beyonce would take a break from music in which year?
+MATCH (b:Beyonce)-[:TOOK_BREAK_IN]->(y:Year)
+RETURN y.value AS BreakYear
+
+// Which year did Beyonce and her father part business ways?
+MATCH (b:Beyonce)-[:PARTED_WAYS_WITH]->(f:Person {relationship: "father"})
+RETURN f.part_year AS PartingYear
+
+// Which famous landmark did Beyonce see in China?
+MATCH (b:Beyonce)-[:VISITED_LANDMARK]->(l:Landmark {country: "China"})
+RETURN l.name AS LandmarkName
+
+// In what year did Beyonce have her hiatus?
+MATCH (b:Beyonce)-[:HAD_HIATUS_IN]->(y:Year)
+RETURN y.value AS HiatusYear
+
+// Who inspired this hiatus?
+MATCH (b:Beyonce)-[:HIATUS_INSPIRED_BY]->(p:Person)
+RETURN p.name AS InspirationPerson
+
+// When did she stop using her father as a manager?
+MATCH (b:Beyonce)-[:PARTED_WAYS_WITH]->(f:Person {relationship: "father", role: "manager"})
+RETURN f.part_year AS PartingYear
+
+// How long did the hiatus last?
+MATCH (b:Beyonce)-[:HIATUS_LASTED]->(d:Duration)
+RETURN d.value AS HiatusDuration
+
+// What did Beyoncé announce in January 2010?
+MATCH (b:Beyonce)-[:ANNOUNCED]->(a:Announcement {date: "2010-01"})
+RETURN a.content AS AnnouncementContent
+
+// Who suggested the hiatus for Beyoncé?
+MATCH (b:Beyonce)-[:HIATUS_SUGGESTED_BY]->(p:Person)
+RETURN p.name AS SuggestingPerson
+
+// Who did Beyoncé part ways with during her hiatus?
+MATCH (b:Beyonce)-[:PARTED_WAYS_WITH]->(p:Person)-[:DURING]->(h:Hiatus)
+RETURN p.name AS PartedPerson
+
+// How long did her hiatus last?
+MATCH (b:Beyonce)-[:HIATUS_LASTED]->(d:Duration)
+RETURN d.value AS HiatusDuration

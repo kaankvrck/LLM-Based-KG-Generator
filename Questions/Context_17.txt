@@ -1,0 +1,56 @@
+// How many awards was Beyonce nominated for at the 52nd Grammy Awards?
+MATCH (b:Beyonce)-[:NOMINATED_FOR]->(a:Award {name: "Grammy", year: 52})
+RETURN count(a) AS NominationsCount
+
+// Beyonce tied with which artist for most nominations by a female artist?
+MATCH (b:Beyonce)-[:TIED_WITH]->(a:Artist)-[:FOR_AWARD]->(aw:Award {category: "Most Nominations by a Female Artist"})
+RETURN a.name AS TiedArtist
+
+// In 2010, Beyonce worked with which other famous singer?
+MATCH (b:Beyonce)-[:COLLABORATED_WITH {year: 2010}]->(a:Artist)
+RETURN a.name AS CollaboratingArtist
+
+// How many number one singles did Beyonce now have after the song "Telephone"?
+MATCH (s:Song {title: "Telephone"})-[:FEATURES]->(b:Beyonce)
+RETURN b.total_number_one_singles AS NumberOneSingles
+
+// Beyonce tied who for most number one singles by a female?
+MATCH (b:Beyonce)-[:TIED_WITH]->(a:FemaleArtist)-[:FOR_CATEGORY]->(c:Category {name: "Most Number One Singles"})
+RETURN a.name AS TiedArtist
+
+// Beyonce received how many nominations at the 52nd Annual Grammy Awards?
+MATCH (b:Beyonce)-[:NOMINATED_FOR]->(a:Award {name: "Grammy", year: 52})
+RETURN count(a) AS NominationsCount
+
+// What song was the sixth first place song for Beyonce?
+MATCH (s:Song)-[:WON]->(a:Award {position: "First"})
+WHERE s.is_sixth = true
+RETURN s.title AS SixthFirstPlaceSong
+
+// Who else appeared with Beyonce in "Telephone"?
+MATCH (s:Song {title: "Telephone"})-[:FEATURES]->(a:Artist)
+RETURN a.name AS CollaboratingArtists
+
+// Who did they tie with for six top songs?
+MATCH (b:Beyonce)-[:TIED_WITH]->(a:Artist)-[:FOR_CATEGORY]->(c:Category {name: "Six Top Songs"})
+RETURN a.name AS TiedArtist
+
+// Who did Beyonce tie with for the most nominations in a year?
+MATCH (b:Beyonce)-[:TIED_WITH]->(a:Artist)-[:FOR_CATEGORY]->(c:Category {name: "Most Nominations in a Year"})
+RETURN a.name AS TiedArtist
+
+// How many nominations did Beyoncé receive at the 52nd Grammy Awards ceremony?
+MATCH (b:Beyonce)-[:NOMINATED_FOR]->(a:Award {name: "Grammy", year: 52})
+RETURN count(a) AS NominationsCount
+
+// Who did Beyoncé tie with for the most Grammy nominations for female artists?
+MATCH (b:Beyonce)-[:TIED_WITH]->(a:FemaleArtist)-[:FOR_CATEGORY]->(c:Category {name: "Most Grammy Nominations"})
+RETURN a.name AS TiedArtist
+
+// Beyoncé was a featured artist on which singer's hit, "Telephone"?
+MATCH (s:Song {title: "Telephone"})-[:FEATURES]->(b:Beyonce)-[:FEATURED_IN]->(a:Artist)
+RETURN a.name AS FeaturedArtist
+
+// Who did Beyoncé and Lady Gaga tie with for the most number one hits since 1992?
+MATCH (b:Beyonce)-[:TIED_WITH]->(a:Artist {name: "Lady Gaga"})-[:FOR_CATEGORY]->(c:Category {name: "Most Number One Hits Since 1992"})
+RETURN a.name AS TiedArtist

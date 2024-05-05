@@ -1,0 +1,53 @@
+// How many dates did Beyonce's "The Mrs. Carter Show" entail?
+MATCH (b:Beyonce)-[:TOURED_WITH]->(t:Tour {name: "The Mrs. Carter Show World Tour"})
+RETURN count(t.date) AS NumberOfDates
+
+// One of Beyonce's most successful tours yet was which one?
+MATCH (b:Beyonce)-[:TOURED_WITH]->(t:Tour)
+RETURN t.name AS TourName
+ORDER BY t.revenue DESC LIMIT 1
+
+// Beyonce wrote which song for the movie "Epic"?
+MATCH (s:Song)-[:WRITTEN_FOR]->(f:Film {title: "Epic"})-[:WRITTEN_BY]->(b:Beyonce)
+RETURN s.title AS WrittenSong
+
+// Beyonce voiced a character in which animated film?
+MATCH (b:Beyonce)-[:VOICED_CHARACTER]->(c:Character)-[:IN_FILM]->(f:Film {type: "Animated"})
+RETURN f.title AS AnimatedFilmTitle
+
+// When did the tour begin?
+MATCH (b:Beyonce)-[:TOURED_WITH]->(t:Tour {name: "The Mrs. Carter Show World Tour"})
+RETURN t.start_date AS TourStartDate
+
+// Of what event was Beyonce honorary chair?
+MATCH (b:Beyonce)-[:HONORARY_CHAIR_OF]->(e:Event)
+RETURN e.name AS EventName
+
+// What part did she voice for the movie "Epic"?
+MATCH (b:Beyonce)-[:VOICED_CHARACTER]->(c:Character)-[:IN_FILM]->(f:Film {title: "Epic"})
+RETURN c.name AS VoicedCharacter
+
+// What song did Beyonce record for the film "Epic"?
+MATCH (s:Song)-[:RECORDED_FOR]->(f:Film {title: "Epic"})-[:RECORDED_BY]->(b:Beyonce)
+RETURN s.title AS RecordedSong
+
+// What was the name of Beyoncé's tour that she started on April 15?
+MATCH (b:Beyonce)-[:TOURED_WITH]->(t:Tour {start_date: "April 15"})
+RETURN t.name AS TourName
+
+// How many dates did the "Mrs. Carter Show World Tour" have?
+MATCH (b:Beyonce)-[:TOURED_WITH]->(t:Tour {name: "The Mrs. Carter Show World Tour"})
+RETURN count(t.date) AS NumberOfDates
+
+// Which Amy Winehouse song did Beyoncé cover and release in May 2014?
+MATCH (s:Song)-[:COVERED_BY]->(b:Beyonce)
+WHERE s.original_artist = "Amy Winehouse" AND s.release_date = "May 2014"
+RETURN s.title AS CoveredSong
+
+// Beyoncé was an honorary chair of the 2013 what?
+MATCH (b:Beyonce)-[:HONORARY_CHAIR_OF]->(e:Event {year: 2013})
+RETURN e.name AS EventName
+
+// Which character in the film "Epic" was voiced by Beyoncé?
+MATCH (b:Beyonce)-[:VOICED_CHARACTER]->(c:Character)-[:IN_FILM]->(f:Film {title: "Epic"})
+RETURN c.name AS VoicedCharacter

@@ -1,0 +1,52 @@
+// Beyonce's fourth album debuted in what year?
+MATCH (a:Album {is_fourth: true})
+RETURN a.release_year AS DebutYear
+
+// Which single had the most success from that album?
+MATCH (a:Album {is_fourth: true})-[:CONTAINS]->(s:Single)
+RETURN s.title AS MostSuccessfulSingle
+ORDER BY s.chart_rank ASC LIMIT 1
+
+// Beyonce won an award for which activity in 2011?
+MATCH (b:Beyonce)-[:WON]->(a:Award {year: 2011})
+RETURN a.category AS AwardActivity
+
+// In 2011, Beyonce performed for four nights where?
+MATCH (b:Beyonce)-[:PERFORMED_AT]->(e:Event {year: 2011, name: "Four-Night Concert"})
+RETURN e.venue AS VenueName
+
+// When was Beyonce's fourth album released?
+MATCH (a:Album {is_fourth: true})
+RETURN a.release_date AS ReleaseDate
+
+// How many copies did the album sell in its first week?
+MATCH (a:Album {is_fourth: true})
+RETURN a.first_week_sales AS FirstWeekSales
+
+// Who awarded Beyonce an award for writing?
+MATCH (b:Beyonce)-[:WON]->(a:Award)-[:FOR_ACTIVITY]->(ac:Activity {name: "Writing"})
+RETURN a.organization AS AwardingOrganization
+
+// When did she perform at the Roseland ballroom?
+MATCH (b:Beyonce)-[:PERFORMED_AT]->(e:Event {venue: "Roseland Ballroom"})
+RETURN e.date AS PerformanceDate
+
+// What is the name of Beyoncé's fourth studio album?
+MATCH (a:Album {is_fourth: true})
+RETURN a.title AS FourthAlbumTitle
+
+// When was "4" released?
+MATCH (a:Album {title: "4"})
+RETURN a.release_date AS ReleaseDate
+
+// How many copies of "4" sold in the first week?
+MATCH (a:Album {title: "4"})
+RETURN a.first_week_sales AS FirstWeekSales
+
+// What magazine did Beyoncé write a story for about her earlier hiatus?
+MATCH (b:Beyonce)-[:WROTE_FOR]->(m:Magazine)-[:ABOUT]->(h:Hiatus)
+RETURN m.name AS MagazineName
+
+// Where did Beyoncé perform for four nights of standing-room-only concerts in 2011?
+MATCH (b:Beyonce)-[:PERFORMED_AT]->(e:Event {year: 2011, name: "Four-Night Concert"})
+RETURN e.venue AS VenueName

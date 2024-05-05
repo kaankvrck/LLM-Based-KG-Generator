@@ -1,0 +1,45 @@
+// What town did Beyonce go to school in?
+MATCH (b:Beyonce)-[:ATTENDED]->(s:School)
+RETURN s.town AS SchoolTown
+
+// Who was the first person to notice Beyonce's singing ability?
+MATCH (b:Beyonce)-[:NOTICED_BY]->(p:Person)
+RETURN p.name AS FirstPersonToNotice
+
+// Beyonce moved to which town after she left her first elementary school?
+MATCH (b:Beyonce)-[:LEFT]->(s1:School)-[:MOVED_TO]->(t:Town)
+RETURN t.name AS NewTown
+
+// Which of her teachers discovered Beyonce's musical talent?
+MATCH (b:Beyonce)-[:DISCOVERED_BY]->(t:Teacher)
+RETURN t.name AS DiscoveringTeacher
+
+// In which church was Beyonce a member and soloist in the choir?
+MATCH (b:Beyonce)-[:MEMBER_OF]->(c:Church)-[:SOLOIST_IN]->(choir:Choir)
+RETURN c.name AS ChurchName, choir.name AS ChoirName
+
+// What type of school was Parker Elementary School?
+MATCH (s:School {name: "Parker Elementary School"})
+RETURN s.type AS SchoolType
+
+// Which song did Beyonce sing to win a competition at age 7?
+MATCH (b:Beyonce)-[:SANG]->(s:Song)
+WHERE s.competition_winning = true AND s.age = 7
+RETURN s.title AS WinningSong
+
+// What city was Beyoncé's elementary school located in?
+MATCH (b:Beyonce)-[:ATTENDED]->(s:School {level: "Elementary"})
+RETURN s.city AS ElementarySchoolCity
+
+// What was the name of Beyoncé's first dance instructor?
+MATCH (b:Beyonce)-[:TAUGHT_BY]->(d:Instructor {field: "Dance"})
+RETURN d.name AS FirstDanceInstructor
+
+// How old was Beyoncé when she won a school talent show?
+MATCH (b:Beyonce)-[:WON]->(c:Competition {type: "School Talent Show"})
+RETURN c.age AS WinningAge
+
+// What choir did Beyoncé sing in for two years?
+MATCH (b:Beyonce)-[:SANG_IN]->(choir:Choir)
+WHERE choir.duration_years = 2
+RETURN choir.name AS ChoirName

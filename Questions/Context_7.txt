@@ -1,0 +1,54 @@
+// Which film featured Destiny's Child's first major single?
+MATCH (g:Group {name: "Destiny's Child"})-[:RELEASED]->(s:Single)-[:FEATURED_IN]->(f:Film)
+WHERE s.is_first_major = true
+RETURN f.title AS FilmTitle
+
+// For which song, did Destiny's Child take home the Grammy award for best R&B performance?
+MATCH (g:Group {name: "Destiny's Child"})-[:WON]->(a:Award {name: "Grammy", category: "Best R&B Performance"})-[:FOR]->(s:Song)
+RETURN s.title AS SongTitle
+
+// Who did Beyonce record with for the movie "The Best Man?"
+MATCH (b:Beyonce)-[:RECORDED_WITH]->(s:Singer)-[:FOR_MOVIE]->(m:Movie {title: "The Best Man"})
+RETURN s.name AS CollaboratingSinger
+
+// Beyonce's group changed their name to Destiny's Child in what year?
+MATCH (g:Group)-[:CHANGED_NAME_TO {new_name: "Destiny's Child"}]->(g2:Group)
+RETURN g2.change_year AS ChangeYear
+
+// The name Destiny's Child was based on a quote in which book of the Bible?
+MATCH (g:Group {name: "Destiny's Child"})-[:NAMED_AFTER]->(b:BibleBook)
+RETURN b.name AS BibleBookName
+
+// Debut song, "Killing Time" was featured on what movie's soundtrack?
+MATCH (s:Song {title: "Killing Time"})-[:FEATURED_IN]->(m:Movie)
+RETURN m.title AS MovieTitle
+
+// What song won Best R&B Performance in the 43rd Annual Grammy Awards?
+MATCH (g:Group {name: "Destiny's Child"})-[:WON]->(a:Award {name: "Grammy", category: "Best R&B Performance", year: 43})-[:FOR]->(s:Song)
+RETURN s.title AS SongTitle
+
+// What singer did Beyonce record a song with for the movie, "The Best Man"?
+MATCH (b:Beyonce)-[:RECORDED_WITH]->(s:Singer)-[:FOR_MOVIE]->(m:Movie {title: "The Best Man"})
+RETURN s.name AS CollaboratingSinger
+
+// Where did Destiny's Child get their name from?
+MATCH (g:Group {name: "Destiny's Child"})-[:NAMED_AFTER]->(b:BibleBook)
+RETURN b.name AS BibleBookName
+
+// Destiny's Child song, "Killing Time," was included in which film's soundtrack?
+MATCH (s:Song {title: "Killing Time"})-[:FEATURED_IN]->(f:Film)
+RETURN f.title AS FilmTitle
+
+// What was Destiny's Child's first major song hit?
+MATCH (g:Group {name: "Destiny's Child"})-[:RELEASED]->(s:Single)
+WHERE s.is_first_major = true
+RETURN s.title AS FirstMajorSong
+
+// When did Destiny's Child release their second album?
+MATCH (g:Group {name: "Destiny's Child"})-[:RELEASED]->(a:Album)
+WHERE a.is_second = true
+RETURN a.release_year AS SecondAlbumYear
+
+// Who did Beyoncé sing a duet with for "The Best Man" film?
+MATCH (b:Beyonce)-[:SANG_DUET_WITH]->(s:Singer)-[:FOR_MOVIE]->(m:Movie {title: "The Best Man"})
+RETURN s.name AS DuetPartner

@@ -1,0 +1,52 @@
+// In which year did reports about Beyonce performing for Muammar Gaddafi surface?
+MATCH (b:Beyonce)-[:REPORTED_PERFORMED_FOR]->(r:Ruler {name: "Muammar Gaddafi"})
+RETURN r.report_year AS ReportYear
+
+// Who did Beyonce donate the money to earned from her shows?
+MATCH (b:Beyonce)-[:DONATED_TO]->(o:Organization)
+RETURN o.name AS DonationRecipient
+
+// Beyonce became the first female artist to perform solo in 20 years at which stage?
+MATCH (b:Beyonce)-[:PERFORMED_SOLO_AT]->(s:Stage)
+RETURN s.name AS StageName
+
+// Which organization did Beyonce's spokespeople confirm her donations to?
+MATCH (b:Beyonce)-[:DONATED_TO]->(o:Organization)
+RETURN o.name AS ConfirmedDonationRecipient
+
+// Beyonce was listed in 2011 as the highest paid performer per what?
+MATCH (b:Beyonce)-[:LISTED_AS]->(p:Performer)-[:HIGHEST_PAID_PER]->(u:Unit)
+WHERE p.year = 2011
+RETURN u.name AS HighestPaidPerUnit
+
+// How did everyone learn that Beyonce performed for Gaddafi?
+MATCH (b:Beyonce)-[:PERFORMED_FOR]->(r:Ruler {name: "Muammar Gaddafi"})
+RETURN r.leak_source AS LeakSource
+
+// When did this leak happen?
+MATCH (b:Beyonce)-[:PERFORMED_FOR]->(r:Ruler {name: "Muammar Gaddafi"})
+RETURN r.leak_year AS LeakYear
+
+// Who did she tell about the donation?
+MATCH (b:Beyonce)-[:INFORMED_ABOUT_DONATION]->(p:Person)
+RETURN p.name AS InformedPerson
+
+// Where did Beyonce perform in 2011?
+MATCH (b:Beyonce)-[:PERFORMED_AT]->(e:Event {year: 2011})
+RETURN e.name AS EventName
+
+// Who did Beyoncé perform privately for in 2011?
+MATCH (b:Beyonce)-[:PERFORMED_PRIVATELY_FOR]->(p:Person)
+RETURN p.name AS PrivateAudience
+
+// Who released the information about Beyoncé's performance for the Libyan ruler?
+MATCH (b:Beyonce)-[:PERFORMED_FOR]->(r:Ruler {name: "Muammar Gaddafi"})
+RETURN r.leak_source AS LeakSource
+
+// Which organization did Beyoncé donate her pay for the private performance to?
+MATCH (b:Beyonce)-[:DONATED_TO]->(o:Organization)
+RETURN o.name AS DonationRecipient
+
+// Beyoncé was the first female singer to headline what at the 2011 Glastonbury Festival?
+MATCH (b:Beyonce)-[:HEADLINED]->(s:Stage)-[:AT_EVENT]->(e:Event {name: "Glastonbury Festival", year: 2011})
+RETURN s.name AS HeadlinedStage

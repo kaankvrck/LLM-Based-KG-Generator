@@ -1,0 +1,39 @@
+// Destiny's Child's final album was named what?
+MATCH (g:Group {name: "Destiny's Child"})-[:RELEASED]->(a:Album {is_final: true})
+RETURN a.title AS FinalAlbum
+
+// Destiny's Child got a star on the Hollywood Walk of Fame in what year?
+MATCH (g:Group {name: "Destiny's Child"})-[:GOT_STAR_ON]->(h:HollywoodWalkOfFame)
+RETURN h.year AS StarYear
+
+// In what year did Beyonce embark on her Dangerously in Love tour of Europe?
+MATCH (b:Beyonce)-[:TOURED]->(t:Tour {name: "Dangerously in Love Tour", region: "Europe"})
+RETURN t.start_year AS StartYear
+
+// What was the name of the final album of Destiny's Child?
+MATCH (g:Group {name: "Destiny's Child"})-[:RELEASED]->(a:Album {is_final: true})
+RETURN a.title AS FinalAlbum
+
+// It was announced that Destiny's Child would disband in what European city?
+MATCH (g:Group {name: "Destiny's Child"})-[:ANNOUNCED_DISBANDMENT_IN]->(c:City {region: "Europe"})
+RETURN c.name AS AnnouncementCity
+
+// When did Destiny's Child get their star on the Hollywood Walk of Fame?
+MATCH (g:Group {name: "Destiny's Child"})-[:GOT_STAR_ON]->(h:HollywoodWalkOfFame)
+RETURN h.year AS StarYear
+
+// What was the name of Beyoncé's European tour that started in November 2003?
+MATCH (b:Beyonce)-[:TOURED]->(t:Tour {region: "Europe", start_month: "November", start_year: 2003})
+RETURN t.name AS TourName
+
+// Who did Beyoncé tour with for the Verizon Ladies First Tour?
+MATCH (b:Beyonce)-[:TOURED_WITH]->(a:Artist)-[:IN_TOUR]->(t:Tour {name: "Verizon Ladies First Tour"})
+RETURN a.name AS TourArtist
+
+// What major event did Beyoncé perform at on February 1, 2004?
+MATCH (b:Beyonce)-[:PERFORMED_AT]->(e:Event {date: "2004-02-01"})
+RETURN e.name AS MajorEvent
+
+// What is the name of the final studio album from Destiny's Child?
+MATCH (g:Group {name: "Destiny's Child"})-[:RELEASED]->(a:Album {is_final: true})
+RETURN a.title AS FinalStudioAlbum

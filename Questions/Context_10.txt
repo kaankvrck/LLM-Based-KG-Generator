@@ -1,0 +1,60 @@
+// Who did Beyonce star with in the movie, "Austin Powers in Goldmember"?
+MATCH (b:Beyonce)-[:STARRED_WITH]->(a:Actor)-[:IN_MOVIE]->(m:Movie {title: "Austin Powers in Goldmember"})
+RETURN a.name AS CoStar
+
+// Which three countries did Beyonce's song "Work It Out" achieve top ten status?
+MATCH (s:Song {title: "Work It Out"})-[:TOP_TEN_IN]->(c:Country)
+RETURN c.name AS TopTenCountries
+
+// Beyonce starred with Cuba Gooding Jr. in which film?
+MATCH (b:Beyonce)-[:STARRED_WITH]->(a:Actor {name: "Cuba Gooding Jr."})-[:IN_MOVIE]->(f:Film)
+RETURN f.title AS FilmTitle
+
+// Who did Beyonce record the lead single with in the movie "The Fighting Temptations"?
+MATCH (b:Beyonce)-[:RECORDED_LEAD_SINGLE_WITH]->(a:Artist)-[:FOR_MOVIE]->(m:Movie {title: "The Fighting Temptations"})
+RETURN a.name AS CollaboratingArtist
+
+// Which other song from the soundtrack did better in the charts?
+MATCH (m:Movie {title: "The Fighting Temptations"})-[:HAS_SOUNDTRACK]->(s:Song)
+WHERE s.chart_rank < 10
+RETURN s.title AS BetterChartingSong
+
+// What film did Beyonce appear in with Mike Myers?
+MATCH (b:Beyonce)-[:STARRED_WITH]->(a:Actor {name: "Mike Myers"})-[:IN_MOVIE]->(f:Film)
+RETURN f.title AS FilmTitle
+
+// What large amount did the movie "Goldmember" gross?
+MATCH (m:Movie {title: "Austin Powers in Goldmember"})
+RETURN m.gross_revenue AS GrossRevenue
+
+// What genre of movie did Beyonce star in with Cuba Gooding Jr.?
+MATCH (b:Beyonce)-[:STARRED_WITH]->(a:Actor {name: "Cuba Gooding Jr."})-[:IN_MOVIE]->(f:Film)
+RETURN f.genre AS FilmGenre
+
+// What song was the lead single from the film's sound track?
+MATCH (b:Beyonce)-[:RECORDED_LEAD_SINGLE_FOR]->(s:Song)-[:FOR_MOVIE]->(f:Film)
+RETURN s.title AS LeadSingle
+
+// How did the critics view the movie "The Fighting Temptations"?
+MATCH (m:Movie {title: "The Fighting Temptations"})-[:RECEIVED_REVIEW]->(r:Review)
+RETURN r.critical_view AS CriticalView
+
+// What film did Beyoncé star in with Mike Myers in 2002?
+MATCH (b:Beyonce)-[:STARRED_WITH]->(a:Actor {name: "Mike Myers"})-[:IN_MOVIE]->(f:Film {release_year: 2002})
+RETURN f.title AS FilmTitle
+
+// What was Beyoncé's character called in "Austin Powers in Goldmember"?
+MATCH (b:Beyonce)-[:PORTRAYED]->(c:Character)-[:IN_MOVIE]->(m:Movie {title: "Austin Powers in Goldmember"})
+RETURN c.name AS CharacterName
+
+// Which song did Beyoncé release as the lead single for "Austin Powers in Goldmember's" soundtrack?
+MATCH (b:Beyonce)-[:RELEASED_LEAD_SINGLE_FOR]->(s:Song)-[:FOR_MOVIE]->(m:Movie {title: "Austin Powers in Goldmember"})
+RETURN s.title AS LeadSingle
+
+// What musical comedy did Beyoncé star in along with Cuba Gooding Jr. in 2003?
+MATCH (b:Beyonce)-[:STARRED_WITH]->(a:Actor {name: "Cuba Gooding Jr."})-[:IN_MOVIE]->(f:Film {release_year: 2003, genre: "Musical Comedy"})
+RETURN f.title AS FilmTitle
+
+// What song did Beyoncé release as the lead single from "The Fighting Temptations"?
+MATCH (b:Beyonce)-[:RELEASED_LEAD_SINGLE_FOR]->(s:Song)-[:FOR_MOVIE]->(f:Film {title: "The Fighting Temptations"})
+RETURN s.title AS LeadSingle

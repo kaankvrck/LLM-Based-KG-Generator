@@ -1,0 +1,63 @@
+// When did Beyonce start becoming popular?
+MATCH (b:Beyonce)
+RETURN b.start_popular AS Year
+
+// What areas did Beyonce compete in when she was growing up?
+MATCH (b:Beyonce)-[:COMPETED_IN]->(a:Area)
+RETURN a.name AS AreaName
+
+// When did Beyonce leave Destiny's Child and become a solo singer?
+MATCH (b:Beyonce)-[r:LEFT]->(g:Group {name: "Destiny's Child"})
+RETURN r.year AS Year
+
+// In what city and state did Beyonce grow up?
+MATCH (b:Beyonce)-[:GREW_UP_IN]->(c:City)-[:IN_STATE]->(s:State)
+RETURN c.name AS CityName, s.name AS StateName
+
+// In which decade did Beyonce become famous?
+MATCH (b:Beyonce)
+RETURN b.famous_decade AS Decade
+
+// In what R&B group was she the lead singer?
+MATCH (b:Beyonce)-[:LEAD_SINGER]->(g:Group {genre: "R&B"})
+RETURN g.name AS GroupName
+
+// What album made her a worldwide known artist?
+MATCH (b:Beyonce)-[:RELEASED]->(a:Album)
+WHERE a.made_worldwide_known = true
+RETURN a.title AS AlbumTitle
+
+// Who managed the Destiny's Child group?
+MATCH (g:Group {name: "Destiny's Child"})-[:MANAGED_BY]->(m:Manager)
+RETURN m.name AS ManagerName
+
+// When did Beyoncé rise to fame?
+MATCH (b:Beyonce)
+RETURN b.rise_to_fame_year AS Year
+
+// What role did Beyoncé have in Destiny's Child?
+MATCH (b:Beyonce)-[:HAD_ROLE]->(r:Role)-[:IN_GROUP]->(g:Group {name: "Destiny's Child"})
+RETURN r.title AS RoleTitle
+
+// What was the first album Beyoncé released as a solo artist?
+MATCH (b:Beyonce)-[:RELEASED]->(a:Album)
+WHERE a.is_first_solo = true
+RETURN a.title AS AlbumTitle
+
+// When did Beyoncé release Dangerously in Love?
+MATCH (b:Beyonce)-[:RELEASED]->(a:Album {title: "Dangerously in Love"})
+RETURN a.release_year AS ReleaseYear
+
+// How many Grammy awards did Beyoncé win for her first solo album?
+MATCH (b:Beyonce)-[:WON]->(a:Award {name: "Grammy"})
+WHERE a.for_album = "first_solo"
+RETURN count(a) AS GrammyCount
+
+// What was Beyoncé's role in Destiny's Child?
+MATCH (b:Beyonce)-[:HAD_ROLE]->(r:Role)-[:IN_GROUP]->(g:Group {name: "Destiny's Child"})
+RETURN r.title AS RoleTitle
+
+// What was the name of Beyoncé's first solo album?
+MATCH (b:Beyonce)-[:RELEASED]->(a:Album)
+WHERE a.is_first_solo = true
+RETURN a.title AS AlbumTitle

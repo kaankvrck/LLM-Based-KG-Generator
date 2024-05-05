@@ -1,0 +1,51 @@
+// Beyonce portrayed which character in the film, "Cadillac Records"?
+MATCH (b:Beyonce)-[:PORTRAYED]->(c:Character)-[:IN_FILM]->(f:Film {title: "Cadillac Records"})
+RETURN c.name AS CharacterName
+
+// Beyonce gave her entire salary from "Cadillac Records" to which organization?
+MATCH (b:Beyonce)-[:DONATED_SALARY_TO]->(o:Organization)-[:FROM_FILM]->(f:Film {title: "Cadillac Records"})
+RETURN o.name AS OrganizationName
+
+// Which song did Beyonce sing at the first couple's inaugural ball?
+MATCH (b:Beyonce)-[:SANG_AT]->(e:Event {name: "First Couple's Inaugural Ball"})-[:SONG_PERFORMED]->(s:Song)
+RETURN s.title AS SongTitle
+
+// What genre of film was the movie, "Obsessed," in which Beyonce starred?
+MATCH (b:Beyonce)-[:STARRED_IN]->(f:Film {title: "Obsessed"})
+RETURN f.genre AS FilmGenre
+
+// A fight scene from the movie, "Obsessed," won which award for Beyonce?
+MATCH (b:Beyonce)-[:WON]->(a:Award {category: "Fight Scene"})-[:FROM_FILM]->(f:Film {title: "Obsessed"})
+RETURN a.name AS AwardName
+
+// Where did Beyonce donate her salary from the movie "Cadillac Records"?
+MATCH (b:Beyonce)-[:DONATED_SALARY_TO]->(o:Organization)-[:FROM_FILM]->(f:Film {title: "Cadillac Records"})
+RETURN o.name AS OrganizationName
+
+// What thriller film did Beyonce star in?
+MATCH (b:Beyonce)-[:STARRED_IN]->(f:Film {genre: "Thriller"})
+RETURN f.title AS ThrillerFilm
+
+// What was the name of the woman she played in "Obsessed"?
+MATCH (b:Beyonce)-[:PORTRAYED]->(c:Character)-[:IN_FILM]->(f:Film {title: "Obsessed"})
+RETURN c.name AS CharacterName
+
+// How much more than the budget did the film gross?
+MATCH (f:Film)
+RETURN f.gross_budget_difference AS GrossDifference
+
+// Which singer did Beyoncé portray in "Cadillac Records"?
+MATCH (b:Beyonce)-[:PORTRAYED]->(s:Singer)-[:IN_FILM]->(f:Film {title: "Cadillac Records"})
+RETURN s.name AS PortrayedSinger
+
+// Which organization received Beyoncé's entire "Cadillac Records" salary?
+MATCH (b:Beyonce)-[:DONATED_SALARY_TO]->(o:Organization)-[:FROM_FILM]->(f:Film {title: "Cadillac Records"})
+RETURN o.name AS OrganizationName
+
+// Where did Beyoncé perform on January 20, 2009?
+MATCH (b:Beyonce)-[:PERFORMED_AT]->(e:Event {date: "2009-01-20"})
+RETURN e.name AS EventName
+
+// Which thriller film did Beyoncé star in with Ali Larter?
+MATCH (b:Beyonce)-[:STARRED_WITH]->(a:Actor {name: "Ali Larter"})-[:IN_FILM]->(f:Film {genre: "Thriller"})
+RETURN f.title AS ThrillerFilm

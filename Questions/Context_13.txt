@@ -1,0 +1,43 @@
+// How many albums did Beyonce sell in the first week when she released her second album?
+MATCH (a:Album {is_second: true})
+RETURN a.first_week_sales AS FirstWeekSales
+
+// The lead single from the album was which song?
+MATCH (a:Album {is_second: true})-[:HAS_LEAD_SINGLE]->(s:Song)
+RETURN s.title AS LeadSingle
+
+// How many countries did her song "Irreplaceable" get number one status in?
+MATCH (s:Song {title: "Irreplaceable"})-[:NUMBER_ONE_IN]->(c:Country)
+RETURN count(c) AS NumberOneCountries
+
+// How many singles did her second album produce?
+MATCH (a:Album {is_second: true})-[:PRODUCED]->(s:Single)
+RETURN count(s) AS NumberOfSingles
+
+// What birthday did Beyonce's album B'Day celebrate?
+MATCH (a:Album {title: "B'Day"})
+RETURN a.celebrates_birthday AS CelebratedBirthday
+
+// What artist did Beyonce duet with in the single, "Deja Vu"?
+MATCH (s:Song {title: "Deja Vu"})-[:FEATURES]->(ar:Artist)
+RETURN ar.name AS DuetArtist
+
+// How high did "Deja Vu" climb on the Billboard chart?
+MATCH (s:Song {title: "Deja Vu"})-[:ACHIEVED_RANK_IN]->(c:Chart {name: "Billboard Hot 100"})
+RETURN min(c.rank) AS HighestRank
+
+// What is the name of Beyoncé's second album?
+MATCH (a:Album {is_second: true})
+RETURN a.title AS SecondAlbumTitle
+
+// How many copies did "B'Day" sell during the first week of its release?
+MATCH (a:Album {title: "B'Day"})
+RETURN a.first_week_sales AS FirstWeekSales
+
+// Who collaborated with Beyoncé on the single "Deja Vu"?
+MATCH (s:Song {title: "Deja Vu"})-[:FEATURES]->(ar:Artist)
+RETURN ar.name AS CollaboratingArtist
+
+// Which single from "B'Day" was only released in the U.K.?
+MATCH (s:Single)-[:IN_ALBUM]->(a:Album {title: "B'Day"})-[:RELEASED_ONLY_IN]->(c:Country {name: "United Kingdom"})
+RETURN s.title AS UKOnlySingle

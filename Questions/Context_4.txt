@@ -1,0 +1,51 @@
+// Beyonce's younger sibling also sang with her in what band?
+MATCH (b:Beyonce)-[:SIBLING_OF]->(s:Sibling)-[:SANG_WITH]->(g:Group)
+RETURN g.name AS BandName
+
+// Where did Beyonce get her name from?
+MATCH (b:Beyonce)
+RETURN b.origin_of_name AS Origin
+
+// What race was Beyonce's father?
+MATCH (f:Person {relationship: "father", child: "Beyonce"})
+RETURN f.race AS Race
+
+// Beyonce's childhood home believed in what religion?
+MATCH (b:Beyonce)-[:GREW_UP_IN]->(h:Home)-[:BELIEVES_IN]->(r:Religion)
+RETURN r.name AS Religion
+
+// Beyonce's father worked as a sales manager for what company?
+MATCH (f:Person {relationship: "father", child: "Beyonce", job_title: "Sales Manager"})
+RETURN f.company AS Company
+
+// Beyonce's mother worked in what industry?
+MATCH (m:Person {relationship: "mother", child: "Beyonce"})
+RETURN m.industry AS Industry
+
+// What younger sister of Beyonce also appeared in Destiny's Child?
+MATCH (b:Beyonce)-[:SIBLING_OF]->(s:Sibling)-[:APPEARED_IN]->(g:Group {name: "Destiny's Child"})
+RETURN s.name AS SisterName
+
+// Beyonce is a descendent of what Arcadian leader?
+MATCH (b:Beyonce)-[:DESCENDANT_OF]->(l:Leader {region: "Arcadia"})
+RETURN l.name AS ArcadianLeader
+
+// What company did Beyoncé's father work for when she was a child?
+MATCH (f:Person {relationship: "father", child: "Beyonce"})
+RETURN f.company AS Company
+
+// What did Beyoncé's mother own when Beyoncé was a child?
+MATCH (m:Person {relationship: "mother", child: "Beyonce"})
+RETURN m.owned AS Owned
+
+// What is the name of Beyoncé's younger sister?
+MATCH (b:Beyonce)-[:SIBLING_OF]->(s:Sibling)
+RETURN s.name AS YoungerSisterName
+
+// Beyoncé is a descendant of which Acadian leader?
+MATCH (b:Beyonce)-[:DESCENDANT_OF]->(l:Leader {region: "Acadia"})
+RETURN l.name AS AcadianLeader
+
+// Beyoncé was raised in what religion?
+MATCH (b:Beyonce)-[:RAISED_IN]->(r:Religion)
+RETURN r.name AS Religion

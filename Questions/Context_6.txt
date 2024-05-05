@@ -1,0 +1,51 @@
+// Who decided to place Beyonce's group in Star Search the talent show?
+MATCH (g:Group {name: "Girl's Tyme"})-[:PLACED_IN]->(s:TalentShow {name: "Star Search"})-[:BY]->(p:Person)
+RETURN p.name AS PlacingPerson
+
+// In 1995, who decided to manage the girls singing group?
+MATCH (g:Group)-[:MANAGED_BY {year: 1995}]->(m:Manager)
+RETURN m.name AS ManagerName
+
+// Who was the first record label to give the girls a record deal?
+MATCH (g:Group)-[:SIGNED_WITH]->(r:RecordLabel)-[:FIRST_DEAL]->(g)
+RETURN r.name AS FirstRecordLabel
+
+// Who brought Beyonce to California and entered her group in Star Search?
+MATCH (b:Beyonce)-[:TO_CALIFORNIA]->(p:Person)-[:PLACED_IN]->(s:TalentShow {name: "Star Search"})
+RETURN p.name AS PersonWhoBroughtToCalifornia
+
+// In what year did Beyonce's father quit his job to manage her group?
+MATCH (f:Person {relationship: "father", child: "Beyonce"})
+RETURN f.quit_job_year AS QuitJobYear
+
+// What large record company recorded Beyonce's group's first album?
+MATCH (g:Group)-[:FIRST_ALBUM]->(c:RecordCompany)
+RETURN c.name AS LargeRecordCompany
+
+// What record company first signed Beyonce's group and later cut them?
+MATCH (g:Group)-[:SIGNED_AND_CUT_BY]->(r:RecordCompany)
+RETURN r.name AS RecordCompany
+
+// At what age did Beyonce meet LaTavia Robertson?
+MATCH (b:Beyonce)-[:MET]->(p:Person {name: "LaTavia Robertson"})
+RETURN b.age_at_meeting AS Age
+
+// How old was Beyoncé when she met LaTavia Roberson?
+MATCH (b:Beyonce)-[:MET]->(p:Person {name: "LaTavia Roberson"})
+RETURN b.age_at_meeting AS Age
+
+// What was the name of the first group Beyoncé was a part of?
+MATCH (b:Beyonce)-[:MEMBER_OF]->(g:Group)-[:FIRST_GROUP]->(b)
+RETURN g.name AS FirstGroupName
+
+// Who placed Girl's Tyme in Star Search?
+MATCH (g:Group {name: "Girl's Tyme"})-[:PLACED_IN]->(s:TalentShow {name: "Star Search"})-[:BY]->(p:Person)
+RETURN p.name AS PlacingPerson
+
+// When did Beyoncé begin to manage the girl group?
+MATCH (b:Beyonce)-[:BEGAN_MANAGING]->(g:Group)
+RETURN b.management_start_year AS ManagementStartYear
+
+// Who signed the girl group on October 5, 1995?
+MATCH (g:Group)-[:SIGNED_ON {date: "1995-10-05"}]->(p:Person)
+RETURN p.name AS SigningPerson
