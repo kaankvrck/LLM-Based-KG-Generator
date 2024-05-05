@@ -1,0 +1,158 @@
+﻿// Nodes Creation Queries
+CREATE (:Person {name: "Beyonce", type: "Person"});
+CREATE (:Role {name: "Etta James Role"});
+CREATE (:Movie {name: "Cadillac Records"});
+CREATE (:PersonFunction {name: "Critics"});
+CREATE (:Award {name: "Satellite Award for Best Supporting Actress - Motion Picture", year: 2008});
+CREATE (:Award {name: "NAACP Image Award for Outstanding Supporting Actress", year: 2008});
+CREATE (:RehabilitationCenter {name: "Phoenix House"});
+CREATE (:PersonFunction {name: "Drug addicts"});
+CREATE (:Event {name: "First Couple's First Inaugural Ball", year: 2009});
+CREATE (:Movie {name: "Obsessed", year: 2009});
+CREATE (:Role {name: "Sharon Charles Role"});
+CREATE (:Person {name: "Idris Elba", type: "Person"});
+CREATE (:Person {name: "Ali Larter", type: "Person"});
+CREATE (:Property {name: "mother"});
+CREATE (:Property {name: "wife"});
+CREATE (:MovieScene {name: "final fight scene"});
+CREATE (:Award {name: "MTV Movie Award for the Best Fight", year: 2010});
+CREATE (:Person {name: "Lady Gaga", type: "Person"});
+CREATE (:Song {name: "Telephone Song"});
+CREATE (:MusicVideo {name: "Telephone Music Video"});
+CREATE (:Award {name: "Grammy Award for Best Pop Collaboration with Vocals", year: 2011});
+CREATE (:Chart {name: "US Pop Songs Chart"});
+CREATE (:Concept {name: "European cities"});
+CREATE (:ArchitecturalStructure {name: "Great Wall of China"});
+CREATE (:Building {name: "Egyptian Pyramids"});
+CREATE (:Place {name: "Australia"});
+CREATE (:Festival {name: "English music festivals"});
+CREATE (:Album {name: "I Am… Sasha Fierce"});
+CREATE (:Award {name: "52nd Annual Grammy Awards for Album of the Year", year: 2010});
+CREATE (:Song {name: "Halo"});
+CREATE (:Award {name: "52nd Annual Grammy Awards for Record of the Year", year: 2010});
+CREATE (:MusicSingle {name: "Single Ladies (Put a Ring on It)"});    // Adjusted the type from 'single' to 'MusicSingle' for clarity
+CREATE (:Person {name: "Lauryn Hill", type: "Person"});
+CREATE (:Person {name: "Beyonce's mother", type: "Person"});
+CREATE (:Concept {name: "hiatus"});
+CREATE (:Person {name: "Beyonce's father", type: "Person"});
+
+// Creating Relationships
+MATCH (a:Person {name: "Beyonce"}), (b:Role {name: "Etta James Role"})
+CREATE (a)-[:PERFORMED_AS]->(b);
+
+MATCH (a:Role {name: "Etta James Role"}), (b:Movie {name: "Cadillac Records"})
+CREATE (a)-[:IS_IN]->(b);
+
+MATCH (a:PersonFunction {name: "Critics"}), (b:Role {name: "Etta James Role"})
+CREATE (a)-[:PRAISED]->(b);
+
+MATCH (a:Role {name: "Etta James Role"}), (b:Award {name: "Satellite Award for Best Supporting Actress - Motion Picture"})
+CREATE (a)-[:NOMINATED_FOR]->(b);
+
+MATCH (a:Role {name: "Etta James Role"}), (b:Award {name: "NAACP Image Award for Outstanding Supporting Actress"})
+CREATE (a)-[:NOMINATED_FOR]->(b);
+
+MATCH (a:Person {name: "Beyonce"}), (b:RehabilitationCenter {name: "Phoenix House"})
+CREATE (a)-[:DONATED_TO]->(b);
+
+MATCH (a:RehabilitationCenter {name: "Phoenix House"}), (b:PersonFunction {name: "Drug addicts"})
+CREATE (a)-[:HELPS]->(b);
+
+MATCH (a:Person {name: "Beyonce"}), (b:Event {name: "First Couple's First Inaugural Ball"})
+CREATE (a)-[:PERFORMED_IN]->(b);
+
+MATCH (a:Person {name: "Beyonce"}), (b:Role {name: "Sharon Charles Role"})
+CREATE (a)-[:PERFORMED_AS]->(b);
+
+MATCH (a:Role {name: "Sharon Charles Role"}), (b:Movie {name: "Obsessed"})
+CREATE (a)-[:IS_IN]->(b);
+
+MATCH (a:Person {name: "Idris Elba"}), (b:Movie {name: "Obsessed"})
+CREATE (a)-[:PERFORMED_IN]->(b);
+
+MATCH (a:Person {name: "Ali Larter"}), (b:Movie {name: "Obsessed"})
+CREATE (a)-[:PERFORMED_IN]->(b);
+
+MATCH (a:Role {name: "Sharon Charles Role"}), (b:Property {name: "mother"})
+CREATE (a)-[:IS_A]->(b);
+
+MATCH (a:Role {name: "Sharon Charles Role"}), (b:Property {name: "wife"})
+CREATE (a)-[:IS_A]->(b);
+
+MATCH (a:PersonFunction {name: "Critics"}), (b:Movie {name: "Obsessed"})
+CREATE (a)-[:NEGATIVE_COMMENTED]->(b);
+
+MATCH (a:Movie {name: "Obsessed"}), (b:Movie {name: "Cadillac Records"})
+CREATE (a)-[:FINANCIALLY_OVERACHIEVE]->(b);
+
+MATCH (a:Movie {name: "Obsessed"}), (b:MovieScene {name: "final fight scene"})
+CREATE (a)-[:HAS]->(b);
+
+MATCH (a:Role {name: "Sharon Charles Role"}), (b:MovieScene {name: "final fight scene"})
+CREATE (a)-[:ACTS_IN]->(b);
+
+MATCH (a:Person {name: "Ali Larter"}), (b:MovieScene {name: "final fight scene"})
+CREATE (a)-[:ACTS_IN]->(b);
+
+MATCH (a:MovieScene {name: "final fight scene"}), (b:Award {name: "MTV Movie Award for the Best Fight"})
+CREATE (a)-[:WON]->(b);
+
+MATCH (a:Person {name: "Lady Gaga"}), (b:Song {name: "Telephone Song"})
+CREATE (a)-[:HAS]->(b);
+
+MATCH (a:Song {name: "Telephone Song"}), (b:MusicVideo {name: "Telephone Music Video"})
+CREATE (a)-[:HAS]->(b);
+
+MATCH (a:Person {name: "Beyonce"}), (b:MusicVideo {name: "Telephone Music Video"})
+CREATE (a)-[:FEATURES]->(b);
+
+MATCH (a:Song {name: "Telephone Song"}), (b:Award {name: "Grammy Award for Best Pop Collaboration with Vocals"})
+CREATE (a)-[:RECEIVED]->(b);
+
+MATCH (a:Song {name: "Telephone Song"}), (b:Chart {name: "US Pop Songs Chart"})
+CREATE (a)-[:TOPPED]->(b);
+
+MATCH (a:Person {name: "Beyonce"}), (b:Concept {name: "European cities"})
+CREATE (a)-[:VISITED]->(b);
+
+MATCH (a:Person {name: "Beyonce"}), (b:ArchitecturalStructure {name: "Great Wall of China"})
+CREATE (a)-[:VISITED]->(b);
+
+MATCH (a:Person {name: "Beyonce"}), (b:Building {name: "Egyptian Pyramids"})
+CREATE (a)-[:VISITED]->(b);
+
+MATCH (a:Person {name: "Beyonce"}), (b:Place {name: "Australia"})
+CREATE (a)-[:VISITED]->(b);
+
+MATCH (a:Person {name: "Beyonce"}), (b:Festival {name: "English music festivals"})
+CREATE (a)-[:VISITED]->(b);
+
+MATCH (a:Person {name: "Beyonce"}), (b:Album {name: "I Am… Sasha Fierce"})
+CREATE (a)-[:RELEASED]->(b);
+
+MATCH (a:Album {name: "I Am… Sasha Fierce"}), (b:Award {name: "52nd Annual Grammy Awards for Album of the Year"})
+CREATE (a)-[:NOMINATED_FOR]->(b);
+
+MATCH (a:Album {name: "I Am… Sasha Fierce"}), (b:Song {name: "Halo"})
+CREATE (a)-[:INCLUDES]->(b);
+
+MATCH (a:Song {name: "Halo"}), (b:Award {name: "52nd Annual Grammy Awards for Record of the Year"})
+CREATE (a)-[:WON]->(b);
+
+MATCH (a:Album {name: "I Am… Sasha Fierce"}), (b:MusicSingle {name: "Single Ladies (Put a Ring on It)"})
+CREATE (a)-[:INCLUDES]->(b);
+
+MATCH (a:MusicSingle {name: "Single Ladies (Put a Ring on It)"}), (b:Award {name: "52nd Annual Grammy Awards for Song of the Year"})
+CREATE (a)-[:WON]->(b);
+
+MATCH (a:Person {name: "Beyonce"}), (b:Person {name: "Lauryn Hill"})
+CREATE (a)-[:TIE_NOMINATION_NUMBERS_WITH]->(b);
+
+MATCH (a:Person {name: "Beyonce"}), (b:Concept {name: "hiatus"})
+CREATE (a)-[:ANNOUNCED]->(b);
+
+MATCH (a:Person {name: "Beyonce's mother"}), (b:Concept {name: "hiatus"})
+CREATE (a)-[:ADVISES]->(b);
+
+MATCH (a:Person {name: "Beyonce"}), (b:Person {name: "Beyonce's father"})
+CREATE (a)-[:PARTED_BUSINESS_WAYS_WITH]->(b);
