@@ -1,0 +1,30 @@
+CREATE (beyonce:Artist {name: "Beyoncé"})
+CREATE (jayz:Artist {name: "Jay Z"})
+
+CREATE (originalAlbum:Album {name: "Beyoncé", release_date: "2013-12-13"})
+CREATE (reissueAlbum:Album {name: "Beyoncé Platinum Edition", release_date: "2014-11-24"})
+
+CREATE (drunkInLove:Song {name: "Drunk in Love", chart_position: 2})
+CREATE (prettyHurts:Song {name: "Pretty Hurts"})
+
+CREATE (onTheRunTour:Event {name: "On the Run Tour", announcement_date: "2014-04-01"})
+
+CREATE (videoVanguard:Award {name: "Video Vanguard Award", date: "2014-08-24"})
+CREATE (bestSocialMessage:Award {name: "Best Video with a Social Message", date: "2014-08-24", associated_with: "Pretty Hurts"})
+CREATE (bestCinematography:Award {name: "Best Cinematography", date: "2014-08-24", associated_with: "Pretty Hurts"})
+CREATE (bestCollaboration:Award {name: "Best Collaboration", date: "2014-08-24", associated_with: "Drunk in Love"})
+
+CREATE (beyonce)-[:RELEASED]->(originalAlbum)
+CREATE (originalAlbum)-[:INCLUDES]->(drunkInLove)
+CREATE (originalAlbum)-[:INCLUDES]->(prettyHurts)
+CREATE (beyonce)-[:PERFORMED_ON]->(onTheRunTour)
+CREATE (onTheRunTour)-[:FEATURES]->(jayz)
+CREATE (beyonce)-[:RECEIVED]->(videoVanguard)
+CREATE (prettyHurts)-[:AWARDED]->(bestSocialMessage)
+CREATE (prettyHurts)-[:AWARDED]->(bestCinematography)
+CREATE (drunkInLove)-[:FEATURED_ARTIST]->(jayz)
+CREATE (drunkInLove)-[:AWARDED]->(bestCollaboration)
+CREATE (originalAlbum)-[:REISSUED_AS]->(reissueAlbum)
+
+CREATE (beyonce)-[:TOP_EARNER {year: 2014, amount: 115000000}]->()
+CREATE (beyonce)-[:SET_RECORD {record: "First five consecutive number one albums"}]->(originalAlbum)
