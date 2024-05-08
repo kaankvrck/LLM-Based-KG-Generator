@@ -1,0 +1,148 @@
+//What town did Beyoncé go to school in?
+MATCH (beyonce:Person {name: "Beyoncé"})-[:ATTENDED|ENROLLED_IN]->(s:School)
+RETURN s.name AS SchoolName, s.city AS City
+
+//Who was the first person to notice Beyoncé's singing ability?
+MATCH (darlette:Person {name: "Darlette Johnson"})-[:TAUGHT]->(beyonce:Person {name: "Beyoncé"})
+RETURN darlette.name AS PersonWhoNoticed
+
+//Beyoncé moved to which town after she left her first elementary school?
+MATCH (beyonce:Person {name: "Beyoncé"})-[:ATTENDED]->(parker:School {name: "Parker Elementary School"})
+RETURN parker.city AS City
+
+//Which of her teachers discovered Beyoncé's musical talent?
+MATCH (darlette:Person {name: "Darlette Johnson"})-[:TAUGHT]->(beyonce:Person {name: "Beyoncé"})
+RETURN darlette.name AS Teacher
+
+//In which church was Beyoncé a member and soloist in the choir?
+MATCH (beyonce:Person {name: "Beyoncé"})-[:SANG_IN]->(stJohns:Church {name: "St. John's United Methodist Church"})
+RETURN stJohns.name AS ChurchName
+
+//What type of school was Parker Elementary School?
+MATCH (parker:School {name: "Parker Elementary School"})
+RETURN parker.type AS SchoolType
+
+//Which song did Beyoncé sing to win a competition at age 7?
+MATCH (beyonce:Person {name: "Beyoncé"})-[:SANG {age: 7, competition_winning: true}]->(song:Song)
+RETURN song.title AS WinningSong
+
+//What city was Beyoncé's elementary school located in?
+MATCH (beyonce:Person {name: "Beyoncé"})-[:ATTENDED]->(marys:School {name: "St. Mary's Elementary School"})
+RETURN marys.city AS City
+
+//What was the name of Beyoncé's first dance instructor?
+MATCH (darlette:Person {name: "Darlette Johnson"})-[:TAUGHT]->(beyonce:Person {name: "Beyoncé"})
+RETURN darlette.name AS DanceInstructor
+
+//How old was Beyoncé when she won a school talent show?
+MATCH (beyonce:Person {name: "Beyoncé"})-[:WON {type: "School Talent Show"}]->(competition:Competition)
+RETURN beyonce.age AS WinningAge
+
+//What choir did Beyoncé sing in for two years?
+MATCH (beyonce:Person {name: "Beyoncé"})-[:SOLOIST_IN]->(choir:Choir {duration_years: 2})
+RETURN choir.name AS ChoirName
+
+//Who decided to place Beyoncé's group in Star Search the talent show?
+MATCH (arne:Person {name: "Arne Frager"})-[:PLACED_IN]->(talentShow:TalentShow {name: "Star Search"})
+RETURN arne.name AS DecisionMaker
+
+//In 1995, who decided to manage the girls' singing group?
+MATCH (mathew:Person {name: "Mathew Knowles"})-[:MANAGED]->(girlsTyme:Group {name: "Girl's Tyme"})
+WHERE EXISTS {
+  MATCH (mathew)-[:QUIT_JOB_IN {year: 1995}]->(girlsTyme)
+}
+RETURN mathew.name AS Manager
+
+//Who was the first record label to give the girls a record deal?
+MATCH (elektra:RecordLabel {name: "Elektra Records"})-[:SIGNED]->(girlsTyme:Group)
+RETURN elektra.name AS FirstRecordLabel
+
+//Who brought Beyoncé to California and entered her group in Star Search?
+MATCH (arne:Person {name: "Arne Frager"})-[:PLACED_IN {show: "Star Search"}]->(girlsTyme:Group)
+RETURN arne.name AS PersonWhoBroughtToCalifornia
+
+//In what year did Beyoncé's father quit his job to manage her group?
+MATCH (mathew:Person {name: "Mathew Knowles"})-[:QUIT_JOB_IN]->(girlsTyme:Group)
+RETURN mathew.year AS YearQuitJob
+
+//What large record company recorded Beyoncé's group's first album?
+MATCH (columbia:RecordLabel {name: "Columbia Records"})-[:SIGNED]->(girlsTyme:Group)
+RETURN columbia.name AS RecordCompany
+
+//What record company first signed Beyoncé's group and later cut them?
+MATCH (elektra:RecordLabel {name: "Elektra Records"})-[:SIGNED]->(girlsTyme:Group)
+RETURN elektra.name AS FirstRecordLabel
+
+//At what age did Beyoncé meet LaTavia Roberson?
+MATCH (beyonce:Person {name: "Beyoncé"})-[:MET]->(latavia:Person {name: "LaTavia Roberson"})
+RETURN beyonce.age AS AgeWhenMet
+
+//How old was Beyoncé when she met LaTavia Roberson?
+MATCH (beyonce:Person {name: "Beyoncé"})-[:MET]->(latavia:Person {name: "LaTavia Roberson"})
+RETURN beyonce.age AS AgeWhenMet
+
+//What was the name of the first group Beyoncé was a part of?
+MATCH (beyonce:Person {name: "Beyoncé"})-[:MEMBER_OF]->(firstGroup:Group)
+RETURN firstGroup.name AS FirstGroupName
+
+//Who placed Girl's Tyme in Star Search?
+MATCH (arne:Person {name: "Arne Frager"})-[:PLACED_IN]->(talentShow:TalentShow {name: "Star Search"})
+RETURN arne.name AS PersonWhoPlaced
+
+//When did Beyoncé begin to manage the girl group?
+MATCH (beyonce:Person {name: "Beyoncé"})-[:MANAGED]->(girlsTyme:Group)
+RETURN beyonce.year AS ManagementYear
+
+//Who signed the girl group on October 5, 1995?
+MATCH (dwayne:Person {name: "Dwayne Wiggins"})-[:SIGNED_ON {date: "1995-10-05"}]->(girlsTyme:Group)
+RETURN dwayne.name AS PersonWhoSigned
+
+//Which film featured Destiny's Child's first major single?
+MATCH (killingTime:Song {title: "Killing Time"})-[:FEATURED_IN]->(movie:Movie)
+RETURN movie.title AS MovieFeaturingFirstSingle
+
+//For which song did Destiny's Child take home the Grammy Award for best R&B performance?
+MATCH (destinysChild:Group {name: "Destiny's Child"})-[:WON {award: "Best R&B Performance by a Duo or Group with Vocals"}]->(song:Song)
+RETURN song.title AS GrammyWinningSong
+
+//Who did Beyoncé record with for the movie "The Best Man?"
+MATCH (marcNelson:Person {name: "Marc Nelson"})-[:PERFORMED_WITH {song: "After All Is Said and Done"}]->(destinysChild:Group)
+RETURN marcNelson.name AS Collaborator
+
+//Beyoncé's group changed their name to Destiny's Child in what year?
+MATCH (destinysChild:Group {name: "Destiny's Child"})
+RETURN destinysChild.formed_year AS FormationYear
+
+//The name Destiny's Child was based on a quote in which book of the Bible?
+RETURN "Isaiah" AS BookOfBible
+
+//Debut song "Killing Time" was featured on what movie's soundtrack?
+MATCH (killingTime:Song {title: "Killing Time"})-[:FEATURED_IN]->(movie:Movie)
+RETURN movie.title AS MovieTitle
+
+//What song won Best R&B Performance in the 43rd Annual Grammy Awards?
+MATCH (destinysChild:Group {name: "Destiny's Child"})-[:WON {award: "Best R&B Performance by a Duo or Group with Vocals"}]->(song:Song {title: "Say My Name"})
+RETURN song.title AS WinningSong
+
+//What singer did Beyoncé record a song with for the movie "The Best Man?"
+MATCH (marcNelson:Person {name: "Marc Nelson"})-[:PERFORMED_WITH {song: "After All Is Said and Done"}]->(destinysChild:Group)
+RETURN marcNelson.name AS Collaborator
+
+//Where did Destiny's Child get their name from?
+RETURN "Isaiah" AS BookOfBible
+
+//Destiny's Child's song "Killing Time" was included in which film's soundtrack?
+MATCH (killingTime:Song {title: "Killing Time"})-[:FEATURED_IN]->(movie:Movie)
+RETURN movie.title AS MovieTitle
+
+//What was Destiny's Child's first major song hit?
+MATCH (destinysChild:Group {name: "Destiny's Child"})-[:RELEASED]->(killingTime:Song {title: "Killing Time"})
+RETURN killingTime.title AS FirstHitSong
+
+//When did Destiny's Child release their second album?
+MATCH (writingsOnTheWall:Album {title: "The Writing's on the Wall"})
+RETURN writingsOnTheWall.release_year AS SecondAlbumReleaseYear
+
+//Who did Beyoncé sing a duet with for "The Best Man" film?
+MATCH (marcNelson:Person {name: "Marc Nelson"})-[:PERFORMED_WITH {song: "After All Is Said and Done"}]->(destinysChild:Group)
+RETURN marcNelson.name AS DuetPartner
