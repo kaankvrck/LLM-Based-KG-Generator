@@ -1,0 +1,88 @@
+﻿### First Context
+
+// "What mental health issue did Beyonce go through?"
+MATCH (p1:Person)-[:FEEL]-(e1:Thing)
+WHERE p1.name = "Beyonce"
+RETURN e1.name
+
+// "What event occured after she was publicly criticized?"
+I Can't developy the query of this question
+
+// "Who supported Beyonce through her depression?"
+MATCH (person1)-[:SUPPORT_AT_DEPRESSION]->(person2)
+RETURN person2.name
+
+// "What event caused Beyonce's depression?"
+MATCH (p1:Person)-[:FEEL]->(e1:Thing)
+MATCH (n1)-[:CAUSED]-(e1)
+WHERE e1.name = 'Depression'
+return n1.name
+
+// "How long was Beyonce depressed?"
+MATCH (person1:Person)-[:FEEL]-(n:Thing)
+WHERE n.name = 'Depression' and person1.name = 'Beyonce'
+RETURN n.time
+
+// "Who helped Beyonce fight her depression the most?"
+MATCH (person1)-[:SUPPORT_AT_DEPRESSION]->(person2)
+RETURN person2.name
+
+// "Who replaced Luckett and Roberson in Destiny's Child?"
+MATCH (de:Band)-[:MANAGE]-(p1:Person)
+WHERE NOT EXISTS { MATCH (de)-[:FIRE]-(p1)}
+RETURN p1.name
+
+// "Who was blamed for Luckett and Roberson leaving Destiny's Child?"
+MATCH (p1:Person)-[:BLAMED]->(p2:Person)
+return p2
+
+// "Who helped Beyoncé overcome her depression during the years following the Destiny's Child split?"
+MATCH (person1)-[:SUPPORT_AT_DEPRESSION]->(person2)
+RETURN person2.name
+
+// "Which newest member was removed from Destiny's Child?"
+I Can't developy the query of this question
+
+### Second Context
+
+// "Charlie's Angels featured which single from the band members?"
+MATCH (n:Movie)-[:HAS_SOUNDTRACK]-(m:Album) where n.name = "Charlie's Angels" and m.order_of_album = "1" return n,m
+
+// "How many weeks did their single \"Independent Women Part I\" stay on top?"
+MATCH (a1:Album) WHERE a1.name = "Independent Women Part I" RETURN a1.published_chart_time
+
+// "For what network, did Beyonce land a major movie role in?"
+MATCH (p1:Person)-[:HAD_MAJOR_ROLE]->(ag1:Agent) WHERE p1.name = 'Beyonce' return ag1.name
+
+// "Their third album, Survivor, sold how many during its first week?"
+MATCH (a1:Album) WHERE a1.name = "Survivor" RETURN a1.sale_count
+
+// "What French composer wrote the original opera ''Carmen'' in the 19th century?"
+MATCH (a1:Person)-[:COMPOSE]->(a2:Movie) where a2.name ='A Hip Hopera'  return a1.name
+
+// "What album caused a lawsuit to be filed in 2001?"
+MATCH (a1:Album)-[:LAWSUIT]->(t1) WHERE a1.released = '2001' RETURN DISTINCT(a1.name)
+
+// "Independent Women Part I was on which 2000 film's soundtrack?"
+MATCH (m1:Movie)-[:HAS_SOUNDTRACK]->(t1:Album) RETURN m1.name
+
+// "Which film did Beyoncé star in 2001 with Mekhi Phifer?"
+MATCH (p1:Person)-[:WAS_STAR]->(m1:Movie)
+MATCH (p1)-[:ACT_WITH]->(p2:Person)
+WHERE p2.name = 'Mekhi Phifer' and p1.name = 'Beyonce'
+RETURN m1.name
+
+// "What was the name of Destiny Child's third album?"
+MATCH (b1:Band)-[:RECORD]->(a1:Album)
+WHERE b1.name = "Destiny's Child" and a1.order_of_album = "3"
+RETURN a1.name
+
+// "Who filed a lawsuit over Survivor?"
+I'dont think the answer is in the context
+
+// "When did Destiny's Child announce their hiatus?"
+MATCH (b1:Band)-[:RECORD]->(a1:Album)
+WHERE b1.name = "Destiny's Child" and a1.name = 'Hiatus'
+RETURN a1.release
+
+### Third Context
