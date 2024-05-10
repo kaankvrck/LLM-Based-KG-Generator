@@ -34,7 +34,7 @@ RETURN p1.name
 
 // "Who was blamed for Luckett and Roberson leaving Destiny's Child?"
 MATCH (p1:Person)-[:BLAMED]->(p2:Person)
-return p2
+return p2.name
 
 // "Who helped Beyoncé overcome her depression during the years following the Destiny's Child split?"
 MATCH (person1)-[:SUPPORT_AT_DEPRESSION]->(person2)
@@ -46,10 +46,14 @@ I Can't developy the query of this question
 ### Second Context
 
 // "Charlie's Angels featured which single from the band members?"
-MATCH (n:Movie)-[:HAS_SOUNDTRACK]-(m:Album) where n.name = "Charlie's Angels" and m.order_of_album = "1" return n,m
+MATCH (n:Movie)-[:HAS_SOUNDTRACK]-(m:Album) 
+WHERE n.name = "Charlie's Angels" AND m.order_of_album = "1" 
+RETURN n.name
 
 // "How many weeks did their single \"Independent Women Part I\" stay on top?"
-MATCH (a1:Album) WHERE a1.name = "Independent Women Part I" RETURN a1.published_chart_time
+MATCH (a1:Album) 
+WHERE a1.name = "Independent Women Part I" 
+RETURN a1.published_chart_time
 
 // "For what network, did Beyonce land a major movie role in?"
 MATCH (p1:Person)-[:HAD_MAJOR_ROLE]->(ag1:Agent) WHERE p1.name = 'Beyonce' return ag1.name
@@ -86,3 +90,94 @@ WHERE b1.name = "Destiny's Child" and a1.name = 'Hiatus'
 RETURN a1.release
 
 ### Third Context
+
+// Who did Beyonce star with in the movie, Austin Powers in Goldmember?
+MATCH (p1:Person)-[:ACT_WITH|:WORK_WITH]-(p2)
+MATCH (p1)-[:ACT]-(m1:Movie)
+MATCH (p2)-[:ACT]-(m1)
+WHERE m1.name = 'Austin Powers' AND p1.name = 'Beyonce'
+RETURN DISTINCT p2.name
+
+// "Which three countries did Beyonce's song Work It Out achieve top ten status?"
+MATCH (s1:Song)-[]-(l1:Country)
+WHERE s1.name = 'Work It Out'
+RETURN l1.name
+
+// "Beyonce starred with Cuba Gooding Jr. in which film?"
+MATCH (p1:Person)-[:STARRED]->(m1:Movie)
+MATCH (p1)-[:ACT_WITH|:WORK_WITH]->(p2:Person)
+MATCH (p2)-[:ACT]->(m1)
+WHERE m1.name = 'The Fighting Temptations' AND p1.name = 'Beyonce'
+RETURN p2.name
+
+// "Who did Beyonce record the lead single with in the movie \"The Fighting Temptations\"?"
+MATCH (p1:Person)-[:PROMOTE]-(m1:Movie)
+MATCH (p2:Person)-[:PROMOTE]-(m1)
+WHERE m1.name = 'The Fighting Temptations'
+RETURN DISTINCT p2.name
+
+// "Which other song from the soundtrack did better in the charts?"
+MATCH (p1:Person)-[:PROMOTE]-(m1:Movie)
+MATCH (p2:Person)-[:PROMOTE]-(m1)
+MATCH (m1)-[:BETTER_ON_CHARTS]->(m2:Movie)
+RETURN DISTINCT p2.name
+
+// "What film did Beyonce appear in with Mike Myers?"
+MATCH (p1:Person)-[:ACT]->(m1:Movie)
+MATCH (p2:Person)-[:ACT]->(m1)
+MATCH (p1)-[:WORK_WITH|:ACT_WITH]-(p2)
+WHERE p1.name = 'Beyonce' and p2.name = 'Mike Myers'
+RETURN DISTINCT m1.name
+
+// "What large amount did the movie \"Goldmember\" gross?"
+MATCH (m1:Movie)
+WHERE m1.name = 'Austin Powers'
+RETURn m1.earn
+
+// "What genre of movie did Beyonce star in with Cuba Gooding, Jr?"
+MATCH (p1:Person)-[:ACT]->(m1:Movie)
+MATCH (p1)-[:ACT_WITH|:WORK_WITH]-(p2:Person)
+MATCH (p1)-[:STARRED]-(m1)
+WHERE p1.name = 'Beyonce' AND p2.name = 'Cuba Gooding Jr'
+RETURN DISTINCT m1.name
+
+// "What song was the lead single from the film's sound track?"
+MATCH (p1:Person)-[:ACT]->(m1:Movie)
+MATCH (p1)-[:ACT_WITH|:WORK_WITH]-(p2:Person)
+MATCH (p1)-[:STARRED]-(m1)
+WHERE p1.name = 'Beyonce' AND p2.name = 'Cuba Gooding Jr' AND m1.genre IS NOT NULL 
+RETURN DISTINCT m1.genre
+
+// "How did the critics view the movie, ''The Fighting Temptations''?"
+I don't think that the context doesn't contain the answer of question.
+
+// "What film did Beyoncé star in with Mike Myers in 2002?"
+MATCH (p1:Person)-[:STARRED]-(m1:Movie)
+MATCH (p1)-[:ACT_WITH|:WORK_WITH]-(p2:Person)
+WHERE p2.name = 'Mike Myers' AND p1.name = 'Beyonce' AND m1.released = '2002' 
+RETURN DISTINCT m1.name
+
+// "What was Beyoncé's character called in Austin Powers in Goldmember?"
+MATCH (p1:Person)-[:STARRED]-(m1:Movie)
+MATCH (p1)-[:ACT_AS]->(r1:Character)
+MATCH (r1)-[:IS_CHARACTER]->(m1)
+WHERE p1.name = 'Beyonce' AND m1.name = 'Austin Powers' 
+RETURN r1.name
+
+// "Which song did Beyoncé release as the lead single for Austin Powers in Goldmember's soundtrack?"
+MATCH (p1:Person)-[:RECORD]-(s1:Song)
+MATCH (s1)-[:IS_LEAD_SINGLE]->(m1:Movie)
+WHERE m1.name = 'Austin Powers' 
+RETURN DISTINCT s1.name
+
+// "What musical comedy did Beyoncé star in along with Cuba Gooding, Jr. in 2003?"
+MATCH (p1:Person)-[:ACT]-(m1:Movie)
+MATCH (p1)-[:ACT_WITH|:WORK_WITH]->(p2:Person)
+WHERE p1.name = 'Beyonce' AND p2.name = 'Cuba Gooding Jr' AND m1.genre = 'Musical Comedy'
+RETURN m1.name
+
+// "What song did Beyoncé release as the lead single from The Fighting Tempations?"
+MATCH (p1:Person)-[:RECORD]->(s1:Song)
+MATCH (s1)-[:IS_LEAD_SINGLE]->(m1:Movie)
+WHERE p1.name = 'Beyonce' AND m1.name = 'The Fighting Temptations'
+RETURN s1.name
