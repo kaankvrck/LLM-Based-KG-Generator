@@ -1,6 +1,75 @@
+/// First Context
 
+// "What movie did Beyonce act in 2006?"
+MATCH (p1:Person)-[:ACTED_IN]-(m1:Film)
+WHERE p1.name = 'Beyonce' AND m1.Released = 2006
+RETURN m1.name
 
+// "Her second movie Beyonce did was what film?"
+MATCH (p1:Person)-[:SECOND_ROLE]-(f1)
+RETURN f1.name
 
+// "The single, \"Listen\" was featured in which movie?"
+MATCH (s1:Song)-[:FEATURED]-(f1:Film)
+RETURN f1.name
+
+// "Beyonce's first world tour was when?"
+MATCH (p1:Person)-[:STARTED]-(t1:Tour)
+WHERE p1.name = 'Beyonce'
+RETURN t1.Released
+ORDER BY t1.Released ASC
+LIMIT 1
+
+// "How much money did Beyonce's tour make in 2007?"
+MATCH (p1:Person)-[:STARTED]-(t1:Tour)
+WHERE p1.name = 'Beyonce'
+RETURN t1.Earn
+ORDER BY t1.Released ASC
+LIMIT 1
+
+// "How many millions of dollars did ''The Pink Panther'' gross world-wide?"
+MATCH (m1:Film)
+WHERE m1.name = 'Pink Panther'
+RETURN m1.Earn
+
+// "What did Beyonce call her first concert tour?"
+I cant answer the question 
+
+// "Who was Beyonce's duet with in ''Beautiful Liar''?"
+MATCH (p1:Person)-[:RELEASED]-(s1:Song)
+MATCH (s1:Song)-[:HAS_DUET]-(p2:Person)
+WHERE s1.name = 'Beautiful Liar'
+RETURN p2.name
+
+// "Which film did Beyoncé star with Steve Martin in?"
+MATCH (p1:Person)-[:ACTED_IN]-(f1:Film)
+MATCH (p2:Person)-[:ACTED_IN]-(f1)
+MATCH (p1)-[:ACTED_WITH]-(p2)
+WHERE p1.name = 'Steve Martin' AND p2.name = 'Beyonce'
+RETURN f1.name
+
+// "Beyoncé's role in Dreamgirls was based on what pop singer?"
+MATCH (p1:Person)-[:ACTED_AS_A]-(p2:Person)
+WHERE p1.name = 'Beyonce'
+RETURN p2.name
+
+//  "What was the lead single for the Dreamgirls soundtrack?"
+MATCH (m1:Film)-[:FEATURED]-(s1:Song)
+WHERE m1.name = 'DreamGirls'
+RETURN s1.name
+
+// "What was the name of Beyoncé's first international tour?"
+MATCH (p1:Person)-[:STARTED]-(t1:Tour)
+WHERE p1.name = 'Beyonce'
+RETURN t1.name
+ORDER BY t1.Released ASC
+LIMIT 1
+
+// "What pop singer did a duet with Beyoncé on Beautiful Liar?"
+MATCH (p1:Person)-[:RELEASED]-(s1:Song)
+MATCH (s1:Song)-[:HAS_DUET]-(p2:Person)
+WHERE s1.name = 'Beautiful Liar'
+RETURN p2.name
 
 /// Second Context
 
