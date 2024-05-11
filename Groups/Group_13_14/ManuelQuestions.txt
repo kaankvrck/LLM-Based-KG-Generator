@@ -1,0 +1,84 @@
+
+
+
+
+/// Second Context
+
+// "Beyonce got married in 2008 to whom?"
+MATCH (p1:Person)-[:MARRIED]-(mar:Marriage)
+MATCH (p2:Person)-[:MARRIED]-(mar)
+WHERE p1.name = mar.M AND p2.name = mar.F
+RETURN p2.name
+
+// "Her third album, \"I am...Sasha Fierce\" was released when?"
+MATCH (a1:Album)
+WHERE a1.name = "I'm Sasha"
+RETURN a1.Released
+
+// "Which singer beat out Beyonce for best video performance?"
+MATCH (p1:Person)-[:BEAT]-(s1:Song)
+MATCH (s1)-[:WON]-(a1:Award)
+MATCH (p2:Person)-[:RELEASED]-(s1)
+WHERE a1.name = 'Best Women Singer'
+RETURn p2.name
+
+// "In 2009, Beyonce started her second world tour and grossed how much money?"
+MATCH (p1:Person)-[:STARTED]-(t1:Tour)
+WHERE p1.name = 'Beyonce' AND t1.Released = 2009
+RETURN t1.name, t1.Earn
+
+// "How did she reveal the marriage?"
+MATCH (p1:Person)-[:MARRIED]-(mar:Marriage)
+MATCH (p2:Person)-[:MARRIED]-(mar)
+MATCH (mar)-[:IN_EVENT]-(x1)
+WHERE p1.name = mar.M AND p2.name = mar.F AND p1.name = 'Beyonce'
+RETURN x1.name
+
+// "When did Beyonce begin her second world tour?"
+MATCH (p1:Person)-[:STARTED]-(t1:Tour)
+WHERE p1.name = 'Beyonce' 
+RETURN t1.Released
+ORDER BY t1.Released DESC
+LIMIT 1
+
+// "Who beat out Beyonce for Best Female Video ?"
+MATCH (p1:Person)-[:BEAT]-(s1:Song)
+MATCH (s1)-[:WON]-(a1:Award)
+MATCH (p2:Person)-[:RELEASED]-(s1)
+WHERE a1.name = 'Best Women Singer'
+RETURn p2.name
+
+// "How much did the second world tour make in dollars?"
+MATCH (p1:Person)-[:STARTED]-(t1:Tour)
+WHERE p1.name = 'Beyonce' 
+RETURN t1.Earn
+ORDER BY t1.Released DESC
+LIMIT 1
+
+// "When did Beyoncé get married?"
+MATCH (p1:Person)-[:MARRIED]-(mar:Marriage)
+MATCH (p2:Person)-[:MARRIED]-(mar)
+WHERE p1.name = mar.M AND p2.name = mar.F
+RETURN mar.Date
+
+// "Who did Beyoncé marry?"
+MATCH (p1:Person)-[:MARRIED]-(mar:Marriage)
+MATCH (p2:Person)-[:MARRIED]-(mar)
+WHERE p1.name = mar.M AND p2.name = mar.F
+RETURN p2.name
+
+// "Who is Beyoncé's alter ego?"
+MATCH (p1:Person)-[:RELEASED]-(a1:Album)
+MATCH (a1)-[:IS_ALTER_EGO]-(p2:Person)
+WHERE p1.name = 'Beyonce' 
+RETURN p2.name
+
+// "The video for what song won Beyoncé the 2009 MTV Video of the Year award?"
+MATCH (p1:Person)-[:RELEASED]-(a1:Album)
+MATCH (a1)-[:CONTAINS]-(s1:Song)
+MATCH (s1)-[:EMPHASIZES|:WON]-(x1)
+MATCH (x1)-[:WON]-(aw1:Award)
+WHERE p1.name = 'Beyonce' AND aw1.name = 'MTV Europe Music Awards'
+RETURN s1.name
+
+// "Which prominent star felt the 2009 Female Video of the Year award should have went to Beyoncé instead of Taylor Swift?"
