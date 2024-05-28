@@ -1,0 +1,55 @@
+Which film featured Destiny's Child's first major single?
+MATCH (b:Artist {name: 'Beyoncé'})
+RETURN dc
+
+For which song, did Destiny's Child take home the grammy award for best R&B performance?
+MATCH (b:Artist {name: 'Beyoncé'})
+MATCH (b) -[:CAUSE_DEPICTION]-> (l)
+MATCH (b) -[:CAUSE_DEPICTION]-> (r)
+WHERE NOT EXISTS (f)
+RETURN b
+
+Who did Beyonce record with for the movie "The Best Man?"
+
+
+Beyonce's group changed their name to Destiny's Child in what year?
+MATCH (b:Artist {name: 'Beyoncé'})
+MATCH (l:FormerBandMember {name: 'LeToya Luckett'})
+MATCH (r:FormerBandMember {name: 'Roberson'})
+MATCH (f:FormerBandMember {name: 'Farrah Franklin'})
+MATCH (w:FormerBandMember {name: 'Michelle Williams'})
+MATCH (dc:Band {name: 'Destiny's Child'})
+RETURN NULL
+
+The name Destiny's Child was based on a quote in which book of the Bible?
+
+
+Debut song, "Killing Time" was featured on what movie's sound track?
+MATCH (b) WHERE b.name = 'Beyoncé'
+RETURN b
+
+What song won Best R&B Performance in the 43 Annual Grammy Awards?
+MATCH (b:Artist {name: 'Beyoncé'})
+RETURN null
+
+What singer did Beyonce record a song with for the movie, ''The Best Man"?
+MATCH (b:Artist {name: 'Beyoncé'})
+
+Where did Destiny's Child get their name from?
+
+
+Destiny's Child song, Killing Time, was included in which film's soundtrack?
+MATCH (b)<-[:CAUSE_DEPICTION]-(l)
+RETURN l
+
+What was Destiny's Child's first major song hit?
+MATCH (b:Artist {name: 'Beyoncé'})
+RETURN dc
+
+When did Destiny's Child release their second album?
+MATCH (b:Artist {name: 'Beyoncé'})
+
+Who did Beyoncé sing a duet with for "The Best Man" film?
+MATCH (b:Artist {name: 'Beyoncé'})
+RETURN NULL
+

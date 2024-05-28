@@ -1,0 +1,75 @@
+What was the highest Beyonce's first solo recording achieved in the Billboard Hot 100?
+MATCH (b) -[:PERFORMED]-> (sb)
+MATCH (dc) -[:DISBANDED]-> (t)
+MATCH (a) -[:INCLUDES]-> (t)
+RETURN a.name AS highest_solo_recording
+
+Beyonce's first album by herself was called what?
+MATCH (b) -[:PERFORMED]-> (sb)
+MATCH (dc) -[:DISBANDED]-> (t)
+MATCH (a) -[:INCLUDES]-> (t)
+RETURN sb, t, a
+
+How many has "Dangerously in Love" sould worldwide since its debut?
+
+
+Beyonce's first number one song was which song?
+MATCH (b) -[:PERFORMED]-> (sb)
+MATCH (dc) -[:DISBANDED]-> (t)
+MATCH (a) -[:INCLUDES]-> (t)
+
+How many top five singles came from her first album?
+MATCH (b) -[:PERFORMED]-> (sb)
+MATCH (dc) -[:DISBANDED]-> (t)
+MATCH (a) -[:INCLUDES]-> (t)
+RETURN a
+
+Beyonce's first solo album in the U.S. with what artist in the lead single?
+MATCH (b) -[:PERFORMED]-> (sb)
+MATCH (dc) -[:DISBANDED]-> (t)
+MATCH (a) -[:INCLUDES]-> (t)
+RETURN sb.name, t.name, a.name
+
+What solo album did Beyonce release in 2003?
+MATCH (b) -[:PERFORMED]-> (sb)
+MATCH (dc) -[:DISBANDED]-> (t)
+MATCH (a) -[:INCLUDES]-> (t)
+
+ The album, Dangerously in Love  achieved what spot on the Billboard Top 100 chart?
+MATCH (b) -[:PERFORMED]-> (sb)
+MATCH (dc) -[:DISBANDED]-> (t)
+MATCH (a) -[:INCLUDES]-> (t)
+
+"The Closer I get to You" was recorded with which artist?
+MATCH (b) -[:PERFORMED]-> (sb)
+MATCH (dc) -[:DISBANDED]-> (t)
+MATCH (a) -[:INCLUDES]-> (t)
+
+Which artist was associated with Beyoncé's premiere solo recording?
+MATCH (b) -[:PERFORMED]-> (sb)
+MATCH (dc) -[:DISBANDED]-> (t)
+MATCH (a) -[:INCLUDES]-> (t)
+
+When did Beyoncé release her first solo album?
+MATCH (b) -[:PERFORMED]-> (sb)
+MATCH (dc) -[:DISBANDED]-> (t)
+MATCH (a) -[:INCLUDES]-> (t)
+RETURN sb.name AS "Super Bowl Event Name", t.name AS "Tour Name", a.name AS "Album Name"
+
+What is the lead single on Beyoncé's first album?
+MATCH (b) -[:PERFORMED]-> (sb)
+MATCH (dc) -[:DISBANDED]-> (t)
+MATCH (a) -[:INCLUDES]-> (t)
+
+Who helped Beyoncé earn a Grammy award for Best R&B Performance by a Duo or Group at the 46th annual Grammy Awards?
+MATCH (b) -[:PERFORMED]-> (sb)
+MATCH (dc) -[:DISBANDED]-> (t)
+MATCH (a) -[:INCLUDES]-> (t)
+RETURN sb, t, a
+
+How many awards did Beyoncé win at the 46th Grammy's Awards?
+MATCH (b) -[:PERFORMED]-> (sb)
+MATCH (dc) -[:DISBANDED]-> (t)
+MATCH (a) -[:INCLUDES]-> (t)
+RETURN sb, t, a
+

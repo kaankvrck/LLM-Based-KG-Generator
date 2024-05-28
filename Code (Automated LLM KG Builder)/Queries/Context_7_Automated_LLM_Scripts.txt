@@ -1,0 +1,38 @@
+What mental health issue did Beyonce go through?
+
+
+What event occured after she was publicly criticized?
+MATCH (c:Charting)<-[:TOPPED]-(a:Artist)
+WHERE a.name = 'Destiny''s Child' AND c.name = 'Independent Women Part I'
+RETURN c
+
+Who supported Beyonce through her depression?
+MATCH (artist:Artist)<-[:RECORDED]-(song:Song) WHERE artist.name = "Destiny's Child" AND song.title = "Independent Women Part I" RETURN song
+
+What event caused Beyonce's depression?
+
+
+How long was Beyonce depressed?
+
+
+Who helped Beyonce fight her depression the most?
+MATCH (b:Band)<-[:MEMBER_OF]-(r:Record)
+WHERE b.name = 'Destiny's Child' AND r.title = 'Independent Women Part I'
+RETURN r
+
+Who replaced Luckett and Roberson in Destiny's Child?
+
+
+Who was blamed for Luckett and Roberson leaving Destiny's Child?
+MATCH (artist:Artist {name: "Destiny's Child"})
+MATCH (song:Song {title: "Independent Women Part I"})
+MATCH (album:Album {name: "Survivor"})
+WHERE song.artist = artist AND album.artist = artist
+RETURN song.title
+
+Who helped Beyoncé overcome her depression during the years following the Destiny's Child split?
+
+
+Which newest member was removed from Destiny's Child?
+
+

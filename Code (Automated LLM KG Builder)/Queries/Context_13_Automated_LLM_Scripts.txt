@@ -1,0 +1,62 @@
+What movie did Beyonce act in 2006?
+MATCH (a:Album {name: 'I Am... Sasha Fierce'})
+RETURN a
+
+Her second movie Beyonce did was what film?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN a
+
+The single, "Listen" was featured in which movie?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (a)<-[:CONTAINS]-(h)
+RETURN h
+
+Beyonce's first world tour was when?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN a
+
+How much money did Beyonce's tour make in 2007?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (a:Album {name: 'I Am... Sasha Fierce'})
+MATCH (c:Location {name: 'Manhattan''s Sony Club'})
+MATCH (u:Country {name: 'United States'})
+MATCH (b)<-[:RELEASE]-(a)
+MATCH (a)<-[:INTRO]-(s:SashaFierce)
+MATCH (h:Song {name: 'Halo'})
+MATCH (a)<-[:CONTAINS]-(h)
+MATCH (h)<-[:NUMBER_ONE]-(a)
+RETURN NULL
+
+How many millions of dollars did ''The Pink Panther'' gross world-wide?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (a:Album {name: 'I Am... Sasha Fierce'})
+MATCH (c:Location {name: 'Manhattan''s Sony Club'})
+MATCH (u:Country {name: 'United States'})
+
+What did Beyonce call her first concert tour?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN 'I Am... Sasha Fierce'
+
+Who was Beyonce's duet with in ''Beautiful Liar''?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN 'No information available for the duet of "Beautiful Liar" in the text.'
+
+Which film did Beyoncé star with Steve Martin in?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN b
+
+Beyoncé's role in Dreamgirls was based on what pop singer?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN h
+
+What was the lead single for the Dreamgirls soundtrack?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN h
+
+What was the name of Beyoncé's first international tour?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN h
+
+What pop singer did a duet with Beyoncé on Beautiful Liar?
+MATCH (b:Person {name: 'Beyoncé'})
+

@@ -1,0 +1,65 @@
+Beyonce portrayed which character in the film, Cadillac Records?
+MATCH (b) CREATE (a) -[:WON] ->> (a)
+MATCH (b) CREATE (t) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+
+Beyonce gave her entire salary from Cadillac Records to which organization?
+MATCH (b) CREATE (a) -[:WON] ->> (a)
+MATCH (b) CREATE (t) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+
+Which song did Beyonce sing at the first couple's inaugural ball? 
+MATCH (b) CREATE (a) -[:WON] ->> (a)
+MATCH (b) CREATE (t) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+
+What genre of film was the movie, Obsessed, in which Beyonce starred in?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (b) CREATE (t:Song {name: 'Single Ladies (Put a Ring on It)'}) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+
+A fight scene from the movie, Obsessed, won which award for Beyonce?
+MATCH (b) CREATE (a) -[:WON] ->> (a)
+MATCH (b) CREATE (t) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+
+Where did Beyonce donate her salary from the movie Cadillac Records?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (b) CREATE (t:Song {name: 'Single Ladies (Put a Ring on It)'}) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+
+What thriller film did Beyonce star in?
+MATCH (b) CREATE (a) -[:WON] ->> (a)
+MATCH (b) CREATE (t) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+
+What was the name of the woman she played in Obsessed?
+MATCH (b:Person {name: 'Beyoncé'}) CREATE (a:Album {name: 'I Am... Sasha Fierce'}) -[:WON] ->> (a)
+MATCH (b) CREATE (t:Song {name: 'Single Ladies (Put a Ring on It)'}) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+
+How much more that the buget did the film gross?
+MATCH (b:Person {name: 'Beyoncé'}) CREATE (a:Album {name: 'I Am... Sasha Fierce'}) -[:WON] ->> (a)
+MATCH (b) CREATE (t:Song {name: 'Single Ladies (Put a Ring on It)'}) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+
+Which singer did Beyoncé portray in Cadillac Records?
+MATCH (b) CREATE (a) -[:WON] ->> (a)
+MATCH (b) CREATE (t) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+
+Which organization received Beyoncé's entire Cadillac Records salary?
+MATCH (b) CREATE (a) -[:WON] ->> (a)
+MATCH (b) CREATE (t) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+
+Where did Beyoncé perform on January 20, 2009?
+MATCH (b:Person {name: 'Beyoncé'}) CREATE (a:Album {name: 'I Am... Sasha Fierce'}) -[:WON] ->> (a)
+MATCH (b) CREATE (t:Song {name: 'Single Ladies (Put a Ring on It)'}) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+
+Which thriller film did Beyoncé star in with Ali Larter?
+MATCH (b) CREATE (a) -[:WON] ->> (a)
+MATCH (b) CREATE (t) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+

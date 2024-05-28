@@ -1,0 +1,40 @@
+Beyonce would take a break from music in which year?
+MATCH (b) WHERE b.name = 'Beyoncé'
+RETURN b.name
+
+Which year did Beyonce and her father part business ways?
+MATCH (b:Person {name: 'Beyoncé'})
+
+Which famous landmark did Beyonce see in China?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN NULL
+
+In what year did Beyonce have her hiatus?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN NULL
+
+Who inspired this hiatus?
+MATCH (b:Person {name: 'Beyoncé'})
+
+When did she stop using her father as a manager?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN null
+
+How long did the hiatus last?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN NULL
+
+What did Beyoncé announce in January 2010?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN b
+
+Who suggested the hiatus for Beyoncé?
+MATCH (b:Person {name: 'Beyoncé'})
+
+Who did Beyoncé part ways with during her hiatus?
+MATCH (b:Person {name: 'Beyoncé'})
+
+How long did her hiatus last?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN b
+

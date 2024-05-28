@@ -1,0 +1,98 @@
+Where did Beyonce release her 5th album to a huge surprise?
+MATCH (b:Person {name: 'Beyonce'})
+MATCH (ga:Event {name: 'Grammy Awards'})
+MATCH (brp:Award {type: 'Best R&B Performance', winner: b})
+MATCH (brs:Award {type: 'Best R&B Song', winner: b})
+MATCH (bss:Award {type: 'Best Surround Sound Album', winner: b})
+MATCH (aoay:Award {type: 'Album of the Year', winner: Beck})
+MATCH (v:Publication {name: 'Vogue magazine'})
+MATCH (mv:Event {name: 'Made in America festival'})
+MATCH (gcf:Event {name: 'Global Citizen Festival'})
+MATCH (c:Band {name: 'Coldplay'})
+MATCH (a:Album {name: 'A Head Full of Dreams'})
+
+When did Beyonce get her fifth consecutive number one hit album?
+MATCH (b:Person {name: 'Beyonce'})
+MATCH (ga:Event {name: 'Grammy Awards'})
+MATCH (brp:Award {type: 'Best R&B Performance', winner: b})
+MATCH (brs:Award {type: 'Best R&B Song', winner: b})
+MATCH (bss:Award {type: 'Best Surround Sound Album', winner: b})
+MATCH (aoay:Award {type: 'Album of the Year', winner: Beck})
+MATCH (v:Publication {name: 'Vogue magazine'})
+MATCH (mv:Event {name: 'Made in America festival'})
+MATCH (gcf:Event {name: 'Global Citizen Festival'})
+MATCH (c:Band {name: 'Coldplay'})
+MATCH (a:Album {name: 'A Head Full of Dreams'})
+
+Where was the album released? 
+
+
+Who joined Beyonce on her On The Run Tour?
+MATCH (b:Person {name: 'Beyonce'})
+MATCH (ga:Event {name: 'Grammy Awards'})
+MATCH (brp:Award {type: 'Best R&B Performance', winner: b})
+MATCH (brs:Award {type: 'Best R&B Song', winner: b})
+MATCH (bss:Award {type: 'Best Surround Sound Album', winner: b})
+MATCH (aoay:Award {type: 'Album of the Year', winner: Beck})
+MATCH (v:Publication {name: 'Vogue magazine'})
+MATCH (mv:Event {name: 'Made in America festival'})
+MATCH (gcf:Event {name: 'Global Citizen Festival'})
+MATCH (c:Band {name: 'Coldplay'})
+MATCH (a:Album {name: 'A Head Full of Dreams'})
+
+Who reported Beyonce to e the top earning woman in music?
+
+
+How much more were her earnings that the year before?
+MATCH (b:Person {name: 'Beyonce'})
+
+When did Beyoncé release her fifth studio album?
+MATCH (b:Person {name: 'Beyonce'})
+MATCH (ga:Event {name: 'Grammy Awards'})
+MATCH (brp:Award {type: 'Best R&B Performance', winner: b})
+MATCH (brs:Award {type: 'Best R&B Song', winner: b})
+MATCH (bss:Award {type: 'Best Surround Sound Album', winner: b})
+MATCH (aoay:Award {type: 'Album of the Year', winner: Beck})
+MATCH (v:Publication {name: 'Vogue magazine'})
+MATCH (mv:Event {name: 'Made in America festival'})
+MATCH (gcf:Event {name: 'Global Citizen Festival'})
+MATCH (c:Band {name: 'Coldplay'})
+MATCH (a:Album {name: 'A Head Full of Dreams'})
+
+How many digital copies of her fifth album did Beyoncé sell in six days?
+MATCH (b:Person {name: 'Beyonce'})
+MATCH (ga:Event {name: 'Grammy Awards'})
+MATCH (brp:Award {type: 'Best R&B Performance', winner: b})
+MATCH (brs:Award {type: 'Best R&B Song', winner: b})
+MATCH (bss:Award {type: 'Best Surround Sound Album', winner: b})
+MATCH (aoay:Award {type: 'Album of the Year', winner: Beck})
+MATCH (v:Publication {name: 'Vogue magazine'})
+MATCH (mv:Event {name: 'Made in America festival'})
+MATCH (gcf:Event {name: 'Global Citizen Festival'})
+
+What song on Beyoncé's fifth studio album featured her husband?
+MATCH (b:Person {name: 'Beyonce'})
+MATCH (ga:Event {name: 'Grammy Awards'})
+MATCH (brp:Award {type: 'Best R&B Performance', winner: b})
+MATCH (brs:Award {type: 'Best R&B Song', winner: b})
+MATCH (bss:Award {type: 'Best Surround Sound Album', winner: b})
+MATCH (aoay:Award {type: 'Album of the Year', winner: Beck})
+MATCH (v:Publication {name: 'Vogue magazine'})
+MATCH (mv:Event {name: 'Made in America festival'})
+MATCH (gcf:Event {name: 'Global Citizen Festival'})
+MATCH (c:Band {name: 'Coldplay'})
+MATCH (a:Album {name: 'A Head Full of Dreams'})
+
+What was the name of the tour featuring both Beyoncé and Jay Z?
+MATCH (b:Person {name: 'Beyonce'})
+MATCH (ga:Event {name: 'Grammy Awards'})
+MATCH (brp:Award {type: 'Best R&B Performance', winner: b})
+MATCH (brs:Award {type: 'Best R&B Song', winner: b})
+MATCH (bss:Award {type: 'Best Surround Sound Album', winner: b})
+MATCH (aoay:Award {type: 'Album of the Year', winner: Beck})
+MATCH (v:Publication {name: 'Vogue magazine'})
+MATCH (mv:Event {name: 'Made in America festival'})
+MATCH (gcf:Event {name: 'Global Citizen Festival'})
+MATCH (c:Band {name: 'Coldplay'})
+MATCH (a:Album {name: 'A Head Full of Dreams'})
+

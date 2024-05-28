@@ -1,0 +1,117 @@
+When did Beyonce have her first child?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+RETURN p
+
+Where did Beyonce give birth to her first child?
+MATCH (p:Person {name: 'Destiny''s Child'})
+RETURN p
+
+Beyonce's first child is named what?
+MATCH (p:Person {name: 'Destiny''s Child'})
+
+Her first appearance performing since giving birth was where?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+MATCH (p)<-[:Performed]-(s)
+MATCH (a)<-[:Won]-(e)
+MATCH (a)<-[:Featured]-(Life_Is_But_a_Dream)
+MATCH (p)<-[:Signed]-(Warner_Chappell_Music)
+RETURN "Her first appearance performing since giving birth was where?"
+
+When did Beyonce have her first child?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+MATCH (p)<-[:Performed]-(s)
+MATCH (a)<-[:Won]-(e)
+MATCH (a)<-[:Featured]-(Life_Is_But_a_Dream)
+MATCH (p)<-[:Signed]-(Warner_Chappell_Music)
+RETURN "The text describes events related to Beyoncé in January and February 2013."
+
+What was the child's name?
+MATCH (p:Person {name: 'Destiny''s Child'})
+
+How long was it after the birth of her child before she performed again?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+MATCH (p)<-[:Performed]-(s)
+MATCH (a)<-[:Won]-(e)
+MATCH (a)<-[:Featured]-(Life_Is_But_a_Dream)
+MATCH (p)<-[:Signed]-(Warner_Chappell_Music)
+RETURN p, a, e, l, s, m
+
+How many nights did she perform at Atlantic City?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+MATCH (p)<-[:Performed]-(s)
+MATCH (a)<-[:Won]-(e)
+MATCH (a)<-[:Featured]-(Life_Is_But_a_Dream)
+MATCH (p)<-[:Signed]-(Warner_Chappell_Music)
+RETURN NULL
+
+When did Beyoncé give birth to a daughter?
+MATCH p:Person {name: 'Destiny''s Child'}
+MATCH a:Album {name: 'Love Songs'}
+MATCH e:Event {name: '55th Annual Grammy Awards'}
+MATCH l:Location {name: 'Washington, D.C.'}
+MATCH s:Event {name: 'Super Bowl XLVII halftime show'}
+MATCH m:Location {name: 'New Orleans'}
+MATCH (p)<-[:Performed]-(s)
+MATCH (a)<-[:Won]-(e)
+MATCH (a)<-[:Featured]-(Life_Is_But_a_Dream)
+MATCH (p)<-[:Signed]-(Warner_Chappell_Music)
+RETURN NULL
+
+What did Beyoncé name her daughter?
+**MATCH NOT (q)
+RETURN q**
+
+Where was Blue Ivy born?
+MATCH (p:Person {name: 'Destiny''s Child'})
+
+Where was Beyoncé's first public performance after giving birth?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+MATCH (p)<-[:Performed]-(s)
+MATCH (a)<-[:Won]-(e)
+MATCH (a)<-[:Featured]-(Life_Is_But_a_Dream)
+MATCH (p)<-[:Signed]-(Warner_Chappell_Music)
+WHERE NOT EXISTS (r:Relationship {type: 'Public_Performance', from: p, to: l})
+RETURN p
+
+How many nights did Beyoncé play at the resort?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+MATCH (p)<-[:Performed]-(s)
+MATCH (a)<-[:Won]-(e)
+MATCH (a)<-[:Featured]-(Life_Is_But_a_Dream)
+MATCH (p)<-[:Signed]-(Warner_Chappell_Music)
+

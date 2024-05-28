@@ -1,0 +1,73 @@
+How many dates did Beyonce's "The Mrs. Carter Show" entail?
+MATCH (b:Celebrity {name: 'Beyoncé'})
+MATCH (a:Album {title: 'Beyoncé', releaseDate: '2013-12-13'})
+MATCH (b)<-[:OWNS]-(a)
+MATCH (a)<-[:BELONGS_TO]-(c:Chart {name: 'Billboard 200 chart'})
+MATCH (a)<-[:TOP_SELLING]-(c)
+MATCH (a)<-[:DEBUTS_AT_NUMBER_ONE]-(c)
+
+One of Beyonce's most successful tours yet was which one?
+MATCH (b:Celebrity {name: 'Beyoncé'})
+MATCH (a:Album {title: 'Beyoncé', releaseDate: '2013-12-13'})
+MATCH (a)<-[:OWNS]-(b)
+MATCH (a)<-[:BELONGS_TO]-(c:Chart {name: 'Billboard 200 chart'})
+MATCH (a)<-[:TOP_SELLING]-(c)
+MATCH (a)<-[:DEBUTS_AT_NUMBER_ONE]-(c)
+RETURN a
+
+Beyonce wrote which song for the movie "Epic"?
+MATCH (b:Celebrity {name: 'Beyoncé'})
+MATCH (a:Album {title: 'Beyoncé', releaseDate: '2013-12-13'})
+MATCH (c:Chart {name: 'Billboard 200 chart'})
+
+Beyonce voiced a character in which animated film?
+MATCH (b:Celebrity {name: 'Beyoncé'})
+
+When did the tour begin?
+MATCH (a:Album) WHERE a.title = 'Beyoncé' AND a.releaseDate = '2013-12-13'
+MATCH (c:Chart) WHERE c.name = 'Billboard 200 chart'
+MATCH (a)<-[:TOP_SELLING]-(c)
+MATCH (a)<-[:DEBUTS_AT_NUMBER_ONE]-(c)
+RETURN a
+
+Of what event was Beyonce honorary chair?
+MATCH (b:Celebrity {name: 'Beyoncé'})
+RETURN a
+
+What part did she voice for the movie Epic?
+MATCH (b:Celebrity {name: 'Beyoncé'})
+
+What song did Beyonce record for the film Epic?
+MATCH (b:Celebrity {name: 'Beyoncé'})
+MATCH (a:Album {title: 'Beyoncé', releaseDate: '2013-12-13'})
+MATCH (a)<-[:OWNS]-(b)
+MATCH (a)<-[:BELONGS_TO]-(c:Chart {name: 'Billboard 200 chart'})
+MATCH (a)<-[:TOP_SELLING]-(c)
+MATCH (a)<-[:DEBUTS_AT_NUMBER_ONE]-(c)
+RETURN a
+
+What was the name of Beyoncé's tour that she started on April 15?
+MATCH (b:Celebrity {name: 'Beyoncé'})
+MATCH (a:Album {title: 'Beyoncé', releaseDate: '2013-12-13'})
+MATCH (a)<-[:BELONGS_TO]-(c:Chart {name: 'Billboard 200 chart'})
+MATCH (a)<-[:TOP_SELLING]-(c)
+MATCH (a)<-[:DEBUTS_AT_NUMBER_ONE]-(c)
+WHERE a.title = 'Beyoncé' AND c.name = 'Billboard 200 chart'
+RETURN a
+
+How many dates did the Mrs. Carter Show World Tour have?
+MATCH (a:Album) WHERE a.title = 'Beyoncé' AND a.releaseDate = '2013-12-13'
+RETURN a
+
+Which Amy Winehouse song did Beyoncé cover and release in May 2014?
+
+
+Beyoncé was an honorary chair of the 2013 what?
+MATCH (b:Celebrity {name: 'Beyoncé'})
+MATCH (a)<-[:DEBUTS_AT_NUMBER_ONE]-(c)
+RETURN c.name AS chartName
+
+Which character in the film, Epic, was voiced by Beyoncé?
+MATCH (a:Album {title: 'Beyoncé', releaseDate: '2013-12-13'})
+RETURN a
+

@@ -1,0 +1,44 @@
+What town did Beyonce go to school in?
+MATCH (b:Artist {name: "Beyoncé", age: 8})
+RETURN gt
+
+Who was the first person to notice Beyonce's singing ability?
+MATCH (b:Artist {name: "Beyoncé"})
+
+Beyonce moved to which town after she left her first elementary school?
+
+
+Which of her teachers discovered Beyonce's musical talent?
+MATCH (b:Artist {name: "Beyoncé", age: 8})
+MATCH (kr:Artist {name: "Kelly Rowland"})
+MATCH (lr:Artist {name: "LaTavia Roberson"})
+MATCH (gt:Group {name: "Girl's Tyme"})
+MATCH (ap:MusicProducer {name: "R&B producer Arne Frager"})
+MATCH (m:Manager {name: "Mathew"})
+MATCH (dw:MusicExecutive {name: "Dwayne Wiggins"})
+
+I which church was Beyonce  a member and soloist  in the choir?
+
+
+What type of school was Parker Elementary School?
+MATCH (b:Artist {name: "Beyoncé", age: 8})
+RETURN gt
+
+Which song did Beyonce sing to win a competition at age 7?
+MATCH (b:Artist {name: "Beyoncé", age: 8})
+RETURN NULL
+
+What city was Beyoncé's elementary school located in?
+MATCH (b:Artist {name: "Beyoncé", age: 8})
+RETURN b
+
+What was the name of Beyoncé's first dance instructor?
+MATCH (b:Artist {name: "Beyoncé"})
+
+How old was Beyoncé when she won a school talent show?
+
+
+What choir did Beyoncé sing in for two years?
+MATCH (b:Artist {name: "Beyoncé", age: 8})
+RETURN gt
+

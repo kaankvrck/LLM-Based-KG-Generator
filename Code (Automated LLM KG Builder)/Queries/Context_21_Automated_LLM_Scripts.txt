@@ -1,0 +1,56 @@
+Destiny's Child released a compilation album about which topic?
+MATCH (b:Person {name: 'Beyoncé'})
+
+Beyonce's documentary movie was called what?
+MATCH (b:Person {name: 'Beyoncé'})
+
+What did Beyonce sign in 2013?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN b
+
+When did Destiny's Child release its album "Love Songs"?
+MATCH (b:Person {name: 'Beyoncé'})
+
+What was the title of the added track in Love Songs?
+MATCH (b:Person {name: 'Beyoncé'})
+
+At whose inauguration did she perform the National Anthem?
+
+
+How many Tweets per minute did the half time show get?
+
+
+When did Destiny's Child release Love Songs?
+
+
+What was the new track for Love Songs?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (t:Event {name: 'Mrs. Carter Show World Tour'})
+MATCH (c:Location {name: 'Belgrade'})
+MATCH (s:Location {name: 'Serbia'})
+MATCH (aw:Person {name: 'Amy Winehouse'})
+MATCH (a:Album {name: 'The Great Gatsby soundtrack'})
+MATCH (h:Event {name: '2013 Met Gala'})
+MATCH (e:Movie {name: 'Epic'})
+MATCH (f:Studio {name: '20th Century Fox'})
+MATCH (si:Person {name: 'Sia'})
+
+What did Beyoncé sing at President Obama's second inauguration?
+MATCH (b:Person {name: 'Beyoncé'})
+
+What event did Beyoncé perform at one month after Obama's inauguration? 
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (t:Event {name: 'Mrs. Carter Show World Tour'})
+MATCH (c:Location {name: 'Belgrade'})
+MATCH (s:Location {name: 'Serbia'})
+MATCH (aw:Person {name: 'Amy Winehouse'})
+MATCH (a:Album {name: 'The Great Gatsby soundtrack'})
+MATCH (h:Event {name: '2013 Met Gala'})
+MATCH (e:Movie {name: 'Epic'})
+MATCH (f:Studio {name: '20th Century Fox'})
+MATCH (si:Person {name: 'Sia'})
+RETURN "The Mrs. Carter Show World Tour was the most successful tour of Beyoncé's career."
+
+What is the name of Beyoncé's documentary film?
+
+

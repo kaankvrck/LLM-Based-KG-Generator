@@ -1,0 +1,84 @@
+Beyonce got married in 2008 to whom?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+
+Her third album, "I am...Sasha Fierce" was released when?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+
+For which decade, did Beyonce have more top ten songs than any other woman?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+
+Which singer beat out Beyonce for best video performance?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+
+In 2009, Beyonce started her second world tour and grossed how much money?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+
+How did she reveal the marriage?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+
+When did Beyonce begin her second world tour?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+
+Who beat out Beyonce for Best Female Video ?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+
+How much did the second world tour make in dollars?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+
+When did Beyoncé get married?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+
+Who did Beyoncé marry?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+
+Who is Beyoncé's alter ego?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+
+The video for what song won Beyoncé the 2009 MTV Video of the Year award?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+
+Which prominent star felt the 2009 Female Video of the Year award should have went to Beyoncé instead of Taylor Swift?
+MATCH (b)<-[:STARS_IN]-(cr)
+MATCH (b)<-[:DONATED_TO]-(ph)
+MATCH (b)<-[:PERFORMED_AT]-(fcb)
+MATCH (sc)<-[:STARS_IN]-(o)
+

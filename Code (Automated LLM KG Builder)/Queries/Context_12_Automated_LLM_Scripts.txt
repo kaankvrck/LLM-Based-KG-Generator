@@ -1,0 +1,56 @@
+How many albums did Beyonce sell in the first week when she released her second album?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN b
+
+The lead single from the album was which song?
+
+
+How many countries did her song "Irreplaceable" get number one status in?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN b
+
+How many singles did her second album produce?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN count(b.songs)
+
+What birthday did Beyonce's album B'Day celebrate?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN b
+
+What artist did Beyonce duet with in the single, "Deja Vu''?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN b
+
+How high did ''Deja Vu'' climb on the Billboard chart?
+
+
+What is the name of Beyoncé's second album?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN b
+
+How many copies did B'Day sell during the first week of its release?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (tp:Movie {name: 'The Pink Panther'})
+MATCH (d:Movie {name: 'Dreamgirls'})
+MATCH (s:Band {name: 'The Supremes'})
+MATCH (dr:Person {name: 'Diana Ross', occupation: 'Pop singer'})
+MATCH (l:Song {name: 'Listen'})
+MATCH (tb:ConcertTour {name: 'The Beyoncé Experience'})
+MATCH (st:Church {name: 'St. John's'})
+MATCH (ash:CharityOrganization {name: 'America's Second Harvest'})
+MATCH (bd:Album {name: 'B'Day'})
+
+Who collaborated with Beyoncé on the single, Deja Vu?
+
+
+Which single from B'Day was only released in the U.K.?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (tp:Movie {name: 'The Pink Panther'})
+MATCH (d:Movie {name: 'Dreamgirls'})
+MATCH (dr:Person {name: 'Diana Ross'})
+MATCH (l:Song {name: 'Listen'})
+MATCH (tb:ConcertTour {name: 'The Beyoncé Experience'})
+MATCH (st:Church {name: 'St. John's'})
+MATCH (ash:CharityOrganization {name: 'America's Second Harvest'})
+MATCH (bd:Album {name: 'B'Day'})
+
