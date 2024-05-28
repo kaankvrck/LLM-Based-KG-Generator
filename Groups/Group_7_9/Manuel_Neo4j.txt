@@ -112,18 +112,14 @@ CREATE (letoya)-[:BLAMED]->(beyonce)
 CREATE (georges)-[:COMPOSE]->(carmenhiphopera)
 CREATE (beyonce)-[:STARRED]->(fightingtemptations)
 CREATE (beyonce)-[:STARRED]->(austinpowers)
-
 CREATE (missy)-[:PROMOTE]->(fightingtemptations)
 CREATE (mclyte)-[:PROMOTE]->(fightingtemptations)
 CREATE (free)-[:PROMOTE]->(fightingtemptations)
-
 CREATE (missy)-[:PROMOTE]->(summertime)
 CREATE (mclyte)-[:PROMOTE]->(summertime)
 CREATE (free)-[:PROMOTE]->(summertime)
-
 CREATE (summertime)-[:BETTER_ON_CHARTS]->(fightingtemptations)
 CREATE (foxxy)-[:IS_CHARACTER]->(austinpowers)
 CREATE (lilly)-[:IS_CHARACTER]->(fightingtemptations)
-
 CREATE (workitout)-[:IS_LEAD_SINGLE]->(austinpowers)
 CREATE (fightingtemptationsong)-[:IS_LEAD_SINGLE]->(fightingtemptations)
