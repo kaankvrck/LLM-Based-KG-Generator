@@ -1,0 +1,117 @@
+When did Beyonce have her first child?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+MATCH (p)<-[:Performed]-(s)
+MATCH (a)<-[:Won]-(e)
+MATCH (a)<-[:Featured]-(Life_Is_But_a_Dream)
+MATCH (p)<-[:Signed]-(Warner_Chappell_Music)
+WHERE NOT (p)<-[:HAS_CHILD]-(_)
+RETURN p
+
+Where did Beyonce give birth to her first child?
+
+
+Beyonce's first child is named what?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+MATCH (p)<-[:Performed]-(s)
+MATCH (a)<-[:Won]-(e)
+MATCH (a)<-[:Featured]-(Life_Is_But_a_Dream)
+MATCH (p)<-[:Signed]-(Warner_Chappell_Music)
+WHERE NOT (a.name = 'Love Songs') AND NOT (e.name = '55th Annual Grammy Awards') AND NOT (s.name = 'Super Bowl XLVII halftime show')
+RETURN p.name
+
+Her first appearance performing since giving birth was where?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+WHERE p.name = 'Destiny''s Child' AND a.name = 'Love Songs' AND e.name = '55th Annual Grammy Awards' AND s.name = 'Super Bowl XLVII halftime show' AND l.name = 'Washington, D.C.' AND m.name = 'New Orleans'
+RETURN p, a, e, l, s
+
+When did Beyonce have her first child?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+MATCH (p)<-[:Performed]-(s)
+MATCH (a)<-[:Won]-(e)
+MATCH (a)<-[:Featured]-(Life_Is_But_a_Dream)
+MATCH (p)<-[:Signed]-(Warner_Chappell_Music)
+RETURN p, a, e, l, s, m
+
+What was the child's name?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+MATCH (p)<-[:Performed]-(s)
+MATCH (a)<-[:Won]-(e)
+MATCH (a)<-[:Featured]-(Life_Is_But_a_Dream)
+MATCH (p)<-[:Signed]-(Warner_Chappell_Music)
+WHERE a.name = 'Love Songs' AND e.name = '55th Annual Grammy Awards'
+RETURN p, a, e, l, s, m
+
+How long was it after the birth of her child before she performed again?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+MATCH (p)<-[:Performed]-(s)
+MATCH (a)<-[:Won]-(e)
+MATCH (a)<-[:Featured]-(Life_Is_But_a_Dream)
+MATCH (p)<-[:Signed]-(Warner_Chappell_Music)
+WHERE NOT EXISTS(p.child)
+RETURN p.name
+This query creates the necessary nodes and relationships between them to represent the information in the text. It also includes a WHERE clause to ensure that the query only returns persons who have not yet had a child. The query returns the name of the person who performed at the Super Bowl XLVII halftime show.
+
+How many nights did she perform at Atlantic City?
+
+
+When did Beyoncé give birth to a daughter?
+
+
+What did Beyoncé name her daughter?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+WHERE p <-[:Performed]-(s) AND a <-[:Won]-(e) AND a <-[:Featured]-(Life_Is_But_a_Dream)
+RETURN NULL
+
+Where was Blue Ivy born?
+MATCH (p:Person {name: 'Destiny''s Child'})-[:Performed]->(s:Event {name: 'Super Bowl XLVII halftime show'})
+WHERE s.name = 'Super Bowl XLVII halftime show'
+RETURN p.name
+
+Where was Beyoncé's first public performance after giving birth?
+MATCH (p:Person {name: 'Destiny''s Child'})
+MATCH (a:Album {name: 'Love Songs'})
+MATCH (e:Event {name: '55th Annual Grammy Awards'})
+MATCH (l:Location {name: 'Washington, D.C.'})
+MATCH (s:Event {name: 'Super Bowl XLVII halftime show'})
+MATCH (m:Location {name: 'New Orleans'})
+WHERE p<-[:Performed]-(s) AND a<-[:Won]-(e) AND a<-[:Featured]-(Life_Is_But_a_Dream) AND p<-[:Signed]-(Warner_Chappell_Music)
+RETURN "Beyoncé's first public performance after giving birth is not included in this text."
+
+How many nights did Beyoncé play at the resort?
+
+

@@ -1,0 +1,38 @@
+"Charlie's Angels" featured which single from the band members?
+MATCH (a:Film {name: 'Austin Powers in Goldmember'})
+RETURN a
+
+How many weeks did their single "Independent Women Part I" stay on top?
+
+
+For what network, did Beyonce land a major movie role in?
+MATCH (b:Person {name: 'Beyoncé'})
+RETURN (a)
+
+Their third album, Survivor, sold how many during its first week?
+MATCH (a:Film {name: 'Austin Powers in Goldmember'})
+RETURN a
+
+What French composer wrote the original opera ''Carmen'' in the 19th century?
+
+
+What album caused a lawsuit to be filed in 2001?
+MATCH (a:Film) WHERE a.name = 'Austin Powers in Goldmember'
+RETURN a
+
+Independent Women Part I was on which 2000 film's soundtrack?
+MATCH (b:Person {name: 'Beyoncé'})
+
+Which film did Beyoncé star in 2001 with Mekhi Phifer?
+MATCH (a:Film) WHERE a.name = 'Austin Powers in Goldmember'
+RETURN a
+
+What was the name of Destiny Child's third album?
+
+
+Who filed a lawsuit over Survivor?
+
+
+When did Destiny's Child announce their hiatus?
+MATCH (b:Person {name: 'Beyoncé'})
+

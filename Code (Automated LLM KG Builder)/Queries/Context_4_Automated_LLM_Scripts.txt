@@ -1,0 +1,36 @@
+What town did Beyonce go to school in?
+
+
+Who was the first person to notice Beyonce's singing ability?
+MATCH (b:Artist {name: "Beyoncé"})-[: Childhood friend]->(gt:Group {name: "Girl's Tyme"})
+RETURN b
+
+Beyonce moved to which town after she left her first elementary school?
+MATCH (b:Artist {name: "Beyoncé"})
+RETURN b.town
+
+Which of her teachers discovered Beyonce's musical talent?
+
+
+I which church was Beyonce  a member and soloist  in the choir?
+
+
+What type of school was Parker Elementary School?
+
+
+Which song did Beyonce sing to win a competition at age 7?
+
+
+What city was Beyoncé's elementary school located in?
+
+
+What was the name of Beyoncé's first dance instructor?
+
+
+How old was Beyoncé when she won a school talent show?
+
+
+What choir did Beyoncé sing in for two years?
+MATCH (b:Artist {name: "Beyoncé"})-[:CHILDHOOD_FRIEND]->(gt:Group {name: "Girl's Tyme"})
+RETURN gt
+

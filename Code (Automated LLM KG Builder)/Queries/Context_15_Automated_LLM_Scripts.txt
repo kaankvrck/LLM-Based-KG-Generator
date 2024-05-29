@@ -1,0 +1,70 @@
+Beyonce portrayed which character in the film, Cadillac Records?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (b) CREATE (t:Song {name: 'Single Ladies (Put a Ring on It)'}) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+RETURN n
+
+Beyonce gave her entire salary from Cadillac Records to which organization?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (b) CREATE (t:Song {name: 'Single Ladies (Put a Ring on It)'}) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+MATCH (a) WHERE a.name = 'I Am... Sasha Fierce' RETURN a
+MATCH (t) WHERE t.name = 'Telephone' RETURN t
+MATCH (n) WHERE n.name = 'Single Ladies (Put a Ring on It)' RETURN n
+
+Which song did Beyonce sing at the first couple's inaugural ball? 
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (b) CREATE (t:Song {name: 'Telephone'}) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+
+What genre of film was the movie, Obsessed, in which Beyonce starred in?
+
+
+A fight scene from the movie, Obsessed, won which award for Beyonce?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (b) CREATE (t:Song {name: 'Single Ladies (Put a Ring on It)'}) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+RETURN n
+
+Where did Beyonce donate her salary from the movie Cadillac Records?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (b) CREATE (t:Song {name: 'Single Ladies (Put a Ring on It)'}) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+RETURN n
+
+What thriller film did Beyonce star in?
+
+
+What was the name of the woman she played in Obsessed?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (b) CREATE (t:Song {name: 'Single Ladies (Put a Ring on It)'}) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+RETURN n
+
+How much more that the buget did the film gross?
+
+
+Which singer did Beyoncé portray in Cadillac Records?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (b) CREATE (t:Song {name: 'Single Ladies (Put a Ring on It)'}) -[: Featured_IN] ->> (t)
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+RETURN n
+
+Which organization received Beyoncé's entire Cadillac Records salary?
+
+
+Where did Beyoncé perform on January 20, 2009?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (t:Song {name: 'Telephone'})
+WHERE t.name = 'Telephone'
+MATCH (n) WHERE n.name = 'US Pop Songs chart'
+RETURN t.name AS song_name
+
+Which thriller film did Beyoncé star in with Ali Larter?
+MATCH (b:Person {name: 'Beyoncé'})
+MATCH (l:Person {name: 'Lauryn Hill'})
+MATCH (c:Chart {name: 'US Pop Songs chart'})
+MATCH (m:Person {name: 'Mariah Carey'})
+MATCH (t) CREATE (n) -[:NominATED_FOR] ->> (n)
+MATCH (b) WHERE name = 'Beyoncé' RETURN n
+

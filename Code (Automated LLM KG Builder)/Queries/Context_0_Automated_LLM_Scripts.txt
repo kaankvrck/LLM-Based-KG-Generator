@@ -1,0 +1,63 @@
+When did Beyonce start becoming popular?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.born
+
+What areas did Beyonce compete in when she was growing up?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.areasOfCompetition
+
+When did Beyonce leave Destiny's Child and become a solo singer?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+WHERE b.born = 1981
+RETURN b.name, b.born
+
+In what city and state did Beyonce  grow up? 
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.city
+
+In which decade did Beyonce become famous?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+WHERE b.born >= 1980 AND b.born <= 1990
+RETURN b
+
+In what R&B group was she the lead singer?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.name, b.born, b-[:PERFORMED_AS]->(g).name AS group_name
+
+What album made her a worldwide known artist?
+MATCH (a:Album) WHERE a.name = 'Dangerously in Love' RETURN a
+
+Who managed the Destiny's Child group?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:MANAGED_BY]->(m:Manager)
+RETURN m.name
+
+When did Beyoncé rise to fame?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.name
+* The query utilizes the `MATCH` clause to find the person node.
+* The `RETURN` clause returns the person's name.
+
+What role did Beyoncé have in Destiny's Child?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:PERFORMED_AS]->(g:Group {name: 'Destiny''s Child'})
+RETURN b.name
+
+What was the first album Beyoncé released as a solo artist?
+MATCH (a:Album) WHERE a.name = 'Dangerously in Love'
+RETURN a.name
+
+When did Beyoncé release Dangerously in Love?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.name, b.born
+
+How many Grammy awards did Beyoncé win for her first solo album?
+MATCH (a:Album) WHERE a.name = 'Dangerously in Love'
+RETURN a.num_grammy_awards
+
+What was Beyoncé's role in Destiny's Child?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.name
+
+What was the name of Beyoncé's first solo album?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.name, b.born
+

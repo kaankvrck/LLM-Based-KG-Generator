@@ -1,0 +1,42 @@
+Destiny's Child's final album was named what?
+MATCH (b:Person {name: "Beyoncé"})
+MATCH (billboard:Chart {name: "Billboard 200"})
+MATCH (dejaVu:Song {name: "Déjà Vu"})
+MATCH (irreplaceable:Song {name: "Irreplaceable"})
+
+Destiny's Child got a star on the Hollywood Walk of Fame in what year?
+MATCH (b:Person {name: "Beyoncé"})-[:Released]->(bDay:Album {name: "B'Day"})-[:Debuted atop]->(billboard:Chart {name: "Billboard 200"})
+MATCH (dejaVu:Song {name: "Déjà Vu"})-[:Featuring]->(jayZ:Person {name: "Jay Z"})
+MATCH (irreplaceable:Song {name: "Irreplaceable"})-[:Number one]->(us:Country {name: "US"})
+RETURN bDay, billboard, dejaVu, irreplaceable
+1. **MATCH** the `b` (Beyoncé) node to the `bDay` (B'Day) album and connect them with a relationship "Released."
+3. **RETURN** the `bDay`, `billboard`, `dejaVu`, and `irreplaceable` nodes.
+
+In what year did Beyonce embark on her Dangerously in Love tour of Europe?
+
+
+What was the name of the final album of Destiny's Child?
+MATCH (bDay:Album {name: "B'Day"})
+RETURN bDay.name
+
+It was announced that Destiny's Child would  disban in what European city?
+MATCH (b:Person {name: "Beyoncé"})-[:Released]->(bDay:Album {name: "B'Day"})-[:Debuted atop]->(billboard:Chart {name: "Billboard 200"}) WITH bDay
+MATCH (bDay)-[:Produced]->(songList) RETURN songList
+
+When did Destiny's Child get their star on the Hollywood Walk of Fame?
+MATCH (b:Person {name: "Beyoncé"})-[:Released]->(bDay:Album {name: "B'Day"})-[:Debuted atop]->(billboard:Chart {name: "Billboard 200"})
+RETURN bDay
+
+What was the name of Beyoncé's European start that started in November 2003?
+
+
+Who did Beyoncé tour with for the Verizon Lades First Tour?
+
+
+What major event did Beyoncé perform at on February 1, 2004?
+
+
+What is the name of the final studio album from Destiny's Child?
+MATCH (bDay:Album {name: "B'Day"})
+RETURN bDay.name
+

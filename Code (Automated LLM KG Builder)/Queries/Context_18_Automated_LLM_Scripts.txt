@@ -1,0 +1,91 @@
+In which year was reports about Beyonce performing for Muammar Gaddafi surface?
+
+
+Who did Beyonce donate the money to earned from her shows?
+
+
+Beyonce became the first female artist to perform solo in 20 years at which stage?
+MATCH (a:Album {title: '4'})
+RETURN a
+
+Which organization did Beyonce's spokespeople confirm her donations to?
+MATCH (b) CREATE (a)<-[:RELEASED]-(b)
+MATCH (a) CREATE (a)<-[:DEBUTED_AT]-(c)
+MATCH (a) CREATE (s:Single {title: 'Run the World (Girls)'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s2:Single {title: 'Best Thing I Never Had'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s3:Single {title: 'Love on Top'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s4:Single {title: 'Party'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s5:Single {title: 'Countdown'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s6:Single {title: 'I Care'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s7:Single {title: 'End of Time'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (c2:CoverStory {title: 'Eat, Play, Love'})<-[:WRITTEN_BY]-(b)
+
+Beyonce was listed in 2011 as the highest paid performer per what?
+MATCH (b) CREATE (a)<-[:RELEASED]-(b)
+MATCH (a) CREATE (a)<-[:DEBUTED_AT]-(c)
+MATCH (a) CREATE (s:Single {title: 'Run the World (Girls)'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s2:Single {title: 'Best Thing I Never Had'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s3:Single {title: 'Love on Top'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s4:Single {title: 'Party'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s5:Single {title: 'Countdown'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s6:Single {title: 'I Care'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s7:Single {title: 'End of Time'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (c2:CoverStory {title: 'Eat, Play, Love'})<-[:WRITTEN_BY]-(b)
+
+Hoe did everyone learn that Beyonce performed for Kaddafi?
+
+
+When did this leak happen?
+MATCH (b:Celebrity {name: 'Beyoncé'})
+MATCH (a) CREATE (a)<-[:DEBUTED_AT]-(c:Chart {name: 'Billboard 200 chart'})
+MATCH (a) CREATE (s:Single {title: 'Run the World (Girls)'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s2:Single {title: 'Best Thing I Never Had'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s3:Single {title: 'Love on Top'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s4:Single {title: 'Party'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s5:Single {title: 'Countdown'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s6:Single {title: 'I Care'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s7:Single {title: 'End of Time'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (c2:CoverStory {title: 'Eat, Play, Love'})<-[:WRITTEN_BY]-(b)
+RETURN a
+
+Who did she tell about the donation?
+
+
+Where did Beyonce perform in 2011?
+MATCH (a:Album {title: '4'})
+WHERE a.title = '4'
+MATCH (b:Celebrity {name: 'Beyoncé'})
+WHERE b.name = 'Beyoncé'
+MATCH (c:Chart {name: 'Billboard 200 chart'})
+WHERE c.name = 'Billboard 200 chart'
+MATCH (a)<-[:RELEASED]-(b)
+MATCH (a)<-[:DEBUTED_AT]-(c)
+RETURN b.name, a.title
+
+Who did Beyoncé perform privately for in 2011?
+MATCH (b:Celebrity {name: 'Beyoncé'})
+MATCH (a:Album {title: '4'})
+MATCH (c:Chart {name: 'Billboard 200 chart'})
+MATCH (a)<-[:RELEASED]-(b)
+MATCH (a)<-[:DEBUTED_AT]-(c)
+RETURN b
+
+Who released the information about Beyoncé's performance for the Libyan ruler?
+
+
+Which organization did Beyoncé donate her pay for the private performance to?
+
+
+Beyoncé was the first female singer to headline what at the 2011 Glastonbury Festival?
+MATCH (b:Celebrity {name: 'Beyoncé'})
+MATCH (a) CREATE (a)<-[:DEBUTED_AT]-(c:Chart {name: 'Billboard 200 chart'})
+MATCH (a) CREATE (s:Single {title: 'Run the World (Girls)'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s2:Single {title: 'Best Thing I Never Had'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s3:Single {title: 'Love on Top'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s4:Single {title: 'Party'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s5:Single {title: 'Countdown'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s6:Single {title: 'I Care'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (s7:Single {title: 'End of Time'})<-[:SINGLE_FROM]-(a)
+MATCH (a) CREATE (c2:CoverStory {title: 'Eat, Play, Love'})<-[:WRITTEN_BY]-(b)
+RETURN b, a, c
+

@@ -1,0 +1,91 @@
+Which film featured Destiny's Child's first major single?
+MATCH (dc:Band {name: 'Destiny's Child'})
+RETURN dc
+
+For which song, did Destiny's Child take home the grammy award for best R&B performance?
+MATCH (dc:Band {name: 'Destiny's Child'})
+MATCH (b:Artist {name: 'Beyoncé'})
+MATCH (l:FormerBandMember {name: 'LeToya Luckett'})
+MATCH (r:FormerBandMember {name: 'Roberson'})
+WHERE NOT (l) -[:CAUSE_DEPICTION]-> (dc) AND NOT (r) -[:CAUSE_DEPICTION]-> (dc)
+RETURN dc, b
+
+Who did Beyonce record with for the movie "The Best Man?"
+MATCH (b:Artist {name: 'Beyoncé'})
+MATCH (dc:Band {name: 'Destiny's Child'})
+MATCH (l:FormerBandMember {name: 'LeToya Luckett'})
+MATCH (r:FormerBandMember {name: 'Roberson'})
+MATCH (f:FormerBandMember {name: 'Farrah Franklin'})
+WHERE b -[:CAUSE_DEPICTION]-> l OR b -[:CAUSE_DEPICTION]-> r
+RETURN b
+
+Beyonce's group changed their name to Destiny's Child in what year?
+MATCH (b:Artist {name: 'Beyoncé'})
+MATCH (dc:Band {name: 'Destiny's Child'})
+WHERE b IS NOT NULL AND dc IS NOT NULL
+RETURN dc.name
+* It uses the `MATCH` clause to find the `Artist` node with the name `Beyoncé` and the `Band` node with the name `Destiny's Child`.
+* The `WHERE` clause ensures that the `Artist` and `Band` nodes are not null.
+* The `RETURN` clause returns the name of the band, which is `Destiny's Child`.
+
+The name Destiny's Child was based on a quote in which book of the Bible?
+MATCH (b:Artist {name: 'Beyoncé'})
+RETURN dc
+
+Debut song, "Killing Time" was featured on what movie's sound track?
+MATCH (b:Artist {name: 'Beyoncé'})
+MATCH (dc:Band {name: 'Destiny's Child'})
+MATCH (l:FormerBandMember {name: 'LeToya Luckett'})
+MATCH (r:FormerBandMember {name: 'Roberson'})
+MATCH (f:FormerBandMember {name: 'Farrah Franklin'})
+WHERE b -[:CAUSE_DEPICTION]-> l OR b -[:CAUSE_DEPICTION]-> r
+RETURN b, dc
+1. **MATCH (b:Artist {name: 'Beyoncé'}):** Matches the artist node with name 'Beyoncé'.
+2. **MATCH (dc:Band {name: 'Destiny's Child'}):** Matches the band node with name 'Destiny's Child'.
+3. **MATCH (l:FormerBandMember {name: 'LeToya Luckett'}):** Matches the former band member node with name 'LeToya Luckett'.
+4. **MATCH (r:FormerBandMember {name: 'Roberson'}):** Matches the former band member node with name 'Roberson'.
+5. **MATCH (f:FormerBandMember {name: 'Farrah Franklin'}):** Matches the former band member node with name 'Farrah Franklin'.
+6. **WHERE b -[:CAUSE_DEPICTION]-> l OR b -[:CAUSE_DEPICTION]-> r:** Defines the relationship between the artist and former band members.
+8. **RETURN b, dc:** Returns the artist and band nodes.
+
+What song won Best R&B Performance in the 43 Annual Grammy Awards?
+MATCH (dc:Band {name: 'Destiny's Child'})
+RETURN dc.name
+
+What singer did Beyonce record a song with for the movie, ''The Best Man"?
+MATCH (b:Artist {name: 'Beyoncé'})
+RETURN b
+
+Where did Destiny's Child get their name from?
+MATCH (b:Artist {name: 'Beyoncé'})
+MATCH (w:FormerBandMember {name: 'Michelle Williams'})
+RETURN dc
+
+Destiny's Child song, Killing Time, was included in which film's soundtrack?
+MATCH (dc:Band {name: 'Destiny's Child'})
+MATCH (b:Artist {name: 'Beyoncé'})
+MATCH (l:FormerBandMember {name: 'LeToya Luckett'})
+MATCH (r:FormerBandMember {name: 'Roberson'})
+RETURN dc, b
+1. **MATCH (dc:Band {name: 'Destiny's Child'}):** Matches the band "Destiny's Child" and stores it in the variable `dc`.
+3. **MATCH (b:Artist {name: 'Beyoncé'}):** Matches the artist "Beyoncé" and creates a new relationship between her and the band "Destiny's Child" using the `CAUSE_DEPICTION` relationship.
+5. **MATCH (l:FormerBandMember {name: 'LeToya Luckett'}):** Matches the former band member "LeToya Luckett" and connects her to "Beyoncé" using the `CAUSE_DEPICTION` relationship.
+7. **RETURN dc, b:** Returns the band "Destiny's Child" and the artist "Beyoncé".
+
+What was Destiny's Child's first major song hit?
+
+
+When did Destiny's Child release their second album?
+MATCH (dc:Band {name: 'Destiny's Child'})
+RETURN dc
+
+Who did Beyoncé sing a duet with for "The Best Man" film?
+MATCH (b:Artist {name: 'Beyoncé'})-[:CAUSE_DEPICTION]->(l:FormerBandMember {name: 'LeToya Luckett'}) OR (b) -[:CAUSE_DEPICTION]->(r:FormerBandMember {name: 'Roberson'})
+WHERE NOT EXISTS(r)
+MATCH (dc:Band {name: 'Destiny's Child'})
+RETURN b
+1. **MATCH (b:Artist {name: 'Beyoncé'})-[:CAUSE_DEPICTION]->(l:FormerBandMember {name: 'LeToya Luckett'}) OR (b) -[:CAUSE_DEPICTION]->(r:FormerBandMember {name: 'Roberson'}):** This line matches the relationship between Beyoncé and the former band members Luckett and Roberson. If Roberson is not present in the graph, the relationship between Beyoncé and Luckett is established.
+2. **WHERE NOT EXISTS(r):** This line checks if Roberson exists in the graph. If he does not, the relationship between Beyoncé and Luckett is established.
+4. **MATCH (dc:Band {name: 'Destiny's Child'}):** This line matches the band Destiny's Child.
+6. **RETURN b:** This line returns the variable `b` (Beyoncé) as the result of the query.
+
