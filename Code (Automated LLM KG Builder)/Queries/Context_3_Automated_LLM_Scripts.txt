@@ -1,8 +1,15 @@
 Beyonce's younger sibling also sang with her in what band?
-
+MATCH (p:Person {name: "Beyoncé"})
+MATCH (p) WHERE p.name = "Beyoncé"
+MATCH (p) <-- (o:Organization) WITH p, o
+RETURN o.name AS schoolName, p.name AS personName
+1. **MATCH (p:Person {name: "Beyoncé"}):** This line matches a person node with the name "Beyoncé".
+6. **MATCH (p) WHERE p.name = "Beyoncé"** - This line finds the person node with the name "Beyoncé".
+7. **MATCH (p) <-- (o:Organization) WITH p, o:** This line finds the organization node associated with the person node.
+8. **RETURN o.name AS schoolName, p.name AS personName:** This line returns the school name and person name for the matched person node.
 
 Where did Beyonce get her name from?
-
+MATCH (p) WHERE p.name = "Beyoncé" RETURN p
 
 What race was Beyonce's father?
 
@@ -14,19 +21,22 @@ Beyonce's father worked as a sales manager for what company?
 
 
 Beyonce's mother worked in what industry?
-
+MATCH (p) WHERE p.name = "Beyoncé"
+RETURN p
 
 What younger sister of Beyonce also appeared in Destiny's Child?
 
 
 Beyonce is a descendent of what Arcadian leader?
-
+MATCH (p:Person {name: "Beyoncé"})
+RETURN p
 
 What company did Beyoncé's father work for when she was a child?
 
 
 What did Beyoncé's mother own when Beyoncé was a child?
-
+MATCH (p:Person {name: "Beyoncé"})
+RETURN p
 
 What is the name of Beyoncé's younger sister?
 
@@ -35,5 +45,6 @@ Beyoncé is a descendant of which Acadian leader?
 
 
 Beyoncé was raised in what religion?
-
+MATCH (p:Person {name: "Beyoncé"})
+RETURN p
 

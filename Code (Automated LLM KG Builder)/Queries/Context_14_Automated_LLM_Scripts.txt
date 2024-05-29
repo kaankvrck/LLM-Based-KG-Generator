@@ -5,80 +5,60 @@ MATCH (b)<-[:PERFORMED_AT]-(fcb)
 MATCH (sc)<-[:STARS_IN]-(o)
 
 Her third album, "I am...Sasha Fierce" was released when?
-MATCH (b)<-[:STARS_IN]-(cr)
-MATCH (b)<-[:DONATED_TO]-(ph)
-MATCH (b)<-[:PERFORMED_AT]-(fcb)
-MATCH (sc)<-[:STARS_IN]-(o)
+MATCH (b:Person {name: 'Beyonce'})<-[:STARS_IN]-(cr:Movie {name: 'Cadillac Records'})
+RETURN cr
 
 For which decade, did Beyonce have more top ten songs than any other woman?
-MATCH (b)<-[:STARS_IN]-(cr)
-MATCH (b)<-[:DONATED_TO]-(ph)
-MATCH (b)<-[:PERFORMED_AT]-(fcb)
-MATCH (sc)<-[:STARS_IN]-(o)
+MATCH (b:Person {name: 'Beyonce'})<-[:STARS_IN]-(cr:Movie {name: 'Cadillac Records'})
+RETURN YEAR(cr.releaseDate) AS decade
+1. **MATCH (b:Person {name: 'Beyonce'})<-[:STARS_IN]-(cr:Movie {name: 'Cadillac Records'}):** This query finds the movie 'Cadillac Records' and matches it with the person 'Beyonce' who starred in it.
+2. **RETURN YEAR(cr.releaseDate) AS decade:** This query extracts the year of release for the movie and returns it as the 'decade' value.
 
 Which singer beat out Beyonce for best video performance?
-MATCH (b)<-[:STARS_IN]-(cr)
-MATCH (b)<-[:DONATED_TO]-(ph)
-MATCH (b)<-[:PERFORMED_AT]-(fcb)
-MATCH (sc)<-[:STARS_IN]-(o)
+
 
 In 2009, Beyonce started her second world tour and grossed how much money?
-MATCH (b)<-[:STARS_IN]-(cr)
-MATCH (b)<-[:DONATED_TO]-(ph)
-MATCH (b)<-[:PERFORMED_AT]-(fcb)
-MATCH (sc)<-[:STARS_IN]-(o)
+MATCH (b:Person {name: 'Beyonce'})<-[:STARS_IN]-(cr:Movie {name: 'Cadillac Records'})
+RETURN cr.name
 
 How did she reveal the marriage?
-MATCH (b)<-[:STARS_IN]-(cr)
-MATCH (b)<-[:DONATED_TO]-(ph)
-MATCH (b)<-[:PERFORMED_AT]-(fcb)
-MATCH (sc)<-[:STARS_IN]-(o)
+MATCH (b:Person {name: 'Beyonce'})<-[:STARS_IN]-(cr:Movie {name: 'Cadillac Records'})
+MATCH (b)<-[:DONATED_TO]-(ph:Organization {name: 'Phoenix House'})
+MATCH (b)<-[:PERFORMED_AT]-(fcb:Event {name: 'First Couple's first inaugural ball'})
+MATCH (sc:Character {name: 'Sharon Charles', role: 'Mother'})<-[:STARS_IN]-(o:Movie {name: 'Obsessed'})
 
 When did Beyonce begin her second world tour?
-MATCH (b)<-[:STARS_IN]-(cr)
-MATCH (b)<-[:DONATED_TO]-(ph)
-MATCH (b)<-[:PERFORMED_AT]-(fcb)
-MATCH (sc)<-[:STARS_IN]-(o)
+
 
 Who beat out Beyonce for Best Female Video ?
-MATCH (b)<-[:STARS_IN]-(cr)
-MATCH (b)<-[:DONATED_TO]-(ph)
-MATCH (b)<-[:PERFORMED_AT]-(fcb)
-MATCH (sc)<-[:STARS_IN]-(o)
+MATCH (sc)<-[:LEARNED_OF]-(o)
+RETURN sc
 
 How much did the second world tour make in dollars?
-MATCH (b)<-[:STARS_IN]-(cr)
-MATCH (b)<-[:DONATED_TO]-(ph)
-MATCH (b)<-[:PERFORMED_AT]-(fcb)
-MATCH (sc)<-[:STARS_IN]-(o)
+MATCH (sc:Character {name: 'Sharon Charles'})<-[:LEARNED_OF]-(o:Movie {name: 'Obsessed'})
+RETURN sc
 
 When did Beyoncé get married?
-MATCH (b)<-[:STARS_IN]-(cr)
-MATCH (b)<-[:DONATED_TO]-(ph)
-MATCH (b)<-[:PERFORMED_AT]-(fcb)
-MATCH (sc)<-[:STARS_IN]-(o)
+
 
 Who did Beyoncé marry?
-MATCH (b)<-[:STARS_IN]-(cr)
-MATCH (b)<-[:DONATED_TO]-(ph)
-MATCH (b)<-[:PERFORMED_AT]-(fcb)
-MATCH (sc)<-[:STARS_IN]-(o)
+MATCH (b:Person {name: 'Beyonce'})<-[:STARS_IN]-(cr:Movie {name: 'Cadillac Records'})
+RETURN b
 
 Who is Beyoncé's alter ego?
-MATCH (b)<-[:STARS_IN]-(cr)
-MATCH (b)<-[:DONATED_TO]-(ph)
-MATCH (b)<-[:PERFORMED_AT]-(fcb)
-MATCH (sc)<-[:STARS_IN]-(o)
+MATCH (b:Person {name: 'Beyonce'})<-[:STARS_IN]-(cr:Movie {name: 'Cadillac Records'})
+RETURN b
 
 The video for what song won Beyoncé the 2009 MTV Video of the Year award?
-MATCH (b)<-[:STARS_IN]-(cr)
-MATCH (b)<-[:DONATED_TO]-(ph)
-MATCH (b)<-[:PERFORMED_AT]-(fcb)
-MATCH (sc)<-[:STARS_IN]-(o)
+MATCH (b:Person {name: 'Beyonce'})<-[:STARS_IN]-(cr:Movie {name: 'Cadillac Records'})
+MATCH (sc:Character {name: 'Sharon Charles'})<-[:STARS_IN]-(o:Movie {name: 'Obsessed'})
+WHERE sc.name = 'Sharon Charles'
+RETURN o.name
 
 Which prominent star felt the 2009 Female Video of the Year award should have went to Beyoncé instead of Taylor Swift?
-MATCH (b)<-[:STARS_IN]-(cr)
-MATCH (b)<-[:DONATED_TO]-(ph)
-MATCH (b)<-[:PERFORMED_AT]-(fcb)
-MATCH (sc)<-[:STARS_IN]-(o)
+MATCH (b:Person {name: 'Beyonce'})<-[:STARS_IN]-(cr:Movie {name: 'Cadillac Records'})
+MATCH (b)<-[:DONATED_TO]-(ph:Organization {name: 'Phoenix House'})
+MATCH (b)<-[:PERFORMED_AT]-(fcb:Event {name: 'First Couple's first inaugural ball'})
+WHERE NOT EXISTS (r:Relationship WHERE r.type = 'STARS_IN' AND r.start = sc AND r.end = o)
+RETURN sc
 

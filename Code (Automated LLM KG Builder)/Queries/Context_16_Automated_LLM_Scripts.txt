@@ -1,35 +1,34 @@
 How many awards was Beyonce nominated for at the 52nd Grammy Awards?
-MATCH (b:Person {name: 'Beyonce'})
-MATCH (mc:Concept {name: 'Music career'})
-MATCH (h:Event {name: 'Hiatus'})
-RETURN h
+
 
 Beyonce tied with which artist for most nominations by a female artist?
-MATCH (b:Person {name: 'Beyonce'})
-RETURN b
+MATCH (b:Person {name: 'Beyonce'})-[:HAS_EVENT]->(h:Event {name: 'Hiatus'})
+MATCH (b)-[:TO_CONCEPT]->(mc:Concept {name: 'Music career'})
+MATCH (b)-[:VISITED]->(gw:Landmark {name: 'Great Wall of China'})
+MATCH (b)-[:VISITED]->(ep:Landmark {name: 'Egyptian pyramids'})
+MATCH (b)-[:VISITED]->(a:Country {name: 'Australia'})
+MATCH (b)-[:VISITED]->(em:Event {name: 'English music festivals'})
+MATCH (b)-[:VISITED]->(mus:Organization {name: 'Museums'})
+MATCH (b)-[:VISITED]->(bp:Event {name: 'Ballet performances'})
+RETURN b, mc, h
 
 In 2010, Beyonce worked with which other famous singer?
 MATCH (b:Person {name: 'Beyonce'})
-RETURN b
+MATCH (mc:Concept {name: 'Music career'})
+MATCH (h:Event {name: 'Hiatus'})
+WHERE h IS RELATED TO b
+RETURN h
 
 How many number one singles did Beyonce now have after the song "Telephone"?
-MATCH (b:Person {name: 'Beyonce'})
-RETURN count((b)-[:HAS_NUMBER_ONE_SINGLE]->(s:Song)) AS numSongs
+
 
 Beyonce tied who for most number one singles by a female?
 MATCH (b:Person {name: 'Beyonce'})
-MATCH (mc:Concept {name: 'Music career'})
-MATCH (h:Event {name: 'Hiatus'})
-MATCH (m:Person {name: 'Mother'})
-MATCH (gw:Landmark {name: 'Great Wall of China'})
-MATCH (ep:Landmark {name: 'Egyptian pyramids'})
-MATCH (a:Country {name: 'Australia'})
-MATCH (em:Event {name: 'English music festivals'})
-MATCH (mus:Organization {name: 'Museums'})
-MATCH (bp:Event {name: 'Ballet performances'})
+RETURN b
 
 Beyonce received how many nominations at the 52nd Annual Grammy Awards?
-MATCH (b:Person {name: 'Beyonce'})
+MATCH (b:Person {name: 'Beyonce'})-[:HAS_CONCEPT]->(mc:Concept {name: 'Music career'})-[:HAS_EVENT]->(h:Event {name: 'Hiatus'})
+WHERE h.name = 'Hiatus'
 RETURN b
 
 What song was the sixth first place song for Beyonce?
@@ -40,18 +39,14 @@ MATCH (b:Person {name: 'Beyonce'})
 RETURN b
 
 Who did they tie with for six top songs?
-MATCH (b:Person {name: 'Beyonce'})
-MATCH (mc:Concept {name: 'Music career'})
-MATCH (h:Event {name: 'Hiatus'})
+MATCH (b:Person {name: 'Beyonce'})-[:TO]->(h:Event {name: 'Hiatus'})
 RETURN h
 
 Who did Beyonce tie with for the most nominations in a year?
-MATCH (b:Person {name: 'Beyonce'})
-RETURN b
+
 
 How many nominations did Beyoncé receive at the 52nd Grammy Awards ceremony?
-MATCH (b:Person {name: 'Beyonce'})
-RETURN b
+
 
 Who did Beyoncé tie with for the most Grammy nominations for female artists?
 MATCH (b:Person {name: 'Beyonce'})
@@ -59,15 +54,7 @@ RETURN b
 
 Beyoncé was a featured artist on which singer's hit, Telephone?
 MATCH (b:Person {name: 'Beyonce'})
-MATCH (mc:Concept {name: 'Music career'})
-MATCH (h:Event {name: 'Hiatus'})
-MATCH (m:Person {name: 'Mother'})
-MATCH (gw:Landmark {name: 'Great Wall of China'})
-MATCH (ep:Landmark {name: 'Egyptian pyramids'})
-MATCH (a:Country {name: 'Australia'})
-MATCH (em:Event {name: 'English music festivals'})
-MATCH (mus:Organization {name: 'Museums'})
-MATCH (bp:Event {name: 'Ballet performances'})
+RETURN b
 
 Who did Beyoncé and Lady Gaga tie with for the most number one hits since 1992?
 MATCH (b:Person {name: 'Beyonce'})

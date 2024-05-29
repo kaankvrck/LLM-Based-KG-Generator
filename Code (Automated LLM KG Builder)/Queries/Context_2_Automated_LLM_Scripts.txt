@@ -1,84 +1,66 @@
 In her music, what are some recurring elements in them?
 MATCH (b:Artist {name: "Beyoncé"})
-MATCH (b) CREATE Relationship {type: "HAS_LED_TO"} -> (r:Concept {name: "Relationships"})
-MATCH (b) CREATE Relationship {type: "HAS_SOLD"} -> (s)
-MATCH (b) CREATE Relationship {type: "HAS_WON"} -> (g)
+RETURN b, relationships(b)
 
 Time magazine named her one of the most 100 what people of the century?
 MATCH (b) CREATE Relationship {type: "HAS_SONG"} -> (l)
 MATCH (b) CREATE Relationship {type: "HAS_LED_TO"} -> (r)
 MATCH (b) CREATE Relationship {type: "HAS_SOLD"} -> (s)
 MATCH (b) CREATE Relationship {type: "HAS_WON"} -> (g)
-MATCH (b) WHERE b.name = "Beyoncé"
-MATCH (l) WHERE l.name = "Love"
-MATCH (r) WHERE r.name = "Relationships"
-MATCH (m) WHERE m.name = "Monogamy"
-MATCH (f) WHERE f.name = "Female sexuality"
-MATCH (e) WHERE e.name = "Empowerment"
-RETURN CONCAT("The self-described 'modern-day feminist', ", b.name, " creates songs that are often characterized by themes of ", l.name, ", ", r.name, ", and ", m.name, ", as well as ", f.name, " and ", e.name)
+RETURN b
 
 Which magazine declared her the most dominant woman musician?
 MATCH (b:Artist {name: "Beyoncé"})
-WHERE g IS NOT NULL
-RETURN g
+RETURN b
 
 In which decade did the Recording Industry Association of America recognize Beyonce as the The Top Certified Artist?
 MATCH (b:Artist {name: "Beyoncé"})
-MATCH (b) WHERE HAS_SONG Relationship INBOUND AND HAS_LED_TO Relationship INBOUND WITH b
-WHERE HAS_SOLD Relationship OUTBOUND AND HAS_WON Relationship OUTBOUND WITH b
-RETURN b
+MATCH (l:Concept {name: "Love"})
+MATCH (r:Concept {name: "Relationships"})
+MATCH (m:Concept {name: "Monogamy"})
+MATCH (f:Concept {name: "Female sexuality"})
+MATCH (e:Concept {name: "Empowerment"})
+MATCH (b) CREATE Relationship {type: "HAS_SONG"} -> (l)
+MATCH (b) CREATE Relationship {type: "HAS_LED_TO"} -> (r)
+MATCH (b) CREATE Relationship {type: "HAS_SOLD"} -> (s)
+MATCH (b) CREATE Relationship {type: "HAS_WON"} -> (g)
+* The `MATCH` statement matches the `Artist` node with the name "Beyoncé."
 
 What magazine rated Beyonce as the most powerful female musician in 2015?
 MATCH (b:Artist {name: "Beyoncé"})
-MATCH (b) CREATE Relationship {type: "HAS_WON"} -> (g)
-MATCH (b) CREATE Relationship {type: "HAS_SONG"} -> (f)
-RETURN "The text describes Beyoncé, a self-described 'modern-day feminist', whose songs often include themes of love, relationships, and empowerment."
+RETURN b
 
 How did Beyonce describe herself as a feminist?
-MATCH (b) CREATE Relationship {type: "HAS_SONG"} -> (l)
-MATCH (b) CREATE Relationship {type: "HAS_LED_TO"} -> (r)
-MATCH (b) CREATE Relationship {type: "HAS_SOLD"} -> (s)
-MATCH (b) CREATE Relationship {type: "HAS_WON"} -> (g)
+MATCH (b:Artist {name: "Beyoncé"})
+RETURN b
 
 In which years did Time rate Beyonce in the 100 most influential people in the world?
 MATCH (b:Artist {name: "Beyoncé"})
-MATCH (b) CREATE Relationship {type: "HAS_LED_TO"} -> (r)
-MATCH (b) CREATE Relationship {type: "HAS_SOLD"} -> (s)
-MATCH (b) CREATE Relationship {type: "HAS_WON"} -> (g)
-RETURN "In " + YEAR(b.createdAt) + ", Time rated Beyoncé in the 100 most influential people in the world."
+RETURN b
 
 How many records has Beyonce sold in her 19 year career?
-MATCH (b) CREATE Relationship {type: "HAS_SONG"} -> (l)
-MATCH (b) CREATE Relationship {type: "HAS_LED_TO"} -> (r)
-MATCH (b) CREATE Relationship {type: "HAS_SOLD"} -> (s)
-MATCH (b) CREATE Relationship {type: "HAS_WON"} -> (g)
-MATCH (s) WHERE s.value = 118000000 RETURN s
+MATCH (b:Artist {name: "Beyoncé"})-[:HAS_SOLD]->(s)
+RETURN SUM(s.unitsSold) AS totalSoldUnits
 
 How many records did Beyoncé sell as part of Destiny's Child?
-MATCH (b) CREATE Relationship {type: "HAS_SONG"} -> (l)
-MATCH (b) CREATE Relationship {type: "HAS_LED_TO"} -> (r)
-MATCH (b) CREATE Relationship {type: "HAS_SOLD"} -> (s)
-MATCH (b) CREATE Relationship {type: "HAS_WON"} -> (g)
-MATCH (s) WHERE s.value = 60 RETURN s
+MATCH (b:Artist {name: "Beyoncé"})-[:HAS_SOLD]->(s)
+MATCH (s)-[:HAS_SOLD]-(d)
+WHERE d.name = "Destiny's Child"
+RETURN count(d)
 
 After leaving Destiny's Child, how many records did Beyoncé release under her own name?
-MATCH (b) CREATE Relationship {type: "HAS_SONG"} -> (l)
-MATCH (b) CREATE Relationship {type: "HAS_LED_TO"} -> (r)
-MATCH (b) CREATE Relationship {type: "HAS_SOLD"} -> (s)
-MATCH (b) CREATE Relationship {type: "HAS_WON"} -> (g)
-MATCH (b) WHERE b.name = "Beyoncé" RETURN b.name, count(s) AS records_sold
+MATCH (b:Artist {name: "Beyoncé"})
+RETURN b.name, COUNT(b.songs) AS numSongs
+1. **MATCH (b:Artist {name: "Beyoncé"})**: This line matches the artist node with the name "Beyoncé."
+2. **RETURN b.name, COUNT(b.songs) AS numSongs**: This line returns the artist's name and the count of songs they have.
 
 How many Grammy awards has Beyoncé won?
-MATCH (b) CREATE Relationship {type: "HAS_SONG"} -> (l)
-MATCH (b) CREATE Relationship {type: "HAS_LED_TO"} -> (r)
-MATCH (b) CREATE Relationship {type: "HAS_SOLD"} -> (s)
-MATCH (b) CREATE Relationship {type: "HAS_WON"} -> (g)
-MATCH (g) RETURN g.name AS GrammyAwardsWon
+MATCH (b:Artist {name: "Beyoncé"})-[:HAS_WON]->(g)
+RETURN count(g) AS num_grammy_awards
+1. **MATCH (b:Artist {name: "Beyoncé"})-[:HAS_WON]->(g)**: This query matches the node "Beyoncé" with the relationship "HAS_WON" to the node "g" representing Grammy awards.
+2. **RETURN count(g) AS num_grammy_awards**: This line returns the count of nodes connected to "Beyoncé" through the relationship "HAS_WON" as the number of Grammy awards won by Beyoncé.
 
 What magazine named Beyoncé as the most powerful female musician for 2015?
-MATCH (b) CREATE Relationship {type: "HAS_SONG"} -> (l)
-MATCH (b) CREATE Relationship {type: "HAS_LED_TO"} -> (r)
-MATCH (b) CREATE Relationship {type: "HAS_SOLD"} -> (s)
-MATCH (b) CREATE Relationship {type: "HAS_WON"} -> (g)
-MATCH (b) RETURN b
+MATCH (b:Artist {name: "Beyoncé"})
+RETURN b
 

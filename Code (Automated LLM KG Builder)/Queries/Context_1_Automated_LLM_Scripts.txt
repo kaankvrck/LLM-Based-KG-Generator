@@ -1,98 +1,66 @@
 After her second solo album, what other entertainment venture did Beyonce explore?
 MATCH (b:Artist {name: "Beyoncé"})
-MATCH (bd:Album {name: "B'Day"})
-MATCH (b) -[: ACTED_IN] - (d:Movie {name: "Dreamgirls"})
-MATCH (b) -[: INFLUENCED] - (cr:Movie {name: "Cadillac Records"})
-MATCH (b) -[: RELEASED] - (i:Album {name: "I Am... Sasha Fierce"})
-MATCH (sl:Song {name: "Single Ladies (Put a Ring on It)")
+WHERE b.name = "Beyoncé"
+MATCH (bd:Album) WHERE bd.artist = b
+RETURN bd
+1. **MATCH (b:Artist {name: "Beyoncé"})**: This line matches a node with the name "Beyoncé" and binds it to the variable `b`.
+2. **WHERE b.name = "Beyoncé"**: This line filters the matched node to ensure it is the correct artist.
+4. **MATCH (bd:Album) WHERE bd.artist = b**: This line finds all albums associated with the artist and binds them to the variable `bd`.
+5. **RETURN bd**: This line returns the list of albums associated with the artist.
 
 Which artist did Beyonce marry?
-MATCH (b:Artist {name: "Beyoncé"})
-RETURN b
+MATCH (b:Artist {name: "Beyoncé"})-[:RELEASED]->(bd)
+RETURN bd
 
 To set the record for Grammys, how many did Beyonce win?
 MATCH (b:Artist {name: "Beyoncé"})
-MATCH (bd:Album) WHERE b released bd
-RETURN bd
-MATCH (b:Artist {name: "Beyoncé"})
-MATCH (d:Movie) WHERE b acted_in d
-RETURN d
-MATCH (b:Artist {name: "Beyoncé"})
-MATCH (cr:Movie) WHERE b influenced cr
-RETURN cr
-MATCH (b:Artist {name: "Beyoncé"})
-MATCH (sl:Song {name: "Single Ladies (Put a Ring on It)")
-RETURN sl
-MATCH (b:Artist {name: "Beyoncé"})
+MATCH (bd:Group {name: "Destiny's Child"})
 MATCH (cr:Movie {name: "Cadillac Records"})
-RETURN cr
+MATCH (sl:Song {name: "Single Ladies (Put a Ring on It)")
+WHERE b -[:RELEASED] - bd AND b -[:ACTED_IN] - d AND b -[:InfluENCED] - cr AND sl IS NOT NULL
+RETURN COUNT(*) AS num_awards
+1. **MATCH (b:Artist {name: "Beyoncé"}):** Matches the artist node named "Beyoncé".
+2. **MATCH (bd:Group {name: "Destiny's Child"}):** Matches the group node named "Destiny's Child".
+3. **MATCH (cr:Movie {name: "Cadillac Records"}):** Matches the movie node named "Cadillac Records".
+4. **MATCH (sl:Song {name: "Single Ladies (Put a Ring on It)"):** Matches the song node named "Single Ladies (Put a Ring on It)".
+5. **WHERE ...:** Filters the results based on the relationship and song existence.
+6. **RETURN COUNT(*) AS num_awards:** Counts the number of results and assigns it to the variable `num_awards`.
 
 For what movie did Beyonce receive  her first Golden Globe nomination?
-MATCH (b:Artist {name: "Beyoncé"})
-MATCH (dc:Group {name: "Destiny's Child"})
-MATCH (d:Movie {name: "Dreamgirls"})
-MATCH (tp:Movie {name: "The Pink Panther"})
-MATCH (o:Movie {name: "Obsessed"})
-MATCH (cr:Movie {name: "Cadillac Records"})
-MATCH (sl:Song {name: "Single Ladies (Put a Ring on It)")
+MATCH (b:Artist {name: "Beyoncé"})-[:ACTED_IN]->(d:Movie)
 WHERE d.name = "Dreamgirls"
-RETURN b.name, d.name
+RETURN b
 
 When did Beyonce take a hiatus in her career and take control of her management?
 MATCH (b:Artist {name: "Beyoncé"})
-MATCH (bd:Group {name: "Destiny's Child"})
-MATCH (d:Movie {name: "Dreamgirls"})
-MATCH (tp:Movie {name: "The Pink Panther"})
-MATCH (o:Movie {name: "Obsessed"})
-MATCH (cr:Movie {name: "Cadillac Records"})
-MATCH (sl:Song {name: "Single Ladies (Put a Ring on It)")
-RETURN "Beyoncé took a hiatus in 2010 and took over management of her career; her fourth album 4 (2011) was subsequently mellower in tone, exploring 1970s funk, 1980s pop, and 1990s soul."
+WHERE b.name = "Beyoncé"
+MATCH (b) -[: RELEASED] - (bd)
+RETURN bd.name
 
 Which album was darker in tone from her previous work?
 MATCH (b:Artist {name: "Beyoncé"})
-MATCH (bd)<-[r:RELEASED]-(b)
-RETURN bd
-MATCH (b)<-[a:ACTED_IN]-(d:Movie)
-RETURN d
-MATCH (b)<-[i:INFLUENCED]-(cr:Movie)
-RETURN cr
-MATCH (b) -[:RELEASED] - (bd)
+MATCH (b) -[: RELEASED] - (bd)
 WHERE bd.name = "B'Day (2006)"
 RETURN bd
 
 After what movie portraying Etta James, did Beyonce create Sasha Fierce?
-MATCH (b:Artist {name: "Beyoncé"})
-MATCH (cr:Movie {name: "Cadillac Records"})
-WHERE b -[: INFLUENCED] - cr
+MATCH (b:Artist {name: "Beyoncé"})-[:ACTED_IN]->(d:Movie {name: "Dreamgirls"})
+WHERE d.name = "Dreamgirls"
 RETURN b
 
 When did Destiny's Child end their group act?
-MATCH (b:Artist {name: "Beyoncé"})
-MATCH (bd:Group {name: "Destiny's Child"})
-MATCH (d:Movie {name: "Dreamgirls"})
-MATCH (tp:Movie {name: "The Pink Panther"})
-MATCH (o:Movie {name: "Obsessed"})
-MATCH (cr:Movie {name: "Cadillac Records"})
-MATCH (sl:Song {name: "Single Ladies (Put a Ring on It)")
-RETURN (b)
+MATCH (dc:Group {name: "Destiny's Child"})
+WHERE dc.name = "Destiny's Child"
+RETURN dc.end_date
 
 What was the name of Beyoncé's second solo album?
 MATCH (b:Artist {name: "Beyoncé"})
-RETURN b.name, b.released
+RETURN b.name, b.releasedAlbum
 
 What was Beyoncé's first acting job, in 2006?
-MATCH (b:Artist {name: "Beyoncé"})
-RETURN b
-MATCH (b) -[:RELEASED] - (bd)
-MATCH (b) -[:ACTED_IN] - (d)
-WHERE d.name = "Dreamgirls"
-RETURN d
-MATCH (b) -[:INFLUENCED] - (cr)
-WHERE cr.name = "Cadillac Records"
-RETURN cr
-MATCH (b) -[:RELEASED] - (bd)
-MATCH (sl:Song {name: "Single Ladies (Put a Ring on It)")
-RETURN sl
+MATCH (b:Artist {name: "Beyoncé"})-[:RELEASED]->(bd)
+WHERE bd.name = "B'Day (2006)"
+RETURN bd
 
 Who is Beyoncé married to?
 MATCH (b:Artist {name: "Beyoncé"})
@@ -100,10 +68,7 @@ RETURN b
 
 What is the name of Beyoncé's alter-ego?
 MATCH (b:Artist {name: "Beyoncé"})
-MATCH (bd:Album) WHERE b released bd
-RETURN bd.name AS album_name
-MATCH (b) -[:ACTED_IN] - (d:Movie)
-RETURN d.name AS movie_name
-MATCH (b) -[: INFLUENCED] - (cr:Movie)
-RETURN cr.name AS movie_name
+MATCH (b)-[:RELEASED]->(bd)
+WHERE bd.name = "B'Day (2006)"
+RETURN b.name
 

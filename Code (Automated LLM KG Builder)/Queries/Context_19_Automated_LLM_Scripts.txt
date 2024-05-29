@@ -1,72 +1,73 @@
 Beyonce's fourth album debuted in what year?
 MATCH (b:Celebrity {name: "Beyoncé"})
-RETURN b
+WHERE b.born = 1981
+MATCH (oh:Venue {name: "Ovation Hall"})
+WHERE oh.name = "Ovation Hall"
+MATCH (bi:Person {name: "Blue Ivy Carter"})
+WHERE bi.mother = b
+MATCH Relationship (b) -[:GAVE_BIRTH] - (bi)
+MATCH Relationship (b) -[:PERFORMED_FOR] - (oh)
+RETURN bi.name
 
 Which single had the most success from that album?
 MATCH (b:Celebrity {name: "Beyoncé"})-[:GAVE_BIRTH]->(bi:Person {name: "Blue Ivy Carter"})
-MATCH (b) -[:PERFORMED_FOR]->(oh:Venue {name: "Ovation Hall"})
-RETURN bi
+MATCH (oh:Venue {name: "Ovation Hall"})
+WHERE oh IN (b) -[:PERFORMED_FOR]->
+RETURN bi.name AS child_name, MAX(r.success) AS max_success
 
 Beyonce won an award for which activity in 2011?
 MATCH (b:Celebrity {name: "Beyoncé"})
-MATCH (bi:Person {name: "Blue Ivy Carter", mother: b})
-MATCH (lh:Organization {name: "Lenox Hill Hospital"})
-MATCH (ra:Location {name: "Revel Atlantic City"})
+WHERE b.born = 1981
+MATCH (b) -[:GAVE_BIRTH] - (bi:Person)
+WHERE bi.mother = b
 MATCH (oh:Venue {name: "Ovation Hall"})
-WHERE NOT EXISTS (MATCH (aw:Award) WHERE aw.winner = b AND aw.won_in = 2011)
-RETURN "No award won by Beyoncé in 2011"
+WHERE oh.name = "Ovation Hall"
+MATCH (b) -[:PERFORMED_FOR] - (oh)
+WHERE oh.name = "Ovation Hall"
+RETURN bi.name
 
 in 2011, Beyonce performed for four nights where?
 MATCH (b:Celebrity {name: "Beyoncé"})
-MATCH (oh:Venue {name: "Ovation Hall"})
 WHERE b.born = 1981
-RETURN "Beyoncé gave birth to Blue Ivy Carter on January 7, 2012, and performed for four nights at Ovation Hall to celebrate the resort's opening."
-
-When was Beyonce's forth album released?
-MATCH (b:Celebrity {name: "Beyoncé"})
-MATCH (bi:Person {name: "Blue Ivy Carter", mother: b})
-MATCH (lh:Organization {name: "Lenox Hill Hospital"})
+MATCH (oh:Venue {name: "Ovation Hall"})
+WHERE oh.name = "Ovation Hall"
 MATCH (ra:Location {name: "Revel Atlantic City"})
-MATCH (oh:Venue {name: "Ovation Hall"})
-
-How many copies did the album sell in its first week?
-MATCH (b:Celebrity {name: "Beyoncé"})
-MATCH (oh:Venue {name: "Ovation Hall"})
-WHERE b -[:GAVE_BIRTH] - (bi:Person {name: "Blue Ivy Carter"})
+WHERE ra.name = "Revel Atlantic City"
+MATCH (lh:Organization {name: "Lenox Hill Hospital"})
+WHERE lh.name = "Lenox Hill Hospital"
 RETURN bi
 
+When was Beyonce's forth album released?
+
+
+How many copies did the album sell in its first week?
+
+
 Who awarded Beyonce and award for writing?
-MATCH (b:Celebrity {name: "Beyoncé"})
-RETURN b
+
 
 When did she perform at the Roseland ballroom?
-MATCH (b:Celebrity {name: "Beyoncé"})
-WHERE NOT EXISTS (relationship BETWEEN b and (p:Person {name: "Blue Ivy Carter"}))
-RETURN "The text does not mention any performance of Beyoncé at the Roseland ballroom."
+
 
 What is the name of Beyoncé's fourth studio album?
 
 
 When was 4 released?
 MATCH (b:Celebrity {name: "Beyoncé"})
-MATCH (oh:Venue {name: "Ovation Hall"})
-WHERE b.name = "Beyoncé"
-RETURN "Beyoncé gave birth to Blue Ivy Carter on January 7, 2012, at Lenox Hill Hospital and performed for four nights at Revel Atlantic City's Ovation Hall to celebrate the resort's opening, her first performances since giving birth to Blue Ivy."
+RETURN b
 
 How many copies of 4 sold in the first week?
-MATCH (b:Celebrity {name: "Beyoncé"})-[:GAVE_BIRTH]->(bi:Person {name: "Blue Ivy Carter"})
-WHERE b.born = 1981
-RETURN bi
+
 
 What magazine did Beyoncé write a story for about her earlier hiatus?
 
 
 Where did Beyoncé perform for four nights of standing room only concerts in 2011?
 MATCH (b:Celebrity {name: "Beyoncé"})-[:GAVE_BIRTH]->(bi:Person {name: "Blue Ivy Carter"})
-WHERE b.born = 1981
+WHERE b.born = 1981 AND bi.mother = b
 MATCH (oh:Venue {name: "Ovation Hall"})
 WHERE oh.name = "Ovation Hall"
-MATCH (b) -[:PERFORMED_FOR] - (oh)
-WHERE oh.name = "Ovation Hall"
-RETURN oh.name AS performance_venue
+MATCH (ra:Location {name: "Revel Atlantic City"})
+WHERE ra.name = "Revel Atlantic City"
+RETURN oh.name AS performanceLocation
 
