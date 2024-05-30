@@ -1,0 +1,270 @@
+Which film featured Destiny's Child's first major single?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE a.name = 'Dangerously in Love'
+RETURN a
+
+For which song, did Destiny's Child take home the grammy award for best R&B performance?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE a.name = 'Dangerously in Love'
+RETURN a
+
+Who did Beyonce record with for the movie "The Best Man?"
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+RETURN a
+
+Beyonce's group changed their name to Destiny's Child in what year?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+MATCH (a)<-[:HAS_ALBUM]-(o)
+MATCH (o)<-[:MANAGED_BY]-(m)
+RETURN b, a, o, m
+
+The name Destiny's Child was based on a quote in which book of the Bible?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+MATCH (a)<-[r:HAS_ALBUM]-(o)
+RETURN r
+
+Debut song, "Killing Time" was featured on what movie's sound track?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+MATCH (a)<-[r]-(o)
+MATCH (a)<-[s]-(m)
+WHERE r IS NOT NULL AND s IS NOT NULL
+RETURN b, a, o, m
+
+What song won Best R&B Performance in the 43 Annual Grammy Awards?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love'})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE a.artist = b
+RETURN a.name AS album_name, a.artist, o.name AS organization_name, m.name AS manager_name, (a.name) + ' won Best R&B Performance in the 43 Annual Grammy Awards.' AS award_message
+
+What singer did Beyonce record a song with for the movie, ''The Best Man"?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+RETURN null
+
+Where did Destiny's Child get their name from?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a)<-[r]-(o)
+RETURN o, a, r
+
+Destiny's Child song, Killing Time, was included in which film's soundtrack?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE NOT (o) <-- (m)
+RETURN o
+
+What was Destiny's Child's first major song hit?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+MATCH (a)<-[r]-(o)
+RETURN a.name AS "Destiny's Child's first major song hit"
+
+When did Destiny's Child release their second album?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+MATCH (a)<-[:HAS_ALBUM]-(o)
+MATCH (b)<-[:HAS_PROBLEM]-(o)
+WHERE a.name = 'Dangerously in Love'
+RETURN b, o
+
+Who did Beyoncé sing a duet with for "The Best Man" film?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+RETURN NULL
+
+What mental health issue did Beyonce go through?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE a IS NOT NULL AND o IS NOT NULL AND m IS NOT NULL
+RETURN "Beyoncé went through depression following the split with Luckett and Roberson after being publicly blamed by the media, critics, and blogs for its cause."
+
+What event occured after she was publicly criticized?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE a.name = 'Dangerously in Love'
+FOREACH (r IN relationships(a) WHERE r.type = 'MANAGES') YIELD r
+RETURN b, a, YIELD r
+
+Who supported Beyonce through her depression?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+MATCH (b)-[:EXPERienced Depression]->(x)
+MATCH (x)<-[:HELPED]-(y)
+RETURN y.name AS person_who_helped
+
+What event caused Beyonce's depression?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE b.name = 'Beyoncé Giselle Knowles-Carter' AND a.name = 'Dangerously in Love' AND o.name = 'Destiny's Child' AND m.name = 'Mathew Knowles'
+RETURN 'The split with Luckett and Roberson after being publicly blamed for its cause caused Beyoncé's depression.'
+
+How long was Beyonce depressed?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+MATCH (b)-[:EXPERIENCE]-(o)
+MATCH (b)-[:MANAGED]-(m)
+WHERE NOT (b)-[:EXPERIENCE]-(o) AND NOT (b)-[:MANAGED]-(m)
+RETURN b, a, o, m
+
+Who helped Beyonce fight her depression the most?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.name, b.born
+
+Who replaced Luckett and Roberson in Destiny's Child?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE o.name = 'Destiny's Child' AND a.name = 'Dangerously in Love'
+RETURN b
+
+Who was blamed for Luckett and Roberson leaving Destiny's Child?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE a.artist = o AND m.name = 'Mathew Knowles'
+MATCH (c:Person {name: 'Luckett'})
+MATCH (d:Person {name: 'Roberson'})
+WHERE a.artist = o AND c.name = 'Luckett' AND d.name = 'Roberson'
+
+Who helped Beyoncé overcome her depression during the years following the Destiny's Child split?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (a)<-[r]-(f:Person)
+WHERE f.name = 'Farrah Franklin'
+RETURN b, a, r
+
+Which newest member was removed from Destiny's Child?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE a IS NOT NULL
+RETURN b, a, o, m
+
+"Charlie's Angels" featured which single from the band members?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+MATCH (a)<-[:HAS_ALBUM]-(b)
+MATCH (o)<-[:MEMBER_OF]-(b)
+MATCH (m)<-[:MANAGES]-(o)
+WHERE a.name = 'Dangerously in Love'
+RETURN b, a, o, m
+
+How many weeks did their single "Independent Women Part I" stay on top?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+MATCH (a)<-[r]-(o)
+MATCH (a)<-[t]-(m)
+RETURN a, r, t
+
+For what network, did Beyonce land a major movie role in?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE NOT EXISTS ((o)<-[:MANAGES]-(m))
+RETURN b
+
+Their third album, Survivor, sold how many during its first week?
+MATCH (a:Album) WHERE a.name = 'Survivor'
+MATCH (b:Person) WHERE b.name = 'Beyoncé Giselle Knowles-Carter'
+RETURN a.name, a.artist, b.name, a.sales
+
+What French composer wrote the original opera ''Carmen'' in the 19th century?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE b IS NOT NULL AND a IS NOT NULL AND o IS NOT NULL AND m IS NOT NULL
+RETURN b, a, o, m
+
+What album caused a lawsuit to be filed in 2001?
+MATCH (a:Album) WHERE a.name = 'Survivor'
+MATCH (o:Organization) WHERE o.name = 'Destiny's Child'
+MATCH (b:Person) WHERE b.name = 'Beyoncé Giselle Knowles-Carter'
+
+Independent Women Part I was on which 2000 film's soundtrack?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+MATCH (a)<-[:HAS_ALBUM]-(o)
+MATCH (a)<-[:CONTAINS_SONG]-(i)
+WHERE i.name = 'Independent Women Part I'
+RETURN i.name
+
+Which film did Beyoncé star in 2001 with Mekhi Phifer?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE a.name = 'Dangerously in Love' AND m.name = 'Mathew Knowles'
+RETURN b, a, o, m
+
+What was the name of Destiny Child's third album?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Survivor'})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE a.name = 'Survivor'
+RETURN b, a, o, m
+
+Who filed a lawsuit over Survivor?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE a.name = 'Dangerously in Love'
+RETURN a
+
+When did Destiny's Child announce their hiatus?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love', artist: b})
+MATCH (o:Organization {name: 'Destiny's Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+WHERE b IS NOT NULL AND a IS NOT NULL AND o IS NOT NULL AND m IS NOT NULL
+RETURN b, a, o, m
+

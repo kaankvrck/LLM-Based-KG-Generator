@@ -1,0 +1,249 @@
+Who did Beyonce star with in the movie, "Austin Powers in Goldmember"?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+Which three countries did Beyonce's song "Work It Out" achieve top ten status?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Country {name: 'America'})
+MATCH (h:City {name: 'Houston'})
+MATCH (g:Group {name: 'Destiny''s Child'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (f:Song {name: 'Crazy in Love'})
+MATCH (b)<-[:ESTABLISHED_AS_SOLO_ARTIST]-(d)
+MATCH (b)<-[:WON_GRAMMY_AWARDS]-(d)
+MATCH (f)<-[:SONG_OF]-(b)
+RETURN b, d, f
+
+Beyonce starred with Cuba Gooding Jr. in which film?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+Who did Beyonce record the lead single with in the movie "The Fighting Temptations"?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+Which other song from the soundtrack did better in the charts?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (f:Song {name: 'Crazy in Love'})
+MATCH (g:Group {name: 'Destiny''s Child'})
+MATCH (h:City {name: 'Houston'})
+RETURN f.name AS song_name, MAX(g.CONTAINS(f)) AS chart_position
+
+What film did Beyonce appear in with Mike Myers?
+
+
+What large amount did the movie "Goldmember" gross?
+
+
+What genre of movie did Beyonce star in with Cuba Gooding, Jr?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:HAS_ALBUM]->(d:Album {name: 'Dangerously in Love'})
+RETURN b
+
+What song was the lead single from the film's sound track?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (f:Song {name: 'Crazy in Love'})
+RETURN f.name
+
+How did the critics view the movie, ''The Fighting Temptations''?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+What film did Beyoncé star in with Mike Myers in 2002?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+What was Beyoncé's character called in Austin Powers in Goldmember?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+Which song did Beyoncé release as the lead single for Austin Powers in Goldmember's soundtrack?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+What musical comedy did Beyoncé star in along with Cuba Gooding, Jr. in 2003?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+What song did Beyoncé release as the lead single from The Fighting Tempations?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN NULL
+
+What was the highest Beyonce's first solo recording achieved in the Billboard Hot 100?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (f:Song {name: 'Crazy in Love'})
+RETURN f.name AS song_name, MAX(f.position) AS highest_position
+WHERE f.song_of = d
+
+Beyonce's first album by herself was called what?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+How many has "Dangerously in Love" sould worldwide since its debut?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})<-[:HAS_ALBUM]-(d:Album {name: 'Dangerously in Love'})
+RETURN d.name, count(d) AS numSold
+
+Beyonce's first number one song was which song?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (f:Song {name: 'Crazy in Love'})
+RETURN f
+
+How many top five singles came from her first album?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:HAS_ALBUM]->(d:Album {name: 'Dangerously in Love'})
+RETURN COUNT(f:Song {name: 'Crazy in Love'}) WHERE f IN g:Song CONTAINS d
+1. **MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:HAS_ALBUM]->(d:Album {name: 'Dangerously in Love'})** - This part of the query matches the person 'Beyoncé Giselle Knowles-Carter' with the album 'Dangerously in Love'.
+2. **RETURN COUNT(f:Song {name: 'Crazy in Love'}) WHERE f IN g:Song CONTAINS d** - This part of the query counts the number of songs with the name 'Crazy in Love' that are contained in the album 'Dangerously in Love'.
+
+Beyonce's first solo album in the U.S. with what artist in the lead single?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (f:Song {name: 'Crazy in Love'})
+WHERE b.name = 'Beyoncé Giselle Knowles-Carter' AND d.name = 'Dangerously in Love' AND f.name = 'Crazy in Love'
+RETURN "Beyoncé's first solo album in the U.S. with what artist in the lead single?" AS answer
+1. **MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'}):** This line matches a person node named Beyoncé Giselle Knowles-Carter.
+2. **MATCH (d:Album {name: 'Dangerously in Love'}):** This line matches an album node named 'Dangerously in Love'.
+3. **MATCH (f:Song {name: 'Crazy in Love'}):** This line matches a song node named 'Crazy in Love'.
+4. **WHERE b.name = 'Beyoncé Giselle Knowles-Carter' AND d.name = 'Dangerously in Love' AND f.name = 'Crazy in Love':** This line filters the results based on the provided conditions.
+5. **RETURN "Beyoncé's first solo album in the U.S. with what artist in the lead single?" AS answer:** This line returns a string answer with the desired information.
+
+What solo album did Beyonce release in 2003?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (f:Song {name: 'Crazy in Love'})
+WHERE b IS THE OWNER OF d AND d IS THE ALBUM OF f
+RETURN f
+
+ The album, Dangerously in Love  achieved what spot on the Billboard Top 100 chart?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})<-[:ESTABLISHED_AS_SOLO_ARTIST]-(d:Album {name: 'Dangerously in Love'})
+RETURN d.name, d.position
+
+"The Closer I get to You" was recorded with which artist?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (f:Song {name: 'The Closer I Get to You'})
+WHERE f.songwriter = b
+RETURN f
+
+Which artist was associated with Beyoncé's premiere solo recording?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+When did Beyoncé release her first solo album?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.name, b.born
+
+What is the lead single on Beyoncé's first album?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (f:Song {name: 'Crazy in Love'})
+RETURN f.name AS lead_single
+
+Who helped Beyoncé earn a Grammy award for Best R&B Performance by a Duo or Group at the 46th annual Grammy Awards?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})<-[:WON_GRAMMY_AWARDS]-(d:Album {name: 'Dangerously in Love'})
+RETURN d
+
+How many awards did Beyoncé win at the 46th Grammy's Awards?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})<-[:WON_GRAMMY_AWARDS]-(d:Album {name: 'Dangerously in Love'})
+RETURN COUNT(d)
+
+Destiny's Child's final album was named what?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (g:Group {name: 'Destiny''s Child'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (f:Song {name: 'Crazy in Love'})
+WHERE d IS b's solo album
+RETURN f
+
+Destiny's Child got a star on the Hollywood Walk of Fame in what year?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (g:Group {name: 'Destiny''s Child'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+WHERE d.name = 'Dangerously in Love'
+RETURN g.name
+
+In what year did Beyonce embark on her Dangerously in Love tour of Europe?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Country {name: 'America'})
+MATCH (h:City {name: 'Houston'})
+MATCH (g:Group {name: 'Destiny''s Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (g)<-[:MANAGES]-(m)
+MATCH (b)<-[:FOUNDED]-(g)
+MATCH (b)<-[:ESTABLISHED_AS_SOLO_ARTIST]-(d)
+MATCH (b)<-[:WON_GRAMMY_AWARDS]-(d)
+MATCH (a)<-[:HAS_CITY]-(h)
+MATCH (b)<-[:SINGER]-(a)
+MATCH (b)<-[:Songwriter]-(a)
+MATCH (b)<-[:Record_Producer]-(a)
+MATCH (b)<-[:Actress]-(a)
+MATCH (f:Song {name: 'Crazy in Love'})
+MATCH (f)<-[:SONG_OF]-(b)
+MATCH (g)<-[:CONTAINS]-(f)
+MATCH (h)<-[:HAS_CITY]-(a)
+MATCH (b)<-[:HAS_ALBUM]-(d)
+MATCH (b)<-[:WON_GRAMMY_AWARDS]-(d)
+RETURN b
+
+What was the name of the final album of Destiny's Child?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:ESTABLISHED_AS_SOLO_ARTIST]->(d:Album {name: 'Dangerously in Love'})
+RETURN d.name
+
+It was announced that Destiny's Child would  disban in what European city?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Country {name: 'America'})
+MATCH (h:City {name: 'Houston'})
+MATCH (g:Group {name: 'Destiny''s Child'})
+MATCH (m:Manager {name: 'Mathew Knowles'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (g)<-[:MANAGES]-(m)
+MATCH (b)<-[:FOUNDED]-(g)
+MATCH (b)<-[:ESTABLISHED_AS_SOLO_ARTIST]-(d)
+MATCH (b)<-[:WON_GRAMMY_AWARDS]-(d)
+MATCH (a)<-[:HAS_CITY]-(h)
+MATCH (b)<-[:HAS_ALBUM]-(d)
+MATCH (b)<-[:WON_GRAMMY_AWARDS]-(d)
+
+When did Destiny's Child get their star on the Hollywood Walk of Fame?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (g:Group {name: 'Destiny''s Child'})
+MATCH (a:Country {name: 'America'})
+MATCH (h:City {name: 'Houston'})
+
+What was the name of Beyoncé's European start that started in November 2003?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Country {name: 'America'})
+MATCH (h:City {name: 'Houston'})
+MATCH (g:Group {name: 'Destiny''s Child'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+WHERE b IS THE OWNER OF d AND d IS NOT NULL AND b IS NOT NULL
+RETURN b
+
+Who did Beyoncé tour with for the Verizon Lades First Tour?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Country {name: 'America'})
+MATCH (h:City {name: 'Houston'})
+MATCH (g:Group {name: 'Destiny''s Child'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (f:Song {name: 'Crazy in Love'})
+WHERE b is the artist of song f and d is the album of song f
+RETURN "Beyoncé's first solo recording was on Jay Z's '03 Bonnie & Clyde' that was released in October 2002."
+
+What major event did Beyoncé perform at on February 1, 2004?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Country {name: 'America'})
+MATCH (h:City {name: 'Houston'})
+MATCH (g:Group {name: 'Destiny''s Child'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (f:Song {name: 'Crazy in Love'})
+WHERE b IS THE singer of f AND f IS THE song of d AND d IS THE album of b
+RETURN "Beyoncé performed the American national anthem at Super Bowl XXXVIII on February 1, 2004."
+
+What is the name of the final studio album from Destiny's Child?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+RETURN d.name
+
