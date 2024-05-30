@@ -1,0 +1,164 @@
+When did Beyonce start becoming popular?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.createdAt
+
+What areas did Beyonce compete in when she was growing up?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.areas
+
+When did Beyonce leave Destiny's Child and become a solo singer?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.name, b.yearOfBirth
+
+In what city and state did Beyonce  grow up? 
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.city, b.state
+
+In which decade did Beyonce become famous?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN YEAR(b.born) AS decade
+
+In what R&B group was she the lead singer?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:LEADS_SINGER]->(g:Group)
+RETURN g.name
+
+What album made her a worldwide known artist?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:HAS_MANAGER]->(m)<-[:LEADS_SINGER]-(g:Group {name: 'Destiny's Child'})<-[:CONTAINS_SONG]-(alb:Album {name: 'Dangerously in Love'})
+RETURN alb.name AS albumName
+
+Who managed the Destiny's Child group?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:HAS_MANAGER]->(m:Manager {name: 'Mathew Knowles'})
+RETURN m.name
+
+When did Beyoncé rise to fame?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.riseToFameDate
+
+What role did Beyoncé have in Destiny's Child?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:LEADS_SINGER]->(g:Group {name: 'Destiny's Child'})
+RETURN g.name AS group_name
+
+What was the first album Beyoncé released as a solo artist?
+MATCH (alb:Album) WHERE alb.name = 'Dangerously in Love'
+RETURN alb.name
+
+When did Beyoncé release Dangerously in Love?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:HAS_ALBUM]->(alb:Album)<-[:CONTAINS_SONG]-(song:Song)
+WHERE song.name = 'Déjà Vu'
+RETURN alb.name, song.releaseDate
+
+How many Grammy awards did Beyoncé win for her first solo album?
+MATCH (alb:Album {name: 'Dangerously in Love'})
+MATCH (aw:Award {name: 'Grammy Award'})
+WHERE alb.aw IN aw
+RETURN COUNT(aw)
+
+What was Beyoncé's role in Destiny's Child?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:LEADS_SINGER]->(g:Group {name: 'Destiny's Child'})
+RETURN g.name
+
+What was the name of Beyoncé's first solo album?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:HAS_ALBUM]->(alb:Album)
+RETURN alb.name
+
+After her second solo album, what other entertainment venture did Beyonce explore?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+AFTER MATCH (b)
+RETURN b.name, b.other_ventures
+
+Which artist did Beyonce marry?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.name
+
+To set the record for Grammys, how many did Beyonce win?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN count(b:Award) WHERE b:Award.name = 'Grammy Award'
+
+For what movie did Beyonce receive  her first Golden Globe nomination?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:STARS_IN]->(movie:Movie)
+WHERE movie.name = 'Dreamgirls'
+RETURN movie.name
+
+When did Beyonce take a hiatus in her career and take control of her management?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.name, b.hiatus, b.managementTakeover
+
+Which album was darker in tone from her previous work?
+MATCH (alb:Album) WHERE alb.name = 'Dangerously in Love'
+MATCH (alb)-[CONTAINS_SONG]->(song:Song)
+MATCH (song)<-[CONTAINS_SONG]-(alb)
+WHERE alb.name = 'Dangerously in Love'
+RETURN song
+
+After what movie portraying Etta James, did Beyonce create Sasha Fierce?
+
+
+When did Destiny's Child end their group act?
+MATCH (g:Group) WHERE g.name = 'Destiny's Child'
+RETURN g.name, MAX(g.end_date)
+
+What was the name of Beyoncé's second solo album?
+MATCH (alb:Album) WHERE alb.name = 'Dangerously in Love'
+RETURN alb.name
+
+What was Beyoncé's first acting job, in 2006?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.firstActingJob
+
+Who is Beyoncé married to?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b.relationships.spouse.name
+
+What is the name of Beyoncé's alter-ego?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'}) RETURN b.name
+
+In her music, what are some recurring elements in them?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:HAS_MANAGER]->(m)<-[:LEADS_SINGER]-(g:Group {name: 'Destiny's Child'})
+RETURN g
+
+Time magazine named her one of the most 100 what people of the century?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+Which magazine declared her the most dominant woman musician?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+In which decade did the Recording Industry Association of America recognize Beyonce as the The Top Certified Artist?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN YEAR(b.yearOfBirth) AS decade
+
+What magazine rated Beyonce as the most powerful female musician in 2015?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+How did Beyonce describe herself as a feminist?
+
+
+In which years did Time rate Beyonce in the 100 most influential people in the world?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN YEAR(b.birthYear) AS years
+
+How many records has Beyonce sold in her 19 year career?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN COUNT(*) AS numRecords
+
+How many records did Beyoncé sell as part of Destiny's Child?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN count(*)
+
+After leaving Destiny's Child, how many records did Beyoncé release under her own name?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (alb:Album)<-[:CONTAINS_SONG]-(song:Song) WHERE song.name = 'Déjà Vu'
+RETURN count(alb)
+
+How many Grammy awards has Beyoncé won?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN count(b.awards)
+
+What magazine named Beyoncé as the most powerful female musician for 2015?
+MATCH (b:Person) WHERE b.name = 'Beyoncé Giselle Knowles-Carter'
+MATCH (alb:Album) WHERE alb.name = 'Dangerously in Love'
+MATCH (song:Song) WHERE song.name = 'Déjà Vu'
+RETURN alb.name AS magazine
+

@@ -1,62 +1,31 @@
-When did Beyonce have her first child?
+How many dates did Beyonce's "The Mrs. Carter Show" entail?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-RETURN b.born
+MATCH (a:Location {name: 'Houston', state: 'Texas'})
+MATCH (g:Group {name: 'Destiny's Child', leader: b})
+MATCH (d:Album {name: 'Dangerously in Love'})
+WHERE b IS INCLUDED IN d
+RETURN COUNT(*) AS numDates
 
-Where did Beyonce give birth to her first child?
+One of Beyonce's most successful tours yet was which one?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Location {name: 'Houston', state: 'Texas'})
+CREATE (a) <-[:RAISED_IN]-(b)
+MATCH (g:Group {name: 'Destiny's Child', leader: b})
+CREATE (b) <-[:LEADS]-(g)
+MATCH (d:Album {name: 'Dangerously in Love'})
+CREATE (b) <-[:INCLUDED]-(d)
+MATCH (b) <-[:WON]-(g)
 RETURN b
 
-Beyonce's first child is named what?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-RETURN b.name
-
-Her first appearance performing since giving birth was where?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-WHERE b.occupation = 'Singer, Songwriter, Record Producer, Actress'
-RETURN b.firstAppearance
-
-When did Beyonce have her first child?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-RETURN b
-
-What was the child's name?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-RETURN b
-
-How long was it after the birth of her child before she performed again?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-WHERE b.born = 1981
-MATCH (a:Album {name: 'Dangerously in Love'})
-WHERE a.name = 'Dangerously in Love'
-MATCH (b) <-[:INCLUDED]-(a)
-RETURN b.name AS "Beyoncé's first album after the birth of her child"
-
-How many nights did she perform at Atlantic City?
-
-
-When did Beyoncé give birth to a daughter?
-
-
-What did Beyoncé name her daughter?
-
-
-Where was Blue Ivy born?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-RETURN b
-
-Where was Beyoncé's first public performance after giving birth?
+Beyonce wrote which song for the movie "Epic"?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
 RETURN b.name, b.occupation, b.nationality
-WHERE b.name = 'Beyoncé Giselle Knowles-Carter'
 
-How many nights did Beyoncé play at the resort?
-
-
-Destiny's Child released a compilation album about which topic?
+Beyonce voiced a character in which animated film?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
 MATCH (a:Location {name: 'Houston'})
 MATCH (g:Group {name: 'Destiny's Child', leader: b})
-MATCH (d:Album {name: 'Love Songs'})
+MATCH (d:Album {name: 'Dangerously in Love'})
 MATCH (b) <-[:LEADS]-(g)
 MATCH (a) <-[:RAISED_IN]-(g)
 MATCH (b) <-[:ESTABLISHED]-(d)
@@ -64,77 +33,63 @@ MATCH (b) <-[:INCLUDED]-(d)
 MATCH (b) <-[:WON]-(g)
 RETURN b
 
-Beyonce's documentary movie was called what?
+When did the tour begin?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
 RETURN b
 
-What did Beyonce sign in 2013?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-RETURN b
-
-When did Destiny's Child release its album "Love Songs"?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (a:Location {name: 'Houston'})
-MATCH (g:Group {name: 'Destiny's Child', leader: b})
-MATCH (d:Album {name: 'Dangerously in Love'})
-WHERE b IS NOT NULL AND d IS NOT NULL
-RETURN b, d
-
-What was the title of the added track in Love Songs?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (d:Album {name: 'Love Songs'})
-WHERE b IS INCLUDED IN d
-RETURN d.name
-
-At whose inauguration did she perform the National Anthem?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (a:Location {name: 'Houston', state: 'Texas'})
-MATCH (g:Group {name: 'Destiny's Child', leader: b})
-MATCH (d:Album {name: 'Dangerously in Love'})
-WHERE b IS NOT NULL AND d IS NOT NULL
-RETURN "In January 2013, Beyoncé performed the American national anthem singing along with a pre-recorded track at President Obama's second inauguration in Washington, D.C."
-
-How many Tweets per minute did the half time show get?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (a:Location {name: 'Houston'})
-MATCH (g:Group {name: 'Destiny's Child', leader: b})
-MATCH (d:Album {name: 'Dangerously in Love'})
-WHERE b IS NOT NULL AND d IS NOT NULL
-RETURN "The halftime show at Super Bowl XLVII got " + (b) ->[:INCLUDED]-(d)  + " tweets per minute." AS result
-
-When did Destiny's Child release Love Songs?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (a:Location {name: 'Houston', state: 'Texas'})
-MATCH (g:Group {name: 'Destiny's Child', leader: b})
-MATCH (d:Album {name: 'Dangerously in Love'})
-WHERE b.born = 1981
-RETURN b, g, d
-
-What was the new track for Love Songs?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (d:Album {name: 'Dangerously in Love'})
-WHERE b IS INCLUDED IN d
-RETURN d.name
-
-What did Beyoncé sing at President Obama's second inauguration?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (a:Location {name: 'Houston'})
-MATCH (g:Group {name: 'Destiny's Child', leader: b})
-MATCH (d:Album {name: 'Dangerously in Love'})
-WHERE b IS THE artist OF d
-RETURN b, d
-
-What event did Beyoncé perform at one month after Obama's inauguration? 
+Of what event was Beyonce honorary chair?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
 WHERE b.name = 'Beyoncé Giselle Knowles-Carter'
-MATCH (a:Location {name: 'Washington, D.C.'})
-MATCH (g:Group {name: 'Destiny's Child', leader: b})
-MATCH (d:Album {name: 'Dangerously in Love'})
-WHERE d.name = 'Dangerously in Love'
-MATCH (b) <-[:ESTABLISHED]-(d)
 RETURN b
 
-What is the name of Beyoncé's documentary film?
+What part did she voice for the movie Epic?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-RETURN b.name
+MATCH (a:Location {name: 'Houston'})
+MATCH (g:Group {name: 'Destiny's Child', leader: b})
+MATCH (d:Album {name: 'Dangerously in Love'})
+WHERE b IS RELATED TO d AND d IS RELATED TO g
+RETURN b
+
+What song did Beyonce record for the film Epic?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+WHERE b IS INCLUDED IN d
+RETURN b, d
+
+What was the name of Beyoncé's tour that she started on April 15?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+How many dates did the Mrs. Carter Show World Tour have?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:LEADS]->(g:Group {name: 'Destiny's Child'})
+MATCH (a:Location {name: 'Houston', state: 'Texas'})-[:RAISED_IN]->(g)
+MATCH (b) <-[:ESTABLISHED]-(d:Album {name: 'Dangerously in Love'})
+MATCH (b) <-[:INCLUDED]-(d)
+MATCH (b) <-[:WON]-(g)
+RETURN COUNT(g.dates) AS numDates
+
+Which Amy Winehouse song did Beyoncé cover and release in May 2014?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Location {name: 'Houston'})
+MATCH (g:Group {name: 'Destiny's Child', leader: b})
+MATCH (d:Album {name: 'Dangerously in Love'})
+WHERE b IS NOT NULL AND d IS NOT NULL
+RETURN d.name AS album_name, b.name AS artist_name
+
+Beyoncé was an honorary chair of the 2013 what?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Location {name: 'Houston'})
+MATCH (g:Group {name: 'Destiny's Child', leader: b})
+MATCH (d:Album {name: 'Dangerously in Love'})
+MATCH (b) <-[:LEADS]-(g)
+MATCH (a) <-[:RAISED_IN]-(g)
+MATCH (b) <-[:ESTABLISHED]-(d)
+MATCH (b) <-[:WON]-(g)
+RETURN b
+
+Which character in the film, Epic, was voiced by Beyoncé?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (d:Album {name: 'Dangerously in Love'})
+WHERE b IS RELATED TO d
+RETURN b.name AS character
 

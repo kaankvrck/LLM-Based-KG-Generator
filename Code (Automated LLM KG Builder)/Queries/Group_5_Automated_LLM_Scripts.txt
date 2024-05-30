@@ -1,137 +1,248 @@
-How many albums did Beyonce sell in the first week when she released her second album?
+Beyonce got married in 2008 to whom?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (j:Person {name: 'Jay Z'})
+CREATE (b)<-[:MARRIED_TO]-(j)
+
+Her third album, "I am...Sasha Fierce" was released when?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (i:Album {name: 'I Am... Sasha Fierce'})
+RETURN i.name
+
+For which decade, did Beyonce have more top ten songs than any other woman?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album)<-[:ALBUM_OF]-(b)
+WHERE a.name IN ['I Am... Sasha Fierce', '4', 'Beyoncé']
+RETURN COUNT(a) AS numTopTenSongs
+
+Which singer beat out Beyonce for best video performance?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
 MATCH (a:Album {name: 'I Am... Sasha Fierce'})
-RETURN a.name AS albumName, a.grossSales AS albumGrossSales
+MATCH (y:Album {name: 'Beyoncé'})
+WHERE a IS NOT y
+RETURN "The video for 'Single Ladies (Put a Ring on It)' from the album 'I Am... Sasha Fierce' was not best female video, but it was the best video overall."
 
-The lead single from the album was which song?
+In 2009, Beyonce started her second world tour and grossed how much money?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (a:Album {name: 'Dangerously in Love'})
-MATCH (w:Album {name: 'B'Day'})
 MATCH (i:Album {name: 'I Am... Sasha Fierce'})
-RETURN a.name, w.name, i.name
+RETURN i.name, SUM(i.grossRevenue) AS totalGrossRevenue
 
-How many countries did her song "Irreplaceable" get number one status in?
+How did she reveal the marriage?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'I Am... Sasha Fierce'})
+WHERE a.name = 'I Am... Sasha Fierce'
+RETURN b, a
+
+When did Beyonce begin her second world tour?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (i:Album {name: 'I Am... Sasha Fierce'})
+WHERE b IS marriedTo(j:Person {name: 'Jay Z'}) AND i IS ALBUM_OF(b)
+RETURN i.releaseDate
+
+
+Who beat out Beyonce for Best Female Video ?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (i:Album {name: 'I Am... Sasha Fierce'})
+MATCH (a:Album {name: 'Dangerously in Love'})
+WHERE a.name = 'Dangerously in Love'
+MATCH (f:Album {name: '4'})
+WHERE f.name = '4'
+MATCH (j:Person {name: 'Jay Z'})
+WHERE j.name = 'Jay Z'
+CREATE (b)<-[:MARRIED_TO]-(j)
 RETURN b
 
-How many singles did her second album produce?
+How much did the second world tour make in dollars?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (a:Album {name: 'Dreamgirls'})
 MATCH (i:Album {name: 'I Am... Sasha Fierce'})
-RETURN COUNT(a.singles) AS num_singles
+MATCH (a:Album {name: 'Dangerously in Love'})
+WHERE i.name = a.name
+RETURN i.name, a.name, i.grossRevenue
 
-What birthday did Beyonce's album B'Day celebrate?
+When did Beyoncé get married?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (w:Album {name: 'B'Day'})
-WHERE w.name = 'B'Day'
-RETURN w.name
+MATCH (i:Album {name: 'I Am... Sasha Fierce'})
+WHERE b.name = 'Beyoncé Giselle Knowles-Carter' AND i.name = 'I Am... Sasha Fierce'
+RETURN i
 
-What artist did Beyonce duet with in the single, "Deja Vu''?
+
+Who did Beyoncé marry?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (j:Person {name: 'Jay Z'})
 MATCH (a:Album {name: 'Dangerously in Love'})
 MATCH (w:Album {name: 'B'Day'})
 MATCH (i:Album {name: 'I Am... Sasha Fierce'})
 MATCH (f:Album {name: '4'})
 MATCH (y:Album {name: 'Beyoncé'})
-MATCH (j:Person {name: 'Jay Z'})
 MATCH (e:Album {name: 'Cadillac Records'})
-RETURN b, a, w, i, f, y, j, e
+RETURN b, a, w, i, f, y, e, j
 
-How high did ''Deja Vu'' climb on the Billboard chart?
+Who is Beyoncé's alter ego?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-RETURN NULL
+RETURN b
 
-What is the name of Beyoncé's second album?
+The video for what song won Beyoncé the 2009 MTV Video of the Year award?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'I Am... Sasha Fierce'})
+MATCH (f:Album {name: '4'})
+MATCH (v:Video {songName: 'Single Ladies (Put a Ring on It)'})
+WHERE v.album = a
+RETURN v.songName
+
+
+Which prominent star felt the 2009 Female Video of the Year award should have went to Beyoncé instead of Taylor Swift?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
 MATCH (i:Album {name: 'I Am... Sasha Fierce'})
-RETURN i.name
-
-How many copies did B'Day sell during the first week of its release?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love'})
 MATCH (w:Album {name: 'B'Day'})
-RETURN w.name, COUNT(*) AS copiesSold
-WHERE w.name = 'B'Day'
+WHERE a.name = 'Dangerously in Love' AND w.name = 'B'Day AND i.name = 'I Am... Sasha Fierce'
+RETURN "The music video for 'Single Ladies' from the album 'I Am... Sasha Fierce' has been parodied and imitated around the world, spawning the 'first major dance craze' of the Internet age."
 
-Who collaborated with Beyoncé on the single, Deja Vu?
+Beyonce portrayed which character in the film, Cadillac Records?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (e:Album {name: 'Cadillac Records'})
+WHERE b IS MARRIED_TO j AND e IS ALBUM_OF b AND b PORTRAYS e
+RETURN e
+
+Beyonce gave her entire salary from Cadillac Records to which organization?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:MARRIED_TO]->(j:Person {name: 'Jay Z'})
+RETURN b.name, j.name
+
+Which song did Beyonce sing at the first couple's inaugural ball? 
+
+
+What genre of film was the movie, Obsessed, in which Beyonce starred in?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
 RETURN b
 
-Which single from B'Day was only released in the U.K.?
+A fight scene from the movie, Obsessed, won which award for Beyonce?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
 RETURN b
 
-What movie did Beyonce act in 2006?
+Where did Beyonce donate her salary from the movie Cadillac Records?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-WHERE b.name = 'Beyoncé Giselle Knowles-Carter'
-RETURN b.name, b.born
+WHERE NOT (b)<-[:PORTRAYED]-(e:Album {name: 'Cadillac Records'})
+RETURN null
 
-Her second movie Beyonce did was what film?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (a:Album {name: 'Dreamgirls'})
-RETURN a
-
-The single, "Listen" was featured in which movie?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:ALBUM_OF]->(a:Album {name: 'Dangerously in Love'})
-WHERE a.name = 'Dangerously in Love'
-RETURN a
-
-Beyonce's first world tour was when?
+What thriller film did Beyonce star in?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
 RETURN b
 
-How much money did Beyonce's tour make in 2007?
+What was the name of the woman she played in Obsessed?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+WHERE NOT b:Person {name: 'Beyoncé Giselle Knowles-Carter'}<-[:PORTRAYED]-(e:Album {name: 'Cadillac Records'})
+RETURN b
+
+How much more that the buget did the film gross?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'Dangerously in Love'})
+MATCH (w:Album {name: 'B'Day'})
+MATCH (i:Album {name: 'I Am... Sasha Fierce'})
+WHERE a.name = w.name OR w.name = i.name
+RETURN a.name, w.name, i.name, (w.name - a.name) * 1000000 AS gross_difference
+
+Which singer did Beyoncé portray in Cadillac Records?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:PORTRAYED]->(e:Album {name: 'Cadillac Records'})
+RETURN e
+
+Which organization received Beyoncé's entire Cadillac Records salary?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})<-[:MARRIED_TO]-(j:Person {name: 'Jay Z'})<-[:PORTRAYED]-(e:Album {name: 'Cadillac Records'})
+RETURN e
+
+Where did Beyoncé perform on January 20, 2009?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+Which thriller film did Beyoncé star in with Ali Larter?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+How many awards was Beyonce nominated for at the 52nd Grammy Awards?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+Beyonce tied with which artist for most nominations by a female artist?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
 MATCH (a:Album)<-[:ALBUM_OF]-(b)
 WHERE a.name = 'I Am... Sasha Fierce'
-RETURN a.name, a.grossRevenue
-1. **MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'}):** This line matches a person node with the name 'Beyoncé Giselle Knowles-Carter' and binds it to the variable `b`.
-3. **MATCH (a:Album)<-[:ALBUM_OF]-(b) WHERE a.name = 'I Am... Sasha Fierce':** This line matches an album node connected to `b` with the relationship "ALBUM_OF" and filters it to find the album named 'I Am... Sasha Fierce'.
-4. **RETURN a.name, a.grossRevenue:** This line returns the name of the album and its gross revenue.
+MATCH (j:Person) WHERE b.marriedTo = j
+RETURN b, a, j
 
-How many millions of dollars did ''The Pink Panther'' gross world-wide?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (a:Album {name: 'The Pink Panther'})
-RETURN a.name, a.grossRevenue
 
-What did Beyonce call her first concert tour?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-RETURN b.name, b.born
-
-Who was Beyonce's duet with in ''Beautiful Liar''?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (i:Album {name: 'I Am... Sasha Fierce'})
-MATCH (a:Album {name: 'Dangerously in Love'})
-WHERE a.name = 'Dangerously in Love'
-RETURN b, i, a
-
-Which film did Beyoncé star with Steve Martin in?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (h:Location {name: 'Houston, Texas'})
-MATCH (a:Album {name: 'Dangerously in Love'})
-MATCH (w:Album {name: 'B'Day'})
-WHERE b IS STARS_IN a AND a IS STARS_IN w
-RETURN a
-
-Beyoncé's role in Dreamgirls was based on what pop singer?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (i:Album {name: 'I Am... Sasha Fierce'})
-WHERE b.name = 'Beyoncé Giselle Knowles-Carter'
-RETURN i.name
-
-What was the lead single for the Dreamgirls soundtrack?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-MATCH (a:Album {name: 'Dreamgirls'})
-RETURN a.name, a.songs
-
-What was the name of Beyoncé's first international tour?
+In 2010, Beyonce worked with which other famous singer?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
 RETURN b
 
-What pop singer did a duet with Beyoncé on Beautiful Liar?
+How many number one singles did Beyonce now have after the song "Telephone"?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN count(b:Album {name: 'I Am... Sasha Fierce'}) - 1 AS number_of_number_one_singles
+
+Beyonce tied who for most number one singles by a female?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album)<-[:ALBUM_OF]-(b)
+RETURN a
+
+Beyonce received how many nominations at the 52nd Annual Grammy Awards?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+What song was the sixth first place song for Beyonce?
 MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
 MATCH (i:Album {name: 'I Am... Sasha Fierce'})
-MATCH (a:Album {name: 'B'Day'})
-MATCH (f:Album {name: '4'})
-WHERE a.name = 'B'Day'
-RETURN CONCAT('The duet with Beyoncé on Beautiful Liar was performed by ', i.name) AS answer
+RETURN i.songs[5]
+
+Who else appeared with Beyonce in Telephone?
+CREATE (b:Person {name: 'Beyoncé Giselle Knowles-Carter', born: 1981})
+CREATE (h:Location {name: 'Houston, Texas'})
+CREATE (d:Organization {name: 'Destiny's Child'})
+CREATE (a:Album {name: 'Dangerously in Love'})
+CREATE (b)<-[:BORN_IN]-(h)
+CREATE (d)<-[:MEMBER_OF]-(b)
+CREATE (a)<-[:ALBUM_OF]-(b)
+CREATE (w:Album {name: 'B'Day'})
+CREATE (w)<-[:ALBUM_OF]-(b)
+CREATE (i:Album {name: 'I Am... Sasha Fierce'})
+CREATE (i)<-[:ALBUM_OF]-(b)
+CREATE (f:Album {name: '4'})
+CREATE (f)<-[:ALBUM_OF]-(b)
+CREATE (y:Album {name: 'Beyoncé'})
+CREATE (y)<-[:ALBUM_OF]-(b)
+CREATE (b)<-[:MARRIED_TO]-(j:Person {name: 'Jay Z'})
+CREATE (e:Album {name: 'Cadillac Records'})
+CREATE (e)<-[:ALBUM_OF]-(b)
+CREATE (b)<-[:PORTRAYED]-(e)
+
+Who did they tie with for six top songs?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album {name: 'I Am... Sasha Fierce'})
+MATCH (i:Album {name: 'I Am... Sasha Fierce'})
+WHERE a = i
+RETURN b, count(a) AS numSongs
+
+
+Who did Beyonce tie with for the most nominations in a year?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (i:Album {name: 'I Am... Sasha Fierce'})
+MATCH (a:Album {name: 'Dangerously in Love'})
+WHERE i = a
+RETURN b
+
+
+How many nominations did Beyoncé receive at the 52nd Grammy Awards ceremony?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+Who did Beyoncé tie with for the most Grammy nominations for female artists?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+Beyoncé was a featured artist on which singer's hit, Telephone?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+RETURN b
+
+Who did Beyoncé and Lady Gaga tie with for the most number one hits since 1992?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
+MATCH (a:Album)<-[:ALBUM_OF]-(b)
+MATCH (h:Location {name: 'Houston, Texas'})
+WHERE a.name IN ['Dangerously in Love', 'B'Day', 'I Am... Sasha Fierce', '4', 'Beyoncé']
+RETURN b.name AS album_name, a.name AS song_name, h.name AS location
 
