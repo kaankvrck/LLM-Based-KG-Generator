@@ -1,52 +1,44 @@
-How many dates did Beyonce's "The Mrs. Carter Show" entail?
+Where did Beyonce release her 5th album to a huge surprise?
+MATCH (alb:CreativeWork {title: 'Dangerously in Love'})
+RETURN alb.title
 
+When did Beyonce get her fifth consecutive number one hit album?
+MATCH (alb:CreativeWork {title: 'Dangerously in Love'})
+RETURN alb.title
 
-One of Beyonce's most successful tours yet was which one?
+Where was the album released? 
+MATCH (alb:CreativeWork {title: 'Dangerously in Love'})
+WHERE alb.title = 'Dangerously in Love'
+RETURN alb.title
+
+Who joined Beyonce on her On The Run Tour?
+MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})-[:HAS_ALBUM]->(alb:CreativeWork {title: 'Dangerously in Love'})
+RETURN alb.title
+
+Who reported Beyonce to e the top earning woman in music?
 MATCH (alb:CreativeWork {title: 'Dangerously in Love'})
 RETURN alb
 
-Beyonce wrote which song for the movie "Epic"?
+How much more were her earnings that the year before?
+MATCH (alb:CreativeWork {title: 'Dangerously in Love'})
+RETURN alb.title
+
+When did Beyoncé release her fifth studio album?
+MATCH (alb:CreativeWork {title: 'Dangerously in Love'})
+WHERE alb.releaseDate = '13/12/2013'
+RETURN alb
+
+How many digital copies of her fifth album did Beyoncé sell in six days?
+MATCH (alb:CreativeWork {title: 'Dangerously in Love'})
+RETURN alb.title
+
+What song on Beyoncé's fifth studio album featured her husband?
+MATCH (alb:CreativeWork {title: 'Dangerously in Love'})
 MATCH (song:CreativeWork {title: 'Crazy in Love'})
-RETURN song
+WHERE alb.artist = song.artist
+RETURN song.title
 
-Beyonce voiced a character in which animated film?
-MATCH (b:Person {name: 'Beyoncé Giselle Knowles-Carter'})
-RETURN b
-
-When did the tour begin?
-MATCH (alb:CreativeWork {title: 'Dangerously in Love'})
-WHERE alb.artist = 'Beyoncé Giselle Knowles-Carter'
-RETURN alb.title
-1. **MATCH (alb:CreativeWork {title: 'Dangerously in Love'})**: This line matches a CreativeWork node with the title "Dangerously in Love."
-2. **WHERE alb.artist = 'Beyoncé Giselle Knowles-Carter'**: This line filters the results based on the artist of the album, which is Beyoncé Giselle Knowles-Carter.
-3. **RETURN alb.title**: This line returns the title of the album, which is "Dangerously in Love."
-
-Of what event was Beyonce honorary chair?
-MATCH (alb:CreativeWork {title: 'Dangerously in Love'})
-WHERE alb.artist = 'Beyoncé Giselle Knowles-Carter'
-RETURN alb
-
-What part did she voice for the movie Epic?
-
-
-What song did Beyonce record for the film Epic?
-
-
-What was the name of Beyoncé's tour that she started on April 15?
+What was the name of the tour featuring both Beyoncé and Jay Z?
 MATCH (alb:CreativeWork {title: 'Dangerously in Love'})
 RETURN alb.title
-* The `RETURN` statement returns the title of the CreativeWork node.
-
-How many dates did the Mrs. Carter Show World Tour have?
-
-
-Which Amy Winehouse song did Beyoncé cover and release in May 2014?
-
-
-Beyoncé was an honorary chair of the 2013 what?
-MATCH (alb:CreativeWork {title: 'Dangerously in Love'})
-RETURN alb.title
-
-Which character in the film, Epic, was voiced by Beyoncé?
-
 
