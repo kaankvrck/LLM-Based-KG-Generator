@@ -1,0 +1,166 @@
+When did Beyonce start becoming popular?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+WHERE b.birthdate = 1981-09-04
+RETURN b
+
+What areas did Beyonce compete in when she was growing up?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.areasOfCompetition
+
+When did Beyonce leave Destiny's Child and become a solo singer?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+WHERE b.birthdate = 1981-09-04
+RETURN b
+
+In what city and state did Beyonce  grow up? 
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.city
+
+In which decade did Beyonce become famous?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b
+
+In what R&B group was she the lead singer?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b
+
+What album made her a worldwide known artist?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+WHERE b.albums.name = "Dangerously in Love"
+RETURN b
+
+Who managed the Destiny's Child group?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b
+
+When did Beyoncé rise to fame?
+MATCH (b:Musician) WHERE b.name = "Beyoncé Giselle Knowles-Carter"
+RETURN b
+
+What role did Beyoncé have in Destiny's Child?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b
+
+What was the first album Beyoncé released as a solo artist?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.name, b.birthdate, b.nationality
+
+When did Beyoncé release Dangerously in Love?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.birthdate
+
+How many Grammy awards did Beyoncé win for her first solo album?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.numWonAwards
+
+What was Beyoncé's role in Destiny's Child?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b
+
+What was the name of Beyoncé's first solo album?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.name, b.birthdate, b.nationality, b.albums
+
+After her second solo album, what other entertainment venture did Beyonce explore?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.entertainment_ventures AFTER b.second_solo_album
+
+Which artist did Beyonce marry?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.married
+
+To set the record for Grammys, how many did Beyonce win?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.won_awards
+
+For what movie did Beyonce receive  her first Golden Globe nomination?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+WHERE b.nationality = "American"
+RETURN b
+
+When did Beyonce take a hiatus in her career and take control of her management?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+WHERE b.birthdate = 1981-09-04
+RETURN b
+
+Which album was darker in tone from her previous work?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.albums.name WHERE b.albums.name = "Beyoncé"
+
+After what movie portraying Etta James, did Beyonce create Sasha Fierce?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+WHERE b.birthdate = 1981-09-04
+RETURN b
+
+When did Destiny's Child end their group act?
+MATCH (dc:GirlGroup {name: "Destiny's Child"})
+RETURN dc.end_date
+
+What was the name of Beyoncé's second solo album?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.secondSoloAlbum
+
+What was Beyoncé's first acting job, in 2006?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.firstActingJob
+
+Who is Beyoncé married to?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b
+
+What is the name of Beyoncé's alter-ego?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.alter_ego
+
+In her music, what are some recurring elements in them?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.music.recurring_elements
+
+Time magazine named her one of the most 100 what people of the century?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b
+
+Which magazine declared her the most dominant woman musician?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b
+
+In which decade did the Recording Industry Association of America recognize Beyonce as the The Top Certified Artist?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+WHERE b.birthdate = 1981-09-04
+RETURN b
+
+What magazine rated Beyonce as the most powerful female musician in 2015?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (f:Forbes {name: "Forbes"})
+WHERE f.year = 2015 AND f.list = "Most Powerful Female Musicians"
+RETURN b
+
+How did Beyonce describe herself as a feminist?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.description
+
+In which years did Time rate Beyonce in the 100 most influential people in the world?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+WHERE b.birthdate BETWEEN 1981-09-04 AND YEAR(TODAY)
+RETURN b
+
+How many records has Beyonce sold in her 19 year career?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN SUM(b.recordsSold) AS totalRecordsSold
+
+How many records did Beyoncé sell as part of Destiny's Child?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.recordsSoldAsPartOfDestinysChild
+
+After leaving Destiny's Child, how many records did Beyoncé release under her own name?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN COUNT(b.recordsReleased) AS numRecordsReleased
+
+How many Grammy awards has Beyoncé won?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b.num_grammy_awards
+
+What magazine named Beyoncé as the most powerful female musician for 2015?
+MATCH (b:Musician {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b
+

@@ -1,0 +1,218 @@
+Beyonce would take a break from music in which year?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+WHERE NOT EXISTS (b.breakYear)
+RETURN b
+
+Which year did Beyonce and her father part business ways?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN NULL
+
+Which famous landmark did Beyonce see in China?
+
+
+In what year did Beyonce have her hiatus?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+WHERE NOT EXISTS (b.hiatus)
+RETURN b
+
+Who inspired this hiatus?
+
+
+When did she stop using her father as a manager?
+
+
+How long did the hiatus last?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+MATCH (f:Film)
+WHERE f.title IN ["Dreamgirls", "Obsessed"]
+RETURN b, fa, f
+
+What did Beyoncé announce in January 2010?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+WHERE fa.name = "4"
+RETURN b, fa
+
+Who suggested the hiatus for Beyoncé?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b
+
+Who did Beyoncé part ways with during her hiatus?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (b)-[r]-(x)
+WHERE NOT r IS NULL
+RETURN x
+
+How long did her hiatus last?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+MATCH (b)-[:HAS_ALBUM]->(fa)
+RETURN fa.name
+
+In which year was reports about Beyonce performing for Muammar Gaddafi surface?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+WHERE b.name = "Beyoncé Giselle Knowles-Carter"
+RETURN b
+
+Who did Beyonce donate the money to earned from her shows?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+MATCH (al:Album {name: "B'Day"})
+WHERE al.name = "B'Day"
+RETURN b, fa, al
+
+Beyonce became the first female artist to perform solo in 20 years at which stage?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+WHERE fa.name = "4"
+RETURN b, fa
+
+Which organization did Beyonce's spokespeople confirm her donations to?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (aw:Award {name: "Grammy Award"})
+MATCH (fa:Album {name: "4"})
+WHERE fa.name = "4"
+RETURN aw
+
+Beyonce was listed in 2011 as the highest paid performer per what?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+MATCH (al:Album {name: "B'Day"})
+MATCH (aw:Award {name: "Grammy Award"})
+RETURN b
+
+Hoe did everyone learn that Beyonce performed for Kaddafi?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b
+
+When did this leak happen?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+MATCH (f:Film {name: "Dreamgirls"})
+MATCH (ob:Film {name: "Obsessed"})
+MATCH (tp:Film {name: "The Pink Panther"})
+WHERE b.name = "Beyoncé Giselle Knowles-Carter" AND fa.name = "4" AND f.name = "Dreamgirls" AND ob.name = "Obsessed" AND tp.name = "The Pink Panther"
+RETURN b, fa, f, ob, tp
+
+Who did she tell about the donation?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})-[:DONATED_TO]->(aw:Award)
+RETURN b, aw
+
+Where did Beyonce perform in 2011?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+WHERE fa.name = "4"
+MATCH (c:Country {name: "America"})
+RETURN c.name
+1. **MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"}):** This line matches a node named `b` with the name "Beyoncé Giselle Knowles-Carter" and returns it.
+2. **MATCH (fa:Album {name: "4"}):** This line matches a node named `fa` with the name "4" and returns it.
+3. **WHERE fa.name = "4":** This line filters the returned node `fa` based on the condition that its name is "4".
+4. **MATCH (c:Country {name: "America"}):** This line matches a node named `c` with the name "America" and returns it.
+5. **RETURN c.name:** This line returns the name of the country associated with the album "4", which is "America".
+
+Who did Beyoncé perform privately for in 2011?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+RETURN b
+
+Who released the information about Beyoncé's performance for the Libyan ruler?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})-[:PERFORMED_FOR]->(c:Country {name: "Libya"})
+RETURN b
+
+Which organization did Beyoncé donate her pay for the private performance to?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (al:Album {name: "4"})
+MATCH (fa:Album {name: "4"})
+WHERE fa.name = al.name
+RETURN al.name, fa.name, b.name
+
+Beyoncé was the first female singer to headline what at the 2011 Glastonbury Festival?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+MATCH (g:Genre {name: "R&B"})
+WHERE fa.genre = g
+RETURN b, fa
+
+Beyonce's fourth album debuted in what year?
+MATCH (fa:Album {name: "4"})
+RETURN fa.name
+
+Which single had the most success from that album?
+MATCH (a:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+MATCH (fa:Album)<-[r]-(single)
+WHERE single.name = "Love on Top"
+RETURN single
+
+Beyonce won an award for which activity in 2011?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (aw:Award {name: "Grammy Award"})
+WHERE b.name = "Beyoncé Giselle Knowles-Carter"
+RETURN aw
+
+in 2011, Beyonce performed for four nights where?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+WHERE fa.name = "4"
+RETURN fa.name
+
+When was Beyonce's forth album released?
+MATCH (fa:Album {name: "4"})
+RETURN fa.name
+
+How many copies did the album sell in its first week?
+MATCH (a:Album {name: "4"})
+RETURN a.name, a.copiesSoldInFirstWeek
+
+Who awarded Beyonce and award for writing?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (aw:Award {name: "Grammy Award"})
+MATCH (fa:Album {name: "4"})
+MATCH (ab:Album {name: "B'Day"})
+WHERE fa.name = ab.name
+RETURN b, aw, fa
+
+When did she perform at the Roseland ballroom?
+MATCH (a:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+WHERE a.born = 1981
+MATCH (fa:Album {name: "4"})
+MATCH (a)<-[:PERFORMS]-(fa)
+RETURN a, fa
+
+What is the name of Beyoncé's fourth studio album?
+MATCH (fa:Album {name: "4"})
+RETURN fa.name
+
+When was 4 released?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+WHERE fa.releaseDate = "2011-06-28"
+RETURN fa
+
+How many copies of 4 sold in the first week?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+MATCH (fa)<-[r]-(al:Album)
+WHERE copies = 310000
+RETURN fa.name AS album_name, copies
+1. **MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"}):** Matches the artist node with the name "Beyoncé Giselle Knowles-Carter".
+2. **MATCH (fa:Album {name: "4"}):** Matches the album node with the name "4".
+3. **MATCH (fa)<-[r]-(al:Album)**: Relationships between the album and its associated album nodes are created.
+5. **WHERE copies = 310000:** Filters the results based on the number of copies sold, which is 310000.
+6. **RETURN fa.name AS album_name, copies:** Returns the album name and the number of copies sold.
+
+What magazine did Beyoncé write a story for about her earlier hiatus?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+MATCH (aw:Award {name: "Grammy Award"})
+MATCH (al:Album {name: "Dangerously in Love"})
+WHERE fa.name = al.name
+RETURN b, fa, aw, al
+
+Where did Beyoncé perform for four nights of standing room only concerts in 2011?
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+MATCH (fa:Album {name: "4"})
+MATCH (cr:Movie {name: "Cadillac Records"})
+WHERE fa.name = cr.title
+RETURN b, fa, cr
+
