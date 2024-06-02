@@ -1,51 +1,43 @@
-1//Find all the awards Beyoncé won at the 57th Annual Grammy Awards
+//How many awards did Beyonce take home at the 57th Grammy Awards?
+MATCH (beyonce:Person {name: "Beyonce"})-[:WON]->(award:Award)
+RETURN count(award) AS AwardsCount
 
-MERGE (Beyonce:Person {name: "Beyoncé"})
-MERGE (RnBPerformance:Award {name: "Best R&B Performance"})
-MERGE (RnBSong:Award {name: "Best R&B Song"})
-MERGE (SurroundSoundAlbum:Award {name: "Best Surround Sound Album"})
+//Which artist beat Beyonce out for Album of the year?
+MATCH (artist:Person)-[:WON]->(award:Award {name:"Album of the Year"})
+WHERE artist.name <> "Beyonce"
+RETURN artist.name
 
-MERGE (Beyonce)-[:WON]->(RnBPerformance)
-MERGE (Beyonce)-[:WON]->(RnBSong)
-MERGE (Beyonce)-[:WON]->(SurroundSoundAlbum)
+//Which magazine did Beyonce pose on the cover for in August of 2015?
+MATCH (beyonce:Person {name: "Beyonce"})-[:POSED_FOR]->(magazine:Magazine {date: "August 2015"})
+RETURN magazine.name
 
-2//List all the events Beyoncé headlined in 2015.
+//Beyonce would perform with who at Superbowl 50?
+MATCH (beyonce:Person {name: "Beyonce"})-[:PERFORMED_AT]->(event:Event {name: "Super Bowl 50"})
+RETURN event
 
-MERGE (Beyonce:Person {name: "Beyoncé"})
-MERGE (GlobalCitizenFestival:Event {name: "Global Citizen Festival", year: 2015, month: "September"})
-MERGE (MadeInAmericaFestival:Event {name: "Made in America Festival", year: 2015, month: "September"})
+//Beyonce lost to which artist for Album of the year?
+MATCH (artist:Person)-[:WON]->(award:Award {name:"Album of the Year"})
+WHERE artist.name <> "Beyonce"
+RETURN artist.name
 
-CREATE (Beyonce)-[:HEADLINED]->(GlobalCitizenFestival)
-CREATE (Beyonce)-[:HEADLINED]->(MadeInAmericaFestival)
+//Who did Beyonce perform next to during Superbowl 50?
+MATCH (event:Event {name: "Super Bowl 50"})<-[:PERFORMED_AT]-(artist:Person)
+WHERE artist.name <> "Beyonce"
+RETURN artist.name
 
-3//When did Beyoncé perform with Coldplay?
+//If Beyonce won three Grammies in 2015, how many was she nominated for?
+MATCH (beyonce:Person {name: "Beyonce"})-[:NOMINATED]->(award:Award)
+RETURN count(award) AS NominationsCount
 
-MERGE (Beyonce:Person {name: "Beyoncé"})
-MERGE (Coldplay:Musical_Group {name: "Coldplay"})
-MERGE (SuperBowl50:Event {name: "Super Bowl 50", year: 2016, month: "February"})
+//With what British band did Beyonce perform on their album?
+MATCH (band:Musical_Group)-[:FEATURES]->(song:Song)<-[:FEATURES]-(beyonce:Person {name: "Beyonce"})
+WHERE band.nationality = "British"
+RETURN band.name
 
-CREATE (Beyonce)-[:PERFORMED_WITH]->(Coldplay)
-CREATE (Beyonce)-[:PERFORMED_AT]->(SuperBowl50)
-CREATE (Coldplay)-[:PERFORMED_AT]->(SuperBowl50)
+//How many awards was Beyoncé nominated for at the 57th annual Grammys?
+MATCH (beyonce:Person {name: "Beyonce"})-[:NOMINATED]->(award:Award)
+RETURN count(award) AS NominationCount
 
-4//What was the name of the magazine Beyoncé was featured on in September 2015?
-
-MERGE (beyonce:Person {name: "Beyoncé"})
-MERGE (magazine:Magazine {name: "Vogue", issue: "September"})
-
-CREATE (beyonce)-[:FEATURED_IN_MAGAZINE]->(magazine)
-
-5//In which category was Beyoncé nominated but didn't win an award in 2015?
-
-MERGE (artist:Artist {name: "Beyoncé"})
-MERGE (award:Award {name: "Album Of The Year", year: 2015})
-MERGE (artist)-[:NOMINATED_FOR]->(award)
-
-6//Avec qui Beyoncé s'est-elle produite lors du Super Bowl 50 en février 2016?
-
-MERGE (event:Event {name: "Super Bowl 50"})
-MERGE (person)-[:PERFORMED_AT]->(event)
-
-7// How many Grammy awards has Beyoncé won?
-MATCH (b:Beyonce)-[:WON]->(a:Award {name: "Grammy"})
-RETURN count(a) AS GrammyCount
+//Who did Beyonce perform with at Super Bowl 50?
+MATCH (event:Event {name: "Super Bowl 50"})<-[:PERFORMED_AT]-(artist:Person)
+RETURN artist.name
