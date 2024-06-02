@@ -1,0 +1,172 @@
+//FIRST PARAGRAPH - 15
+// Question1: Beyonce portrayed which character in the film, "Cadillac Records"?
+MATCH (p:Person {name: "Beyonce"})-[:PERFORMED_AS]->(r:Role)-[:IS_IN]->(m:Movie {name: "Cadillac Records"})
+RETURN r.name AS Character
+
+// Question2: Beyonce gave her entire salary from "Cadillac Records" to which organization?
+MATCH (p:Person {name: "Beyonce"})-[:DONATED_SALARY_FROM {movie: "Cadillac Records"}]->(org)
+RETURN org.name AS Organization
+
+// Question3: Which song did Beyonce sing at the first couple's inaugural ball?
+MATCH (b:Person {name: "Beyonce"})-[:PERFORMED_IN]->(e:Event {name: "First Couple's First Inaugural Ball"}),
+      (b)-[:PERFORMED_SONG]->(s:Song),
+      (s)-[:PLAYED_AT]->(e)
+RETURN s.name AS SongPerformed
+
+// Question4: What genre of film was the movie, "Obsessed," in which Beyonce starred?
+MATCH (m:Movie {name: "Obsessed"})-[:HAS_GENRE]->(g:Genre)
+RETURN g.name AS Genre
+
+//Question5: A fight scene from the movie, "Obsessed," won which award for Beyonce?
+MATCH (m:Movie {name: "Obsessed"})-[:HAS]->(s:MovieScene {name: "final fight scene"})-[:WON]->(a:Award)
+RETURN a.name AS AwardName, a.year AS AwardYear
+
+//Question6: Where did Beyonce donate her salary from the movie "Cadillac Records"?
+MATCH (p:Person {name: "Beyonce"})-[:DONATED_SALARY_FROM {movie: "Cadillac Records"}]->(org)
+RETURN org.name AS Organization
+
+//Question7: What thriller film did Beyonce star in?
+MATCH (p:Person {name: "Beyonce"})-[:PERFORMED_AS]->(r:Role)-[:IS_IN]->(m:Movie)-[:HAS_GENRE]->(g:Genre {name: "Thriller"})
+RETURN m.name AS ThrillerMovie
+
+//Question8: What was the name of the woman she played in "Obsessed"?
+MATCH (p:Person {name: "Beyonce"})-[:PERFORMED_AS]->(r:Role)-[:IS_IN]->(m:Movie {name: "Obsessed"})
+RETURN r.name AS CharacterName
+
+//Question9: How much more than the budget did the film(Obsessed) gross?
+MATCH (m:Movie {name: "Obsessed"})
+RETURN m.gross - m.budget AS Profit
+
+//Question10: Which singer did Beyoncé portray in "Cadillac Records"?
+MATCH (p:Person {name: "Beyonce"})-[:PERFORMED_AS]->(r:Role)-[:IS_IN]->(m:Movie {name: "Cadillac Records"})
+RETURN r.name AS RoleName
+
+//Question11: Which organization received Beyoncé's entire "Cadillac Records" salary?
+MATCH (p:Person {name: "Beyonce"})-[:DONATED_SALARY_FROM {movie: "Cadillac Records"}]->(org)
+RETURN org.name AS Organization
+
+//Question12: Where did Beyoncé perform on January 20, 2009?
+MATCH (p:Person {name: "Beyonce"})-[:PERFORMED_IN]->(e:Event {date: "2009-01-20"})
+RETURN e.name AS EventName, e.year AS EventYear, e.date AS EventDate
+
+//Question13: Which thriller film did Beyoncé star in with Ali Larter?
+MATCH (b:Person {name: "Beyonce"})-[:PERFORMED_AS]->(:Role)-[:IS_IN]->(m:Movie)-[:HAS_GENRE]->(g:Genre {name: "Thriller"}),
+      (a:Person {name: "Ali Larter"})-[:PERFORMED_IN]->(m)
+RETURN m.name AS ThrillerMovie
+
+
+
+//SECOND PARAGRAPH -16
+// Question1: How many awards was Beyonce nominated for at the 52nd Grammy Awards?
+MATCH (b:Person {name: "Beyonce"})
+RETURN b.totalGrammyNominations_52nd AS TotalNominations
+
+//Question2: Beyonce tied with which artist for most nominations by a female artist?
+MATCH (b:Person {name: "Beyonce"})-[:TIE_MOST_NOMINATION_NUMBERS_WITH]->(a:Person)
+RETURN a.name AS ArtistName;
+
+//Question3: In 2010, Beyonce worked with which other famous singer?
+MATCH (b:Person {name: "Beyonce"})-[:COLLABORATED_WITH {year: 2010}]->(lg:Person)
+RETURN lg.name AS Collaborator;
+
+//Question4: How many number one singles did Beyonce now have after the song "Telephone"?
+MATCH (b:Person {name: "Beyonce"})
+RETURN b.numberOneSingles AS NumberOfNumberOneSingles;
+
+//Question5: Beyonce tied who for most number one singles by a female?
+MATCH (b:Person {name: "Beyonce"})-[:TIED_MOST_NUMBER_ONE_SINGLES_WITH]->(p:Person)
+RETURN p.name AS TiedWith;
+
+//Question6: Beyonce received how many nominations at the 52nd Annual Grammy Awards?
+MATCH (b:Person {name: "Beyonce"})
+RETURN b.totalGrammyNominations_52nd AS TotalNominations
+
+//Question7: What song was the sixth first place song for Beyonce?
+MATCH (b:Person {name: "Beyonce"})-[:PERFORMED_SONG]->(s:Song)
+WHERE s.is_sixth = true
+RETURN s.name AS SixthFirstPlaceSong;
+
+//Question8: Who else appeared with Beyonce in "Telephone"?
+MATCH (b:Person {name: "Beyonce"})-[:FEATURES]->(mv:MusicVideo {name: "Telephone Music Video"})
+MATCH (p:Person)-[:HAS]->(s:Song {name: "Telephone Song"})
+WHERE p.name <> "Beyonce"
+RETURN p.name AS AppearedWith;
+
+//Question9: Who did they tie with for six top songs?
+MATCH (b:Person {name: "Beyonce"})-[:TIED_MOST_NUMBER_ONE_SINGLES_WITH]->(p:Person)
+RETURN DISTINCT p.name AS TiedWith
+UNION
+MATCH (lg:Person {name: "Lady Gaga"})-[:TIED_MOST_NUMBER_ONE_SINGLES_WITH]->(p:Person)
+RETURN DISTINCT p.name AS TiedWith;
+
+//Question10: Who did Beyonce tie with for the most nominations in a year?
+MATCH (b:Person {name: "Beyonce"})-[:TIE_MOST_NOMINATION_NUMBERS_WITH]->(p:Person)
+RETURN p.name AS TiedWith;
+
+//Question11: How many nominations did Beyoncé receive at the 52nd Grammy Awards ceremony?
+MATCH (b:Person {name: "Beyonce"})
+RETURN b.totalGrammyNominations_52nd AS NumberOfNominations;
+
+//Question12: Who did Beyoncé tie with for the most Grammy nominations for female artists?
+MATCH (b:Person {name: "Beyonce"})-[:TIE_MOST_NOMINATION_NUMBERS_WITH]->(p:Person)
+RETURN p.name AS TiedWith;
+
+//Question13: Beyoncé was a featured artist on which singer's hit, "Telephone"?
+MATCH (b:Person {name: "Beyonce"})-[:FEATURES]->(mv:MusicVideo {name: "Telephone Music Video"})
+MATCH (lg:Person)-[:HAS]->(s:Song {name: "Telephone Song"})-[:HAS]->(mv)
+RETURN lg.name AS MainArtist;
+
+//Question14: Who did Beyoncé and Lady Gaga tie with for the most number one hits since 1992?
+MATCH (b:Person {name: "Beyonce"})-[:TIED_MOST_NUMBER_ONE_SINGLES_WITH]->(p:Person)
+MATCH (lg:Person {name: "Lady Gaga"})-[:TIED_MOST_NUMBER_ONE_SINGLES_WITH]->(p)
+RETURN p.name AS TiedWith;
+
+
+
+//PARAGRAPH -17
+//Question1: Beyonce would take a break from music in which year?
+MATCH (b:Person {name: "Beyonce"})-[:ANNOUNCED]->(c:Concept {name: "hiatus"})
+RETURN c.year AS HiatusYear;
+
+//Question2: Which year did Beyonce and her father part business ways?
+MATCH (b:Person {name: "Beyonce"})-[r:PARTED_BUSINESS_WAYS_WITH]->(f:Person {name: "Beyonce's father"})
+RETURN r.year AS PartedWaysYear;
+
+//Question3: Which famous landmark did Beyonce see in China?
+MATCH (b:Person {name: "Beyonce"})-[:VISITED]->(l:ArchitecturalStructure)-[:IS_IN]->(c:Country {name: "China"})
+RETURN l.name AS Landmark;
+
+//Question4: In what year did Beyonce have her hiatus?
+MATCH (b:Person {name: "Beyonce"})-[:ANNOUNCED]->(c:Concept {name: "hiatus"})
+RETURN c.year AS HiatusYear;
+
+//Question5: Who inspired this hiatus?
+MATCH (b:Person {name: "Beyonce"})-[:ANNOUNCED]->(c:Concept {name: "hiatus"})
+MATCH (m:Person {name: "Beyonce's mother"})-[:ADVISES]->(c)
+RETURN m.name AS InspiredBy;
+
+//Question6: When did she stop using her father as a manager?
+MATCH (b:Person {name: "Beyonce"})-[r:PARTED_BUSINESS_WAYS_WITH]->(f:Person {name: "Beyonce's father"})
+RETURN r.year AS PartedWaysYear;
+
+//Question7: How long did the hiatus last?
+MATCH (b:Person {name: "Beyonce"})-[:ANNOUNCED]->(c:Concept {name: "hiatus"})
+RETURN c.duration AS HiatusDuration;
+
+//Question8: What did Beyoncé announce in January 2010?
+MATCH (b:Person {name: "Beyonce"})-[:ANNOUNCED]->(c:Concept)
+WHERE c.date = "2010-01"
+RETURN c.name AS Announcement;
+
+//Question9: Who suggested the hiatus for Beyoncé?
+MATCH (b:Person {name: "Beyonce"})-[:ANNOUNCED]->(c:Concept {name: "hiatus"})
+MATCH (m:Person)-[:ADVISES]->(c)
+RETURN m.name AS SuggestedBy;
+
+//Question10: Who did Beyoncé part ways with during her hiatus?
+MATCH (b:Person {name: "Beyonce"})-[:PARTED_BUSINESS_WAYS_WITH]->(p:Person)
+RETURN p.name AS PartedWaysWith;
+
+//Question11: How long did her hiatus last?
+MATCH (b:Person {name: "Beyonce"})-[:ANNOUNCED]->(c:Concept {name: "hiatus"})
+RETURN c.duration AS HiatusDuration;

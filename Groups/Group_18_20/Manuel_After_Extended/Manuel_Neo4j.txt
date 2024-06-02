@@ -1,0 +1,89 @@
+CREATE (beyonce:Person {name: "Beyoncé"})
+CREATE (kaddafi:Person {name: "Muammar Gaddafi"})
+CREATE (family:Family {name: "family of Gaddafi"})
+CREATE (libya:Country {name: "Libyan"})
+CREATE (wikileaks:Organization {name: "WikiLeaks"})
+CREATE (document:Document {source: "WikiLeaks documents"})
+CREATE (news:News {source: "Beyoncé was one of many entertainers who performed for the family of Libyan ruler Muammar Gaddafi", releaseYear: "2011 "})
+CREATE (blueCarter:Person {name: "Blue Ivy Carter", birthDate: "2012-01-07" })
+CREATE (rollingstone:Organization {name: "Rolling Stone "})
+CREATE (huffingtonpost:Organization {name: "The Huffington Post "})
+CREATE (haitifund:Organization {name: "Clinton Bush Haiti Fund "})
+CREATE (album:Album {title: "4", releaseYear: "June 28, 2011" })
+CREATE (song1:Song {title: "Run the World (Girls) "})
+CREATE (song2:Song {title: "Best Thing I Never Had "})
+CREATE (song3:Song {title: "Love on Top "})
+CREATE (song4:Song {title: "Party "})
+CREATE (song5:Song {title: "Countdown "})
+CREATE (song6:Song {title: "I Care "})
+CREATE (song7:Song {title: "End of Time "})
+CREATE (story:Story {title: 'Eat, Play, Love'})
+CREATE (glastonbury:Event {name: "2011 Glastonbury Festival "})
+CREATE (nyabj:Association {name: 'New York Association of Black Journalists'})
+CREATE (roseland:Venue {name: 'Roseland Ballroom', performed_date: "In late 2011"})
+CREATE (hospital:Hospital {name: 'Lenox Hill Hospital' , location:' New York' })
+
+MERGE (libya)-[:RULED_BY]->(kaddafi)
+MERGE (family)-[:FAMİLY_OF]->(kaddafi)
+MERGE (beyonce)-[:PERFORMED_FOR]->(kaddafi)
+MERGE (beyonce)-[:PERFORMED_FOR]->(family)
+MERGE (document)-[:OBTAINED_BY]->(wikileaks)
+MERGE (document)-[:REVEALED_IN]->(news)
+MERGE (beyonce)-[:RELEASED]->(album)
+MERGE (album)-[:INCLUDED]->(song1)
+MERGE (album)-[:INCLUDED]->(song2)
+MERGE (album)-[:INCLUDED]->(song3)
+MERGE (album)-[:INCLUDED]->(song4)
+MERGE (album)-[:INCLUDED]->(song5)
+MERGE (album)-[:INCLUDED]->(song6)
+MERGE (album)-[:INCLUDED]->(song7)
+MERGE (beyonce)-[:WROTE]->(story)
+MERGE (beyonce)-[:WON_AWARD_FROM]->(nyabj)
+MERGE (beyonce)-[:PERFORMED_AT]->(roseland)
+MERGE (beyonce)-[:GAVE_BIRTH_AT]->(hospital)
+MERGE (beyonce)-[:PERFORMED_AT]->(resort)
+MERGE (beyonce)-[:PERFORMED_FOR]->(wikileaks)
+MERGE (rollingstone)-[:REPORTED]->(beyonce)
+MERGE (huffingtonpost)-[:CONFIRMED]->(beyonce)
+MERGE (beyonce)-[:DONATED_MONEY_TO]->(haitifund)
+MERGE (beyonce)-[:HEADLINED]->(glastonbury)
+MERGE (blueCarter)-[:DAUGHTER_OF]->(beyonce)
+MERGE (blueCarter)-[:BORN_AT]->(hospital)
+CREATE (stage:Stage {name: 'Pyramid Stage', location: 'Main Stage'})
+merge (beyonce)-[:PERFORMED_AT]->(stage)
+merge (stage)-[:PART_OF]->(festival)
+
+CREATE (billboardChart:Chart {name: 'Billboard 200'})
+CREATE (copiesSold:Sales {amount: 310000})
+
+merge (album)-[:DEBUTED_AT]->(billboardChart)
+merge (album)-[:SOLD]->(copiesSold)
+
+CREATE (essence:Magazine {name: 'Essence'})
+MERGE (beyonce)-[:WROTE_FOR]->(essence)
+
+Merge (beyonce)-[:DAUGHTER_OF]->(blueCarter)
+SET blueCarter.isFirstChild = true
+
+
+MERGE (beyonce)-[:has_first_child]->(blueCarter)
+
+
+CREATE (beyoncePerformance:Event {
+name: "Beyoncé's Performances at Revel Atlantic City's Ovation Hall",
+startDate: "Five months after Blue Ivy's birth",
+duration: "Four nights", location:"Revel Atlantic City"})
+
+
+CREATE (hall:Location {name: "Ovation Hall"})
+
+
+MERGE (beyonce)-[:PERFORMED_AT]->(beyoncePerformance)
+MERGE (beyoncePerformance)-[:CELEBRATED_RESORT_OPENING]->(resort)
+MERGE (beyoncePerformance)-[:TOOK_PLACE_AT]->(hall)
+MERGE (beyonce)-[:HAS_FIRST_PERFORMANCE_AFTER_BIRTH]->(beyoncePerformance)
+
+
+
+
+

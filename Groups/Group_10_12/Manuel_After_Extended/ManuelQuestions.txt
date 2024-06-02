@@ -1,0 +1,104 @@
+1.	What was the highest Beyonce's first solo recording achieved in the Billboard Hot 100?
+Cypher: MATCH (b {name: "Beyoncé Giselle Knowles"})-[:RECORDED]->(s {name: "First Solo"})-[:PEAKED_IN]->(chart {name: "U.S. Billboard Hot 100 Chart"})-[:WITH]->(n) RETURN n.name
+
+2.	Beyonce's first album by herself was called what?
+Cypher: MATCH (d)-[:IS]->(a {name: "First Solo Album"})-[:OF]->(b {name: "Beyoncé Giselle Knowles"}) RETURN d.name
+
+3.	How many has "Dangerously in Love" sould worldwide since its debut?
+Cypher: MATCH (album {name: "Dangerously in Love"})-[:IS]->(solo {name: "First Solo Album"})-[:SOLD]->(copies:Thing {name: "Copies"})-[:TOTAL_OF]->(amount) RETURN amount.name
+
+4.	Beyonce's first number one song was which song?
+Cypher: MATCH (song {name: "Crazy in Love"})-[:FIRST_NUMBER_1_SINGLE_OF]->(b {name: "Beyoncé Giselle Knowles"}) RETURN song.name
+
+5.	How many top five singles came from her first album?
+Cypher: MATCH (s)-[:REACHED]->(n {name: "Top Five"}) MATCH (s)-[:SINGLE_OF]->(a {name: "Dangerously in Love"})-[:IS]->(a2 {name: "First Solo Album"})-[:OF]->(b {name: "Beyoncé Giselle Knowles"}) RETURN count(n)
+
+6.	Beyonce's first solo album in the U.S. with what artist in the lead single?
+Cypher: MATCH (leadSingle)-[:LEAD_SINGLE_OF]->(album)-[:IS]->(a2 {name: "First Solo Album"}) MATCH (leadSingle)-[:FEATURING]->(person) RETURN person.name
+
+7.	What solo album did Beyonce release in 2003?
+Cypher: MATCH (album)-[:CREATED_BY]->(artist {name: "Beyoncé Giselle Knowles"}) MATCH (album)-[:IS]->(typeOfAlbum) WHERE typeOfAlbum.name =~ '.*Solo Album.*' MATCH (album)-[:RELEASED_AT]->(releaseDate) WHERE releaseDate.name =~ '.*2003.*' RETURN album.name
+
+8.	The album, Dangerously in Love achieved what spot on the Billboard Top 100 chart? (NO ANSWER)
+Cypher: MATCH (album)-[:DEBUTED_ATOP]->(chart)-[:WITH]->(rank) WHERE album.name =~ ".*Dangerously.*in.*Love" AND chart.name =~ ".*Billboard.*100" RETURN rank.name
+
+9.	"The Closer I get to You" was recorded with which artist?
+Cypher: MATCH (single {name: "The Closer I Get to You"})-[:WON]->(award)-[:WITH]->(artist) RETURN artist.name
+
+10.	Which artist was associated with Beyoncé's premiere solo recording?
+Cypher: MATCH (single)-[:FIRST_NUMBER_1_SINGLE_OF]->(creator {name: "Beyoncé Giselle Knowles"}) MATCH (single)-[:FEATURING]->(artist) RETURN artist.name
+
+11.	When did Beyoncé release her first solo album?
+Cypher: MATCH (album)-[:IS]->(a {name: "First Solo Album"}) MATCH (album)-[:CREATED_BY]->(artist {name: "Beyoncé Giselle Knowles"}) MATCH (album)-[:RELEASED_AT]->(date) RETURN date.name
+
+12.	What is the lead single on Beyoncé's first album?
+Cypher: MATCH (album)-[:IS]->(a) WHERE a.name =~ '.*First.*Album.*' MATCH (album)-[:CREATED_BY]->(artist) WHERE artist.name =~ '.*Beyoncé.*' MATCH (single)-[:LEAD_SINGLE_OF]->(album) RETURN single.name
+
+13.	Who helped Beyoncé earn a Grammy award for Best R&B Performance by a Duo or 'Group at the 46th annual Grammy Awards?
+Cypher: MATCH (single)-[:SINGLE_OF]->(album)-[:CREATED_BY]->(artist) WHERE artist.name =~ '.*Beyoncé.*' MATCH (single)-[:WON]->(award)-[:WITH]->(artist2) WHERE award.name =~ '.*Performance by a Duo or Group.*' RETURN artist2.name
+
+14.	How many awards did Beyoncé win at the 46th Grammy's Awards?
+Cypher: MATCH (s1)-[:SINGLE_OF]->(album)-[:CREATED_BY]->(artist {name: 'Beyoncé Giselle Knowles'}) WHERE artist.name =~ '.*Beyoncé.*' MATCH (s1)-[:WON]->(award)-[:AT]->(p {name: '46th Annual Grammy Awards'}) MATCH (s2)-[:FIRST_NUMBER_1_SINGLE_OF]->(artist) MATCH (s2)-[:WON]->(award2)-[:AT]->(p2 {name: '46th Annual Grammy Awards'}) RETURN COUNT(DISTINCT award) + COUNT(DISTINCT award2)
+
+15.	Destiny's Child's final album was named what? (ADDED “:IS->FINAL_ALBUM” relationship, Iteration #1)
+Cypher: MATCH (album)-[:CREATED_BY]->(group {name: "Destiny's Child"}) MATCH (album)-[:IS]->(a) WHERE a.name =~ '.*Final.*Album.*' RETURN album.name
+
+16.	Destiny's Child got a star on the Hollywood Walk of Fame in what year?
+Cypher: MATCH (group {name: "Destiny's Child"})-[:ACCEPTED_A_STAR_AT]->(event)-[:AT]->(date) WHERE event.name =~ '.*Walk of Fame.*' RETURN date.name
+
+17.	In what year did Beyonce embark on her Dangerously in Love tour of Europe?
+Cypher: MATCH (artist)-[:EMBARKED_ON]->(tour)-[:AT]->(date) WHERE tour.name =~ '.*Dangerously in Love Tour.*' AND artist.name =~ '.*Beyoncé.*' MATCH (tour)-[:IN]->(place {name: "Europe"}) RETURN date.name
+
+18.	What was the name of the final album of Destiny's Child?
+Cypher: MATCH (album)-[:CREATED_BY]->(group {name: "Destiny's Child"}) MATCH (album)-[:IS]->(a) WHERE a.name =~ '.*Final.*Album.*' RETURN album.name
+
+19.	It was announced that Destiny's Child would  disban in what European city?
+Cypher: MATCH (p)-[:MEMBER_OF]->(group {name: "Destiny's Child"}) MATCH (p)-[:ANNOUNCED_DISBANDING_AT]->(date)-[:IN]->(place)-[:PART_OF]->(place2 {name: "Europe"}) RETURN place.name
+
+20.	When did Destiny's Child get their star on the Hollywood Walk of Fame?
+Cypher: MATCH (group {name: "Destiny's Child"})-[:ACCEPTED_A_STAR_AT]->(event)-[:AT]->(date) WHERE event.name =~ '.*Walk of Fame.*' RETURN date.name
+
+21.	What was the name of Beyoncé's European start that started in November 2003?
+Cypher: MATCH (person)-[:EMBARKED_ON]->(tour)-[:IN]->(place {name: "Europe"}) WHERE person.name =~ '.*Beyoncé.*' MATCH (tour)-[:AT]->(date) WHERE date.name =~ '.*November.*2003.*' RETURN tour.name
+
+22.	Who did Beyoncé tour with for the Verizon Lades First Tour? (Iteration #2)
+Cypher: MATCH (person)-[:EMBARKED_ON]->(tour)-[:WITH]->(person2) WHERE person.name =~ '.*Beyoncé.*' AND tour.name =~ '.*Verizon.*Tour.*' RETURN person2.name
+
+23.	What major event did Beyoncé perform at on February 1, 2004?
+Cypher: MATCH (person)-[:PERFORMED]->(performance)-[:AT]->(place)-[:AT]->(date) WHERE person.name =~ '.*Beyoncé.*' AND date.name =~ '.*February.*1.*2004' RETURN performance.name
+
+24.	What is the name of the final studio album from Destiny's Child?
+Cypher: MATCH (album)-[:CREATED_BY]->(group {name: "Destiny's Child"}) MATCH (album)-[:IS]->(thing) WHERE thing.name =~ '.*Final.*Studio.*Album.*' RETURN album.name
+
+25.	How many albums did Beyonce sell in the first week when she released her second album?
+Cypher: MATCH (a)-[:IS]->(a2)-[:OF]->(person) WHERE a2.name =~ '.*Second.*Album.*' AND person.name =~ '.*Beyoncé.*' MATCH (c {name: "Copies"})-[:AT]->(t {name: "First Week"})-[:AMOUNT_OF]->(n)-[:OF]->(a) RETURN n.name
+
+26.	The lead single from the album was which song?
+Cypher: MATCH (single)-[:LEAD_SINGLE_OF]->(album) RETURN single.name
+
+27.	How many countries did her song "Irreplaceable" get number one status in?
+Cypher: MATCH (single {name: "Irreplaceable"})-[:REACHED]->(rank {name: "Number One"})-[:IN]->(country) RETURN COUNT(country)
+
+28.	How many singles did her second album produce?
+Cypher: MATCH (ALBUM)-[:IS]->(A)-[:OF]->(ARTIST) WHERE A.name =~ '.*Second.*Album.*' AND ARTIST.name =~ '.*Beyoncé.*' MATCH (SONG)-[:SINGLE_OF]->(ALBUM) MATCH (SONG2)-[:LEAD_SINGLE_OF]->(ALBUM) RETURN COUNT(DISTINCT SONG) + COUNT(DISTINCT SONG2)
+
+29.	What birthday did Beyonce's album B'Day celebrate?
+Cypher: match (album)-[:RELEASED_AT]->(releaseDate)-[:IS]->(specialDate)-[:OF]->(artist) where album.name =~ ".*B'Day.*" and artist.name =~ '.*Beyoncé.*' return specialDate.name
+
+30.	What artist did Beyonce duet with in the single, "Deja Vu"?
+Cypher: match (song)-[:LEAD_SINGLE_OF]->(album)-[:IS]->(a)-[:OF]->(artist) where song.name =~ ".*Déjà.*Vu.*" and artist.name =~ '.*Beyoncé.*' match (song)-[:FEATURING]->(artist2) return artist2.name
+
+31.	How high did "Deja Vu" climb on the Billboard chart?
+Cypher: match (song)-[:REACHED]->(rank)-[:IN]->(chart) where song.name =~ ".*Déjà.*Vu.*" and chart.name =~ ".*Billboard.*Chart.*" return rank.name
+
+32.	What is the name of Beyoncé's second album?
+Cypher: match (album)-[:IS]->(a)-[:OF]->(artist) where a.name =~ '.*Second.*Album.*' AND artist.name =~ '.*Beyoncé.*' return album.name
+
+33.	How many copies did B'Day sell during the first week of its release?
+Cypher: match (album)-[:SOLD]->(copies)-[:AT]->(timePeriod)-[:AMOUNT_OF]->(amount)-[:OF]->(album) where album.name =~ ".*B'Day.*" and timePeriod.name =~ ".*First.*Week.*" return amount.name
+
+34.	Who collaborated with Beyoncé on the single, Deja Vu?
+Cypher: match (single)-[:FEATURING]->(artist) where single.name =~ ".*Déjà.*Vu.*" return artist.name
+
+35.	Which single from B'Day was only released in the U.K.?
+Cypher: match (single)-[:SINGLE_OF]->(album) where album.name =~ ".*B'Day.*" match (single)-[:RELEASED_ONLY_IN]->(place) where place.name =~ ".*United.*Kingdom.*" return single.name

@@ -1,0 +1,114 @@
+Question: What did Beyonce sign in 2013?
+Query: MATCH (beyonce)-[:signed]-(n) return n.side LIMIT 1
+Node before: MERGE (beyonce)-[:signedAgreement]->(warnerChappelMusic)
+Node after: MERGE (beyonce)-[:signed]->(agreement)
+CREATE (agreement:Agreement{name:"Agreement", side: “Warner Chappel Music”})
+========================================================================
+Question: When did Destiny's Child release its album "Love Songs"?
+Query: MATCH  n=(loveSongs) RETURN n.releaseDate
+Node before: CREATE (loveSongs:MusicAlbum{name:"Love Songs", topic:"Romance"})
+Node after: CREATE (loveSongs:MusicAlbum{name:"Love Songs", topic:"Romance", releaseDate: "January 2013"})
+========================================================================
+Question: What was the title of the added track in Love Songs?
+Query: MATCH (loveSongs)-[:included]-(n) where n.type=”Music Track” RETURN n.title
+Node before: None
+Node after: MERGE (loveSongs)-[:included]->(nuclear)
+CREATE (nuclear:TrackList{title: "Nuclear", type: "Music Track"})
+========================================================================
+Question: At whose inauguration did she perform the National Anthem?
+Query: MATCH (beyonce)-[:performedFor]-(n) return n.name LIMIT 1
+Node before: MERGE (beyonce)-[:performedFor{date:"January 2013"}]->(obamaSecondInauguration)
+Node after: No change
+========================================================================
+Question: How many Tweets per minute did the half time show get?
+Query: MATCH (beyonce)-[r:performedAt]->(superBowl) return r.numOftweets
+Node before: MERGE (beyonce)-[:performedAt]->(superBowl)
+Node after: MERGE (beyonce)-[:performedAt{success: "Second Most Tweeted Performance", numOftweets: "268,000 per minute"}]->(superBowl)
+========================================================================
+Question: When did Destiny's Child release Love Songs?
+Query: MATCH (destinysChild)-[:released]-(n) RETURN n.releaseDate LIMIT 1
+Node before: CREATE (loveSongs:MusicAlbum{name:"Love Songs", topic:"Romance", releaseDate: "January 2013"}) 
+Node after: No change
+========================================================================
+Question: What was the new track for Love Songs?
+Query: MATCH (loveSongs)-[:included]-(n) where n.type=”Music Track” RETURN n.title
+Node before: MERGE (loveSongs)-[:included]->(nuclear)
+CREATE (nuclear:TrackList{title: "Nuclear", type: "Music Track"})
+Node after: No change
+========================================================================
+Question: What did Beyoncé sing at President Obama's second inauguration?
+Query: MATCH (beyonce)-[r:performed]-(n) WHERE r.performedFor="Obama's Second Inauguration" RETURN n.name LIMIT 1
+Node before: MERGE (beyonce)-[:performed{date:"January 2013",in:"Washington DC"]->(americanNationalAnthem) 
+Node after: MERGE (beyonce)-[:performed{date:"January 2013",in:"Washington DC", performedFor: "Obama's Second Inauguration"}]->(americanNationalAnthem) 
+========================================================================
+Question: What event did Beyoncé perform at one month after Obama's inauguration? 
+Query: MATCH (beyonce)-[r:performedAt]-(n) WHERE r.date="following Month" RETURN n.name AS Event LIMIT 1
+Node before: MERGE (beyonce)-[:performedAt{success: "Second Most Tweeted Performance", numOftweets: "268,000 per minute"}]->(superBowl)
+Node after: MERGE (beyonce)-[:performedAt{success: "Second Most Tweeted Performance", numOftweets: "268,000 per minute", date: "following Month")}]->(superBowl)
+========================================================================
+Question: What is the name of Beyoncé's documentary film?
+Query: MATCH (beyonce)-[r:directed]-(n) WHERE n.type="DocumentaryFilm" RETURN n.name AS DocumentaryFilm LIMIT 1
+Node before: CREATE (lifeIsButADream:TelevisionShow{name:"Life Is But a Dream", type: "DocumentaryFilm"})
+Node after: No change
+========================================================================
+Question:  How many dates did Beyonce's "The Mrs. Carter Show" entail?
+Query: MATCH (TheMRSCarterShowWorldTour)  where TheMRSCarterShowWorldTour.numberOfDates is not null return TheMRSCarterShowWorldTour.numberOfDates
+Node before: CREATE (theMRSCarterShowWorldTour:ConcertTour{name:"The Mrs. Carter Show World Tour"})
+Node after: CREATE (theMRSCarterShowWorldTour:ConcertTour{name:"The Mrs. Carter Show World Tour", numberOfDates: "132"})
+========================================================================
+Question: One of Beyonce's most successful tours yet was which one?
+Query: MATCH (beyonce)-[:done]->(n) where n.success="Most Successful Tour" return n.name
+Node before: CREATE (theMRSCarterShowWorldTour:ConcertTour{name:"The Mrs. Carter Show World Tour", numberOfDates: "132"})
+Node after: CREATE (theMRSCarterShowWorldTour:ConcertTour{name:"The Mrs. Carter Show World Tour", numberOfDates: "132", success: "Most Successful Tour"})
+========================================================================
+Question: Beyonce wrote which song for the movie "Epic"?
+Query: MATCH (beyonce)-[:recorded]->(song)-[:cowrittenWith]->(sia)-[:recordedFor]->(n) RETURN n.name
+Node before: MERGE (beyonce)-[:recorded]->(song)
+MERGE (song)-[:coWrittenWith]->(sia)-[:recordedFor]->(riseUp)
+Node after: MERGE (beyonce)-[:recorded]->(song)-[:coWrittenWith]->(sia)-[:recordedFor]->(riseUp)
+========================================================================Question: Which character in the film, Epic, was voiced by Beyoncé?
+Query: MATCH (beyonce)-[:voiced]->(n) RETURN n.name
+Node before: MERGE (beyonce)-[:voiced]->(queenTara)
+Node after: No change
+========================================================================Question: When did the tour begin?
+Query: MATCH (TheMRSCarterShowWorldTour)  where TheMRSCarterShowWorldTour.startDate is not null return TheMRSCarterShowWorldTour.startDate
+Node before: CREATE (theMRSCarterShowWorldTour:ConcertTour{name:"The Mrs. Carter Show World Tour", numberOfDates: "132", success: "Most Successful Tour"})
+Node after: CREATE (theMRSCarterShowWorldTour:ConcertTour{name:"The Mrs. Carter Show World Tour", numberOfDates: "132", success: "Most Successful Tour", startDate: "April 15"})
+========================================================================Question: Of what event was Beyonce honorary chair?
+Query: MATCH (n)-[:was]->(beyonce) RETURN n.event
+Node before: CREATE (honoraryChair:Reputation{name:"Honorary chair"})
+Node after: CREATE (honoraryChair:Reputation{name:"Honorary chair", event: "Met Gala"})
+========================================================================Question: What song did Beyonce record for the film Epic?
+Query: MATCH (beyonce)-[:recorded]->(song)-[:cowrittenWith]->(sia)-[:recordedFor]->(n) RETURN n.name
+Node before: MERGE (beyonce)-[:recorded]->(song)
+Node after: No change
+========================================================================Question: What part did she voice for the movie Epic?
+Query: MATCH (beyonce)-[:voiced]->(n)-[:wasCharacterIn]->(epic) RETURN n.name
+Node before: MERGE (beyonce)-[:voiced]->(queenTara)
+MERGE (queenTara)-[:wasCharacterIn]->(epic)
+Node after: No change
+========================================================================Question: What was the name of Beyoncé's tour that she started on April 15?
+Query: MATCH (beyonce)-[:embarkedOn]->(n) WHERE n.startDate="April 15" RETURN n.name
+Node before: MERGE (beyonce)-[:embarkedOn]->(theMRSCarterShowWorldTour)
+CREATE (theMRSCarterShowWorldTour:ConcertTour{name:"The Mrs. Carter Show World Tour", numberOfDates: "132", success: "Most Successful Tour", startDate: "April 15"})
+Node after: No change
+========================================================================Question: How many dates did the Mrs. Carter Show World Tour have?
+Query: MATCH (TheMRSCarterShowWorldTour)  where TheMRSCarterShowWorldTour.numberOfDates is not null return TheMRSCarterShowWorldTour.numberOfDates
+Node before: CREATE (theMRSCarterShowWorldTour:ConcertTour{name:"The Mrs. Carter Show World Tour", numberOfDates: "132"})
+Node after: No change
+========================================================================Question: Which Amy Winehouse song did Beyoncé cover and release in May 2014?
+Query: MATCH (amyWinehouse)-[:hasSong]->(n)<-[:performed]-(beyonce) RETURN n.name LIMIT 1
+Node before: MERGE (amyWinehouse)-[:hasSong]->(backToBlack)
+MERGE (beyonce)-[:performed]->(backToBlack)-[:coveredOn]->(theGreatGatsby)
+Node after: No change
+========================================================================Question: Beyoncé was an honorary chair of the 2013 what?
+Query: MATCH (n)-[:was]->(beyonce) WHERE n.name=”Honorary chair” RETURN n.event
+Node before: MERGE (honoraryChair)-[:was]->(beyonce)
+CREATE (honoraryChair:Reputation{name:"Honorary chair", event: "Met Gala"})
+Node after: No change
+========================================================================
+Question: Beyonce voiced a character in which animated film?
+Query: MATCH (beyonce)-[:voiced]->(n)-[:wasCharacterIn]->(r) RETURN r.name
+Node before: MERGE (beyonce)-[:voiced]->(queenTara)
+MERGE (queenTara)-[:wasCharacterIn]->(epic)
+Node after: No change

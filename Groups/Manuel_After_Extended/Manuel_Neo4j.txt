@@ -1,0 +1,47 @@
+// Create Artists and Group
+CREATE (beyonce:Person {name: "Beyonce"})
+CREATE (beck:Person {name: "Beck"})
+
+CREATE (coldplay:Musical_Group {name: "Coldplay"})
+// Create Awards and Event
+
+CREATE (madeInAmerica:Event {name: "Made in America Festival"})
+CREATE (globalCitizen:Event {name: "Global Citizen Festival"})
+CREATE (superBowl:Event {name: "Super Bowl 50"})
+
+// Create Performances (already done from previous script)
+
+MERGE (beyonce)-[performed:PERFORMED_AT]->(superBowl)
+CREATE (coldplaySuperBowl:Performance {song: "Hymn for the Weekend"})
+CREATE (coldplay)-[:PERFORMED_AT]->(superBowl)
+// Create Albums 
+CREATE (beyonceAlbum:Album {title: "Morning Phase"})
+CREATE (coldplayAlbum:Album {title: "A Head Full of Dreams"})
+
+// Create Link Artists with Albums 
+MERGE (beyonce)-[:CREATED]->(beyonceAlbum)
+CREATE (coldplay)-[:CREATED]->(coldplayAlbum)
+
+// Headlined Events
+MERGE (beyonce)-[:HEADLINED]->(madeInAmerica)
+MERGE (beyonce)-[:HEADLINED]->(globalCitizen)
+
+// Create Award Wins
+MERGE (beyonce)-[:WON]->(award1:Award {name:"Best R&B Performance"})
+MERGE (beyonce)-[:WON]->(award2:Award {name:"Best R&B Song"})
+MERGE (beyonce)-[:WON]->(award3:Award {name:"Best Surround Sound Album"})
+MERGE (beck)-[:WON]->(award4:Award {name:"Album of the Year"})
+Merge (beyonce)-[:NOMINANTED]->(award4)
+Merge (beck)-[:NOMINANTED]->(award4)
+
+// Featured Performance
+CREATE (coldplaySuperBowl)-[:FEATURES]->(beyonce)
+
+// Create Song Win
+CREATE (beyonceSong:Song {title:"Drunk in Love"})-[:WON]->(award2)
+
+// Uncredited Feature
+CREATE (coldplaySong:Song {title:"Hymn for the Weekend"})<-[:FEATURES]-(beyonce)
+
+// Album Release
+CREATE (coldplay)-[:RELEASED]->(coldplayAlbum)

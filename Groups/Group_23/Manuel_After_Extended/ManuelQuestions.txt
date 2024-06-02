@@ -1,0 +1,37 @@
+// Where did Beyonce release her 5th album to a huge surprise?
+MERGE (beyonce:Person {name: "Beyoncé"})
+MERGE (itunes:Platform {name: "iTunes Store"})
+MERGE (albumBeyonce:Album {title: "Beyoncé", releaseDate: "2013-12-13"})
+MERGE (beyonce)-[:RELEASED_ON]->(itunes)
+MERGE (beyonce)-[:RELEASED]->(albumBeyonce)
+
+// When did Beyonce get her fifth consecutive number one hit album?
+// Already defined in albumBeyonce node
+
+// Who joined Beyonce on her On The Run Tour?
+MERGE (jayZ:Person {name: "Jay Z"})
+MERGE (onTheRunTour:Tour {name: "On the Run Tour", year: 2014})
+MERGE (beyonce)-[:JOINED_BY]->(jayZ)
+MERGE (beyonce)-[:PARTICIPATED_IN]->(onTheRunTour)
+MERGE (jayZ)-[:PARTICIPATED_IN]->(onTheRunTour)
+
+// Who reported Beyonce to be the top earning woman in music?
+MERGE (forbes:Publisher {name: "Forbes"})
+MERGE (report2014:Report {year: 2014, amount: "115 million"})
+MERGE (forbes)-[:REPORTED]->(report2014)
+MERGE (report2014)-[:ABOUT]->(beyonce)
+
+// How much more were her earnings than the year before?
+// Already defined in report2014 node as $115 million
+
+// How many digital copies of her fifth album did Beyoncé sell in six days?
+// This can be added to the albumBeyonce node
+SET albumBeyonce.salesFirstSixDays = "one million"
+
+// What song on Beyoncé's fifth studio album featured her husband?
+MERGE (drunkInLove:Song {name: "Drunk in Love"})
+MERGE (albumBeyonce)-[:FEATURES_SONG]->(drunkInLove)
+MERGE (drunkInLove)-[:FEATURED_ARTIST]->(jayZ)
+
+// What was the name of the tour featuring both Beyoncé and Jay Z?
+// Already defined in onTheRunTour node

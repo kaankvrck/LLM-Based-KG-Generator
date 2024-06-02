@@ -1,0 +1,141 @@
+CREATE 
+(Beyoncé:animal {name: "Beyoncé Giselle Knowles"}),
+(The_Star_Spangled_Banner:musical_work {name: "American National Anthem"}),
+(Super_Bowl_XXXVIII:video_game {name: "Super Bowl XXXVIII"}),
+(NRG_Stadium:venue {name: "Reliant Stadium"}),
+(Houston:City {name: "Houston"}),
+(Texas:administrative_region {name: "Texas"}),
+(North_America:place {name: "North America"}),
+(February_1_2004:date {name: "February 1, 2004"}),
+(Dangerously_in_Love_Tour:tour {name: "Dangerously in Love Tour"}),
+(Verizon_Ladies_First_Tour:Thing {name: "Verizon Ladies First Tour"}),
+(Europe:place {name: "Europe"}),
+(First_Solo:Thing {name: "First Solo"}),
+(Billboard_Hot_100:single {name: "U.S. Billboard Hot 100 Chart"}),
+(Number_Four:number {name: "Number Four"}),
+(ZeroThree_Bonnie_And_Clyde:song {name: "'03 Bonnie & Clyde"}),
+(October_2002:date {name: "October, 2002"}),
+(Jay_Z:animal {name: "Jay-Z"}),
+(Follow_Up_Album:album {name: "Follow-up Album"}),
+(Dangerously_in_Love:album {name: "Dangerously in Love"}),
+(First_Solo_Album:album {name: "First Solo Album"}),
+(Copies:Thing {name: "Copies"}),
+(Eleven_Million:number {name: "11 Million"}),
+(First_Week:date {name: "First Week"}),
+(Three_Hundred_Seventeen_Thousand:number {name: "317.000"}),
+(Five_Hundred_Forty_One_Thousand:number {name: "541.000"}),
+(B_Day:album {name: "B'Day"}),
+(Second_Solo_Album:album {name: "Second Solo Album"}),
+(Billboard_200:chart {name: "Billboard 200"}),
+(Second_Consecutive_Number_One_Album:album {name: "Second Consecutive Number-one Album"}),
+(June_24_2003:date {name: "June 24, 2003"}),
+(Solo_Efforts:Thing {name: "Solo Efforts"}),
+(Michelle_Williams:Thing {name: "Michelle Williams"}),
+(Kelly_Rowland:animal {name: "Kelly Rowland"}),
+(Several_Left_Over_Tracks:Thing {name: "Several Left-over Tracks"}),
+(Destiny_Fulfilled:album {name: "Destiny Fulfilled"}),
+(November_15_2004:date {name: "November 15, 2004"}),
+(Destinys_Child:animal {name: "Destiny's Child"}),
+(Number_1s:album {name: "Number 1's"}),
+(October_25_2005:date {name: "October 25, 2005"}),
+(Number_Two:number {name: "Number Two"}),
+(Destiny_Fulfilled_and_Lovin_It:tour {name: "Destiny Fulfilled... and Lovin' It"}),
+(Hollywood_Walk_of_Fame:List_of_halls_and_walks_of_fame {name: "Hollywood Walk of Fame"}),
+(June_11_2005:date {name: "June 11, 2005"}),
+(Hollywood:city {name: "Hollywood"}),
+(Last_Stop_of_European_Tour:place {name: "Last stop of European tour"}),
+(Barcelona:Municipalities_of_Catalonia {name: "Barcelona"}),
+(November_2003:date {name: "November, 2003"}),
+(Soldier:song {name: "Soldier"}),
+(Lose_My_Breath:song {name: "Lose My Breath"}),
+(Top_Five:Thing {name: "Top Five"}),
+(September_5_2006:date {name: "September 5, 2006"}),
+(Twenty_fifth_birthday:date {name: "Twenty-fifth Birthday"}),
+(Déjà_Vu:song {name: "Déjà Vu"}),
+(Irreplaceable:song {name: "Irreplaceable"}),
+(Second_International_Single:single {name: "Second International Single"}),
+(Number_One:number {name: "Number One"}),
+(New_Zealand:place {name: "New Zealand"}),
+(Australia:place {name: "Australia"}),
+(Hungary:place {name: "Hungary"}),
+(Ireland:island {name: "Ireland"}),
+(Ring_the_Alarm:song {name: "Ring the Alarm"}),
+(Get_Me_Bodied:song {name: "Get Me Bodied"}),
+(Green_Light:song {name: "Green Light"}),
+(United_Kingdom:place {name: "United Kingdom"}),
+(Crazy_in_Love:song {name: "Crazy in Love"}),
+(Best_R_and_B_Song:award {name: "Best R&B Song"}),
+(Forty_sixth_Annual_Grammy_Awards:award {name: "46th Annual Grammy Awards"}),
+(Best_Rap_Sung_Collaboration:award {name: "Best Rap/Sung Collaboration"}),
+(The_Closer_I_Get_to_You:song {name: "The Closer I Get to You"}),
+(Best_R_and_B_Performance_by_a_Duo_or_Group_with_Vocals:award {name: "Best R&B Performance by a Duo or Group with Vocals"}),
+(Luther_Vandross:animal {name: "Luther Vandross"}),
+(Baby_Boy:song {name: "Baby Boy"}),
+(Me_Myself_and_I:song {name: "Me, Myself and I"}),
+(Naughty_Girl:song {name: "Naughty Girl"}),
+(Dangerously_in_Love_2:song {name: "Dangerously in Love 2"}),
+(Best_Contemporary_R_and_B_Album:award {name: "Best Contemporary R&B Album"}),
+(Best_Female_R_and_B_Vocal_Performance:award {name: "Best Female R&B Vocal Performance"})
+
+MATCH(n001 {name: "Beyoncé Giselle Knowles"}), (n002 {name: "American National Anthem"}), (n003 {name: "Super Bowl XXXVIII"}), (n004 {name: "February 1, 2004"}) CREATE (n001)-[:PERFORMED]->(n002)-[:AT]->(n003)-[:AT]->(n004)
+MATCH(n001 {name: "American National Anthem"}), (n002 {name: "Reliant Stadium"}), (n003 {name: "Houston"}), (n004 {name: "Texas"}), (n005 {name: "North America"}) CREATE (n001)-[:IN]->(n002)-[:IN]->(n003)-[:PART_OF]->(n004)-[:PART_OF]->(n005)
+MATCH(n001 {name: "Beyoncé Giselle Knowles"}), (n002 {name: "Dangerously in Love Tour"}), (n003 {name: "North America"}) CREATE (n001)-[:EMBARKED_ON]->(n002)-[:IN]->(n003)
+MATCH(n001 {name: "Beyoncé Giselle Knowles"}), (n002 {name: "Verizon Ladies First Tour"}), (n003 {name: "November, 2003"}) CREATE (n001)-[:EMBARKED_ON]->(n002)-[:AT]->(n003)
+MATCH(n002 {name: "Verizon Ladies First Tour"}), (n003 {name: "Europe"}) CREATE (n002)-[:IN]->(n003)
+MATCH(n001 {name: "Beyoncé Giselle Knowles"}), (n002 {name: "Follow-up Album"}), (n003 {name: "Dangerously in Love"}) CREATE (n001)-[:PLANNED_TO_PRODUCE]->(n002)-[:AFTER]->(n003)-[:CREATED_BY]->(n001)
+MATCH(n001 {name: "Follow-up Album"}), (n002 {name: "Several Left-over Tracks"}) CREATE (n001)-[:USING]->(n002)
+MATCH(n001 {name: "Follow-up Album"}), (n002 {name: "Destiny Fulfilled"}), (n003 {name: "Number Two"}), (n004 {name: "Billboard 200"}) CREATE (n001)-[:PUT_ON_HOLD_FOR]->(n002)-[:REACHED]->(n003)-[:ON]->(n004)
+MATCH(n001 {name: "Destiny Fulfilled"}), (n002 {name: "November 15, 2004"}) CREATE (n001)-[:RELEASED_AT]->(n002)
+MATCH(n001 {name: "Destiny Fulfilled"}), (n002 {name: "Destiny's Child"}), (n003 {name: "Number 1's"}), (n004 {name: "October 25, 2005"}) CREATE (n001)-[:CREATED_BY]->(n002)-[:FIRST_COMPILATION_ALBUM]->(n003)-[:RELEASED_AT]->(n004)
+MATCH(n001 {name: "Destiny's Child"}), (n002 {name: "Kelly Rowland"}), (n003 {name: "June 11, 2005"}), (n004 {name: "Last stop of European tour"}), (n005 {name: "Destiny Fulfilled... and Lovin' It"}) CREATE (n002)-[:ANNOUNCED_DISBANDING_AT]->(n003)-[:DURING]->(n004)-[:OF]->(n001)-[:EMBARKED_ON]->(n005)
+MATCH(n001 {name: "June 11, 2005"}), (n002 {name: "Barcelona"}), (n003 {name: "Europe"}) CREATE (n001)-[:IN]->(n002)-[:PART_OF]->(n003)
+MATCH(n001 {name: "Destiny's Child"}), (n002 {name: "Kelly Rowland"}), (n003 {name: "Hollywood Walk of Fame"}), (n004 {name: "Hollywood"}), (n005 {name: "North America"}) CREATE (n002)-[:MEMBER_OF]->(n001)-[:ACCEPTED_A_STAR_AT]->(n003)-[:IN]->(n004)-[:IN]->(n005)
+MATCH(n001 {name: "Hollywood Walk of Fame"}), (n002 {name: "June 11, 2005"}) CREATE (n001)-[:AT]->(n002)
+MATCH(n001 {name: "Soldier"}), (n002 {name: "Destiny Fulfilled"}) CREATE (n001)-[:SINGLE_OF]->(n002)
+MATCH(n001 {name: "Lose My Breath"}), (n002 {name: "Destiny Fulfilled"}) CREATE (n001)-[:SINGLE_OF]->(n002)
+MATCH(n001 {name: "Lose My Breath"}), (n002 {name: "Top Five"}), (n003 {name: "U.S. Billboard Hot 100 Chart"}), (n004 {name: "Number Four"}) CREATE (n001)-[:REACHED]->(n002)-[:IN]->(n003)-[:WITH]->(n004)
+MATCH(n001 {name: "Soldier"}), (n002 {name: "Top Five"}) CREATE (n001)-[:REACHED]->(n002)
+MATCH(n001 {name: "Déjà Vu"}), (n002 {name: "Top Five"}) CREATE (n001)-[:REACHED]->(n002)
+MATCH(n001 {name: "Déjà Vu"}), (n002 {name: "B'Day"}), (n003 {name: "Second Solo Album"}), (n004 {name: "Beyoncé Giselle Knowles"}), (n005 {name: "First Solo"}), (n006 {name: "'03 Bonnie & Clyde"}), (n007 {name: "October, 2002"}) CREATE (n001)-[:LEAD_SINGLE_OF]->(n002)-[:IS]->(n003)-[:OF]->(n004)-[:RECORDED]->(n005)-[:FEATURED_IN]->(n006)-[:RELEASED_AT]->(n007)
+MATCH(n001 {name: "Déjà Vu"}), (n002 {name: "Jay-Z"}) CREATE (n001)-[:FEATURING]->(n002)
+MATCH(n001 {name: "B'Day"}), (n002 {name: "Second Consecutive Number-one Album"}), (n003 {name: "North America"}) CREATE (n001)-[:BECAME]->(n002)-[:IN]->(n003)
+MATCH(n001 {name: "B'Day"}), (n002 {name: "September 5, 2006"}), (n003 {name: "Twenty-fifth Birthday"}), (n004 {name: "Beyoncé Giselle Knowles"}) CREATE (n001)-[:RELEASED_AT]->(n002)-[:IS]->(n003)-[:OF]->(n004)
+MATCH(n001 {name: "B'Day"}), (n002 {name: "Copies"}), (n003 {name: "First Week"}), (n004 {name: "541.000"}) CREATE (n001)-[:SOLD]->(n002)-[:AT]->(n003)-[:AMOUNT_OF]->(n004)-[:OF]->(n001)
+MATCH(n001 {name: "First Week"}), (n002 {name: "317.000"}), (n003 {name: "First Solo Album"}), (n004 {name: "Beyoncé Giselle Knowles"}) CREATE (n001)-[:AMOUNT_OF]->(n002)-[:OF]->(n003)-[:OF]->(n004)
+MATCH(n001 {name: "B'Day"}), (n002 {name: "Billboard 200"}) CREATE (n001)-[:DEBUTED_ATOP]->(n002)
+MATCH(n001 {name: "Irreplaceable"}), (n002 {name: "B'Day"}) CREATE (n001)-[:SINGLE_OF]->(n002)
+MATCH(n001 {name: "Irreplaceable"}), (n002 {name: "Second International Single"}) CREATE (n001)-[:IS]->(n002)
+MATCH(n001 {name: "Irreplaceable"}), (n002 {name: "Number One"}), (n003 {name: "North America"}) CREATE (n001)-[:REACHED]->(n002)-[:IN]->(n003)
+MATCH(n001 {name: "Number One"}), (n002 {name: "New Zealand"}), (n003 {name: "Europe"}) CREATE (n001)-[:IN]->(n002)-[:PART_OF]->(n003)
+MATCH(n001 {name: "Number One"}), (n002 {name: "Hungary"}), (n003 {name: "Europe"}) CREATE (n001)-[:IN]->(n002)-[:PART_OF]->(n003)
+MATCH(n001 {name: "Number One"}), (n002 {name: "Ireland"}), (n003 {name: "Europe"}) CREATE (n001)-[:IN]->(n002)-[:PART_OF]->(n003)
+MATCH(n001 {name: "Number One"}), (n002 {name: "Australia"}) CREATE (n001)-[:IN]->(n002)
+MATCH(n001 {name: "Ring the Alarm"}), (n002 {name: "B'Day"}) CREATE (n001)-[:SINGLE_OF]->(n002)
+MATCH(n001 {name: "Get Me Bodied"}), (n002 {name: "B'Day"}) CREATE (n001)-[:SINGLE_OF]->(n002)
+MATCH(n001 {name: "Green Light"}), (n002 {name: "B'Day"}) CREATE (n001)-[:SINGLE_OF]->(n002)
+MATCH(n001 {name: "Green Light"}), (n002 {name: "United Kingdom"}), (n003 {name: "Europe"}) CREATE (n001)-[:RELEASED_ONLY_IN]->(n002)-[:PART_OF]->(n003)
+MATCH(n001 {name: "Get Me Bodied"}), (n002 {name: "United Kingdom"}) CREATE (n001)-[:RELEASED_ONLY_IN]->(n002)
+MATCH(n001 {name: "Ring the Alarm"}), (n002 {name: "United Kingdom"}) CREATE (n001)-[:RELEASED_ONLY_IN]->(n002)
+MATCH(n001 {name: "First Solo"}), (n002 {name: "U.S. Billboard Hot 100 Chart"}) CREATE (n001)-[:PEAKED_IN]->(n002)
+MATCH(n001 {name: "'03 Bonnie & Clyde"}), (n002 {name: "Jay-Z"}) CREATE (n001)-[:CREATED_BY]->(n002)
+MATCH(n001 {name: "Crazy in Love"}), (n002 {name: "Jay-Z"}) CREATE (n001)-[:FEATURING]->(n002)
+MATCH(n001 {name: "Crazy in Love"}), (n002 {name: "Best R&B Song"}), (n003 {name: "46th Annual Grammy Awards"}) CREATE (n001)-[:WON]->(n002)-[:AT]->(n003)
+MATCH(n001 {name: "Crazy in Love"}), (n002 {name: "Best Rap/Sung Collaboration"}), (n003 {name: "46th Annual Grammy Awards"}) CREATE (n001)-[:WON]->(n002)-[:AT]->(n003)
+MATCH(n001 {name: "Crazy in Love"}), (n002 {name: "Beyoncé Giselle Knowles"}) CREATE (n001)-[:FIRST_NUMBER_1_SINGLE_OF]->(n002)
+MATCH(n001 {name: "Crazy in Love"}), (n002 {name: "Dangerously in Love"}), (n003 {name: "First Solo Album"}), (n004 {name: "Copies"}), (n005 {name: "11 Million"}) CREATE (n001)-[:LEAD_SINGLE_OF]->(n002)-[:IS]->(n003)-[:SOLD]->(n004)-[:TOTAL_OF]->(n005)
+MATCH(n001 {name: "Dangerously in Love"}), (n002 {name: "June 24, 2003"}), (n003 {name: "Solo Efforts"}), (n004 {name: "Michelle Williams"}) CREATE (n001)-[:RELEASED_AT]->(n002)-[:IS_AFTER]->(n003)-[:OF]->(n004)
+MATCH(n001 {name: "Dangerously in Love"}), (n002 {name: "Billboard 200"}) CREATE (n001)-[:DEBUTED_ATOP]->(n002)
+MATCH(n001 {name: "Solo Efforts"}), (n002 {name: "Kelly Rowland"}) CREATE (n001)-[:OF]->(n002)
+MATCH(n001 {name: "The Closer I Get to You"}), (n002 {name: "Dangerously in Love"}) CREATE (n001)-[:SINGLE_OF]->(n002)
+MATCH(n001 {name: "The Closer I Get to You"}), (n002 {name: "Best R&B Performance by a Duo or Group with Vocals"}), (n003 {name: "46th Annual Grammy Awards"}) CREATE (n001)-[:WON]->(n002)-[:AT]->(n003)
+MATCH(n001 {name: "Best R&B Performance by a Duo or Group with Vocals"}), (n002 {name: "Luther Vandross"}) CREATE (n001)-[:WITH]->(n002)
+MATCH(n001 {name: "Baby Boy"}), (n002 {name: "Number One"}) CREATE (n001)-[:REACHED]->(n002)
+MATCH(n001 {name: "Baby Boy"}), (n002 {name: "Dangerously in Love"}) CREATE (n001)-[:SINGLE_OF]->(n002)
+MATCH(n001 {name: "Me, Myself and I"}), (n002 {name: "Dangerously in Love"}) CREATE (n001)-[:SINGLE_OF]->(n002)
+MATCH(n001 {name: "Me, Myself and I"}), (n002 {name: "Top Five"}) CREATE (n001)-[:REACHED]->(n002)
+MATCH(n001 {name: "Naughty Girl"}), (n002 {name: "Top Five"}) CREATE (n001)-[:REACHED]->(n002)
+MATCH(n001 {name: "Naughty Girl"}), (n002 {name: "Dangerously in Love"}) CREATE (n001)-[:SINGLE_OF]->(n002)
+MATCH(n001 {name: "Dangerously in Love 2"}), (n002 {name: "Dangerously in Love"}) CREATE (n001)-[:SINGLE_OF]->(n002)
+MATCH(n001 {name: "Dangerously in Love 2"}), (n002 {name: "Best Contemporary R&B Album"}), (n003 {name: "46th Annual Grammy Awards"}) CREATE (n001)-[:WON]->(n002)-[:AT]->(n003)
+MATCH(n001 {name: "Dangerously in Love 2"}), (n002 {name: "Best Female R&B Vocal Performance"}), (n003 {name: "46th Annual Grammy Awards"}) CREATE (n001)-[:WON]->(n002)-[:AT]->(n003)
+

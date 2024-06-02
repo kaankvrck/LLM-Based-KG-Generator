@@ -1,0 +1,51 @@
+1//Find all the awards Beyoncé won at the 57th Annual Grammy Awards
+
+MERGE (Beyonce:Person {name: "Beyoncé"})
+MERGE (RnBPerformance:Award {name: "Best R&B Performance"})
+MERGE (RnBSong:Award {name: "Best R&B Song"})
+MERGE (SurroundSoundAlbum:Award {name: "Best Surround Sound Album"})
+
+MERGE (Beyonce)-[:WON]->(RnBPerformance)
+MERGE (Beyonce)-[:WON]->(RnBSong)
+MERGE (Beyonce)-[:WON]->(SurroundSoundAlbum)
+
+2//List all the events Beyoncé headlined in 2015.
+
+MERGE (Beyonce:Person {name: "Beyoncé"})
+MERGE (GlobalCitizenFestival:Event {name: "Global Citizen Festival", year: 2015, month: "September"})
+MERGE (MadeInAmericaFestival:Event {name: "Made in America Festival", year: 2015, month: "September"})
+
+CREATE (Beyonce)-[:HEADLINED]->(GlobalCitizenFestival)
+CREATE (Beyonce)-[:HEADLINED]->(MadeInAmericaFestival)
+
+3//When did Beyoncé perform with Coldplay?
+
+MERGE (Beyonce:Person {name: "Beyoncé"})
+MERGE (Coldplay:Musical_Group {name: "Coldplay"})
+MERGE (SuperBowl50:Event {name: "Super Bowl 50", year: 2016, month: "February"})
+
+CREATE (Beyonce)-[:PERFORMED_WITH]->(Coldplay)
+CREATE (Beyonce)-[:PERFORMED_AT]->(SuperBowl50)
+CREATE (Coldplay)-[:PERFORMED_AT]->(SuperBowl50)
+
+4//What was the name of the magazine Beyoncé was featured on in September 2015?
+
+MERGE (beyonce:Person {name: "Beyoncé"})
+MERGE (magazine:Magazine {name: "Vogue", issue: "September"})
+
+CREATE (beyonce)-[:FEATURED_IN_MAGAZINE]->(magazine)
+
+5//In which category was Beyoncé nominated but didn't win an award in 2015?
+
+MERGE (artist:Artist {name: "Beyoncé"})
+MERGE (award:Award {name: "Album Of The Year", year: 2015})
+MERGE (artist)-[:NOMINATED_FOR]->(award)
+
+6//Avec qui Beyoncé s'est-elle produite lors du Super Bowl 50 en février 2016?
+
+MERGE (event:Event {name: "Super Bowl 50"})
+MERGE (person)-[:PERFORMED_AT]->(event)
+
+7// How many Grammy awards has Beyoncé won?
+MATCH (b:Beyonce)-[:WON]->(a:Award {name: "Grammy"})
+RETURN count(a) AS GrammyCount

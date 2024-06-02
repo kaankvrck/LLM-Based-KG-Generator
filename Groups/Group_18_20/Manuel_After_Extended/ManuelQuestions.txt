@@ -1,0 +1,137 @@
+// In which year did reports about Beyonce performing for Muammar Gaddafi surface?
+MATCH (d:Document)-[:REVEALED_IN]->(n:News)
+RETURN n.releaseYear
+
+
+// Who did Beyonce donate the money to earned from her shows?
+MATCH (beyonce:Person {name: 'Beyoncé'})-[:DONATED_MONEY_TO]->(organization)
+RETURN organization.name
+
+
+// Which organization did Beyonce's spokespeople confirm her donations to?
+MATCH (beyonce:Person {name: 'Beyoncé'})-[:DONATED_MONEY_TO]->(organization)
+RETURN organization.name
+
+
+// Beyonce's fourth album debuted in what year?
+Sorgu:MATCH (beyonce:Person {name: 'Beyoncé'})-[:RELEASED]->(album:Album)
+RETURN album.releaseYear
+
+
+// Which single had the most success from that album?
+
+
+// Beyonce won an award for which activity in 2011?
+Sorgu:MATCH (beyonce:Person {name: 'Beyoncé'})-[:WON_AWARD_FROM]->(nyabj:Association)
+RETURN nyabj.name
+
+
+// In 2011, Beyonce performed for four nights where?
+MATCH (beyonce)-[:HAS_FIRST_PERFORMANCE_AFTER_BIRTH]->(beyoncePerformance)
+RETURN beyoncePerformance.location
+
+
+// When was Beyonce's fourth album released?
+Sorgu:MATCH (beyonce:Person {name: 'Beyoncé'})-[:RELEASED]->(album:Album)
+RETURN album.releaseYear
+
+
+// How many copies did the album sell in its first week?
+MATCH (album)-[:SOLD]->(copiesSold)
+RETURN copiesSold.amount AS copiesSoldInFirstWeek
+
+
+// Who awarded Beyonce an award for writing?
+MATCH (beyonce)-[:WON_AWARD_FROM]->(nyabj:Association)
+RETURN nyabj.name AS awardingAssociation
+
+
+// When did she perform at the Roseland ballroom?
+MATCH (beyonce)-[:PERFORMED_AT]->(roseland:Venue)
+RETURN roseland.date AS performanceDate
+
+
+
+
+// What is the name of Beyoncé's fourth studio album?
+MATCH (beyonce:Person {name: "Beyoncé"})-[:RELEASED]->(album:Album)
+RETURN album.title AS fourthStudioAlbum
+
+
+// When was "4" released?
+MATCH (album:Album {title: "4"})
+RETURN album.releaseYear AS releaseDate
+
+
+// How many copies of "4" sold in the first week?
+MATCH (album)-[:SOLD]->(copiesSold:Sales)
+RETURN copiesSold.amount AS firstWeekSales
+
+
+// What magazine did Beyoncé write a story for about her earlier hiatus?
+MATCH (beyonce)-[:WROTE_FOR]->(essence:Magazine)
+RETURN essence.name
+
+
+// Where did Beyoncé perform for four nights of standing-room-only concerts in 2011?
+MATCH (beyonce)-[:HAS_FIRST_PERFORMANCE_AFTER_BIRTH]->(beyoncePerformance)
+RETURN beyoncePerformance.location
+
+
+// When did Beyonce have her first child?
+MATCH (blueCarter)-[:DAUGHTER_OF]->(beyonce)
+RETURN blueCarter.birthDate
+
+
+// Where did Beyonce give birth to her first child?
+MATCH (beyonce)-[:GAVE_BIRTH_AT]->(hospital)
+RETURN hospital.name
+
+
+// Beyonce's first child is named what?
+MATCH (beyonce)-[:has_first_child]->(blueCarter)
+RETURN blueCarter.name AS ChildName
+
+
+// Her first appearance performing since giving birth was where?
+// When did Beyonce have her first child?
+MATCH (beyonce)-[:has_first_child]->(blueCarter)
+RETURN blueCarter.birthDate AS birthDATE
+
+
+// What was the child's name?
+MATCH (beyonce)-[:has_first_child]->(blueCarter)
+RETURN blueCarter.name AS ChildName
+
+
+// When did Beyoncé give birth to a daughter?
+MATCH (blueCarter)-[:DAUGHTER_OF]->(beyonce)
+RETURN blueCarter.birthDate
+
+
+// What did Beyoncé name her daughter?
+MATCH (blueCarter)-[:DAUGHTER_OF]->(beyonce)
+RETURN blueCarter.name
+
+
+// Where was Blue Ivy born?
+MATCH (blueCarter)-[:BORN_AT]->(hospital)
+RETURN hospital.name, hospital.location
+
+
+// Where was Beyoncé's first public performance after giving birth?
+MATCH (beyonce)-[:HAS_FIRST_PERFORMANCE_AFTER_BIRTH]->(beyoncePerformance)
+RETURN beyoncePerformance.location
+
+
+// How many nights did Beyoncé play at the resort?
+MATCH (beyonce)-[:PERFORMED_AT]->(beyoncePerformance)
+RETURN beyoncePerformance.duration AS numberOfNights
+
+
+
+
+
+
+
+
