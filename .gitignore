@@ -3,3 +3,5 @@
 .myenv
 Myenv
 Venv
+.DS_Store
+DS_Store
