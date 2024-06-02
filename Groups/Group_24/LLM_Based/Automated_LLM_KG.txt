@@ -1,0 +1,13 @@
+CREATE (b:Person {name: "Beyoncé Giselle Knowles-Carter", born: 1981, nationality: "American"})
+CREATE (a:Country {name: "America"})
+CREATE (h:City {name: "Houston"})
+CREATE (g:Group {name: "Destiny's Child"})
+CREATE (m:Manager {name: "Mathew Knowles"})
+CREATE (r:Genre {name: "R&B"})
+CREATE (song:CreativeWork {title: "Crazy in Love", artist: "Beyoncé"})
+CREATE (alb:CreativeWork {title: "Dangerously in Love", artist: "Beyoncé"})
+CREATE (b) <- [r]
+CREATE (b) <- [alb]
+CREATE (b) <- [song]
+CREATE (g) <- [b]
+CREATE (m) <- [g]
