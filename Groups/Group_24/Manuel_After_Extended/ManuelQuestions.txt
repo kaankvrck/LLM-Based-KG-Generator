@@ -36,18 +36,6 @@ RETURN band.name
 
 //How many awards was Beyoncé nominated for at the 57th annual Grammys?
 MATCH (beyonce:Person {name: "Beyonce"})-[:NOMINATED]->(award:Award)
-RETURN count(award) AS NominationCount
-
-//Who did Beyonce perform with at Super Bowl 50?
-MATCH (event:Event {name: "Super Bowl 50"})<-[:PERFORMED_AT]-(artist:Person)
-RETURN artist.name
-
-//With what British band did Beyonce perform on their album?
-MATCH (band:Musical_Group {nationality: "British"})-[:CREATED]->(album:Album)<-[:FEATURES]-(beyonce:Person {name: "Beyonce"})
-RETURN band.name
-
-//How many awards was Beyoncé nominated for at the 57th annual Grammys?
-MATCH (beyonce:Person {name: "Beyonce"})-[:NOMINATED]->(award:Award)
 WHERE award.event = "57th Grammy Awards"
 RETURN count(award) AS NominationCount
 
