@@ -1,4 +1,4 @@
-CREATE (b:Musician {name: "Beyoncé Giselle Knowles-Carter", nationality: "American", birthdate: 1981-09-04})
+CREATE (b:Musician {name: "Beyoncé Giselle Knowles-Carter", nationality: "American", birthdate: "1981-09-04"})
 CREATE (dc:GirlGroup {name: "Destiny's Child"})
 CREATE (g:Award {name: "Grammy Award"})
 CREATE (bh:BillboardHot100 {name: "Billboard Hot 100"})

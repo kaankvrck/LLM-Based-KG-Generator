@@ -7,6 +7,12 @@ CREATE (h:Hot100Chart {name: "Billboard Hot 100"})
 CREATE (t:Movie {name: "The Pink Panther"})
 CREATE (o:Movie {name: "Obsessed"})
 CREATE (c:Movie {name: "Cadillac Records"})
-MATCH (b) CREATE Relationship (b)-[:HAS_AWARDS]->(g)
-MATCH (a) CREATE Relationship (a)-[:MEMBER_OF]->(b)
-MATCH (m) CREATE Relationship (m)-[:MANAGES]->(b)
+WITH b
+MATCH (b:Artist {name: "Beyoncé Giselle Knowles-Carter"}), (g:GrammyAward {name: "Song of the Year"})
+CREATE (b)-[:HAS_AWARDS]->(g)
+WITH b
+MATCH (a:Artist {name: "Destiny's Child"}), (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+CREATE (a)-[:MEMBER_OF]->(b)
+WITH b
+MATCH (m:Manager {name: "Mathew Knowles"}), (b:Artist {name: "Beyoncé Giselle Knowles-Carter"})
+CREATE (m)-[:MANAGES]->(b)

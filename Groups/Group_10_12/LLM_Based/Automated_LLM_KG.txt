@@ -1,4 +1,0 @@
-CREATE (b:Person {name: "Beyoncé Giselle Knowles-Carter", born: 1981})
-CREATE (a:Album {name: "Dangerously in Love", artist: b})
-CREATE (o:Organization {name: "Destiny's Child"})
-CREATE (m:Manager {name: "Mathew Knowles"})

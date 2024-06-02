@@ -6,8 +6,9 @@ CREATE (m:Manager {name: "Mathew Knowles"})
 CREATE (r:Genre {name: "R&B"})
 CREATE (song:CreativeWork {title: "Crazy in Love", artist: "Beyoncé"})
 CREATE (alb:CreativeWork {title: "Dangerously in Love", artist: "Beyoncé"})
-CREATE (b) <- [r]
-CREATE (b) <- [alb]
-CREATE (b) <- [song]
-CREATE (g) <- [b]
-CREATE (m) <- [g]
+CREATE (b)-[:FROM_COUNTRY]->(a)
+CREATE (b)-[:BORN_IN]->(h)
+CREATE (b)-[:CREATED]->(alb)
+CREATE (b)-[:CREATED]->(song)
+CREATE (b)-[:MEMBER_OF]->(g)
+CREATE (g)-[:MANAGED_BY]->(m)
