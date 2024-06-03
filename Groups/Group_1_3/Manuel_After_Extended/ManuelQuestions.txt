@@ -1,0 +1,208 @@
+//When did Beyonce start becoming popular?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RELEASED]->(album:MusicAlbum)
+WHERE album.name = "Dangerously in Love"
+RETURN album.release_year AS YearBeyonceBecamePopular;
+
+//What areas did Beyonce compete in when she was growing up?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:COMPETED_IN]->(competition:Event)
+RETURN collect(DISTINCT competition.name) AS Competitions;
+
+//When did Beyonce leave Destiny's Child and become a solo singer?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:LEFT]->(group:MusicGroup {name: "Destiny's Child"})
+RETURN group.disbandment_year AS YearLeftDestinysChild;
+
+//In what city and state did Beyonce grow up?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RAISED_IN]->(city:City)
+RETURN city.name AS CityGrewUp, city.state AS StateGrewUp;
+
+//In which decade did Beyonce become famous?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:BECAME_FAMOUS_IN]->(decade:Decade)
+RETURN decade.name AS DecadeBecameFamous;
+
+//In what R&B group was she the lead singer?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:WAS_IN]->(group:MusicGroup {genre: "R&B"})
+RETURN group.name AS RnBGroup;
+
+//What album made her a worldwide known artist?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RELEASED]->(album:MusicAlbum)
+RETURN album.name AS AlbumName
+ORDER BY album.release_year ASC LIMIT 1;
+
+//Who managed the Destiny's Child group?
+
+MATCH (group:MusicGroup {name: "Destiny's Child"})-[:MANAGED_BY]->(manager:Person)
+RETURN manager.name AS ManagerName;
+
+//When did Beyoncé rise to fame?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RECOGNIZED_AS]->(recognition)
+RETURN recognition.decade AS DecadeOfFame;
+
+//What role did Beyoncé have in Destiny's Child?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:WAS_IN]->(group:MusicGroup {name: "Destiny's Child"})
+RETURN "Lead Singer" AS RoleInGroup;
+
+//What was the first album Beyoncé released as a solo artist?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RELEASED]->(album:MusicAlbum)
+RETURN album.name AS AlbumName
+ORDER BY album.release_year ASC LIMIT 1;
+
+//When did Beyoncé release Dangerously in Love?
+
+MATCH (album:MusicAlbum {name: "Dangerously in Love"})
+RETURN album.release_year AS ReleaseYear;
+
+//How many Grammy awards did Beyoncé win for her first solo album?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RELEASED]->(album:MusicAlbum {name: "Dangerously in Love"})-[:RECEIVED]->(award:Award {name: "Grammy Award"})
+RETURN count(award) AS GrammyAwardsWon;
+
+//What was Beyoncé's role in Destiny's Child?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:WAS_IN]->(group:MusicGroup {name: "Destiny's Child"})
+RETURN "Lead Singer" AS RoleInGroup;
+
+//What was the name of Beyoncé's first solo album?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RELEASED]->(album:MusicAlbum)
+RETURN album.name AS AlbumName
+ORDER BY album.release_year ASC LIMIT 1;
+
+//After her second solo album, what other entertainment venture did Beyonce explore?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:STARRED_IN]->(movie:Movie)
+RETURN movie.name AS MovieName
+ORDER BY movie.release_year ASC LIMIT 1;
+
+//Which artist did Beyonce marry?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:MARRIED_TO]->(spouse:Person)
+RETURN spouse.name AS SpouseName;
+
+//To set the record for Grammys, how many did Beyonce win?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RECEIVED]->(award:Award {name: "Grammy Award"})
+RETURN count(award) AS TotalGrammysWon;
+
+//For what movie did Beyonce receive her first Golden Globe nomination?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:STARRED_IN]->(movie:Movie)-[:RECEIVED]->(award:Award {name: "Golden Globe"})
+RETURN movie.name AS MovieName
+ORDER BY award.year ASC LIMIT 1;
+
+//When did Beyonce take a hiatus in her career and take control of her management?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:TOOK_HIATUS_IN]->(year:Year), 
+      (Beyonce)-[:TOOK_CONTROL_OF_MANAGEMENT_IN]->(managementYear:Year)
+RETURN year.name AS HiatusYear, managementYear.name AS ManagementYear;
+
+//Which album was darker in tone from her previous work?
+
+MATCH (album:MusicAlbum {name: "Beyoncé (2013)"})
+RETURN album.name AS AlbumName;
+
+//After what movie portraying Etta James, did Beyonce create Sasha Fierce?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:PORTRAYED]->(Etta_James:Person), 
+      (Beyonce)-[:CREATED]->(alterEgo:Person {name: "Sasha Fierce"})
+RETURN Etta_James.name AS MovieName;
+
+//When did Destiny's Child end their group act?
+
+MATCH (group:MusicGroup {name: "Destiny's Child"})
+RETURN group.disbandment_year AS DisbandmentYear;
+
+//What was the name of Beyoncé's second solo album?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RELEASED]->(album:MusicAlbum)
+RETURN album.name AS AlbumName
+ORDER BY album.release_year ASC SKIP 1 LIMIT 1;
+
+//What was Beyoncé's first acting job, in 2006?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:STARRED_IN]->(movie:Movie)
+WHERE movie.release_year = 2006
+RETURN movie.name AS MovieName;
+
+//Who is Beyoncé married to?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:MARRIED_TO]->(spouse:Person)
+RETURN spouse.name AS SpouseName;
+
+//What is the name of Beyoncé's alter-ego?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:HAS_ALTER_EGO]->(alterEgo:Person)
+RETURN alterEgo.name AS AlterEgoName;
+
+//In her music, what are some recurring elements in them?
+
+MATCH (album:MusicAlbum {name: "Beyoncé (2013)"})-[:INCLUDES_THEME]->(theme:Theme)
+RETURN theme.name AS RecurringElements;
+
+//Time magazine named her one of the most 100 what people of the century?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RECOGNIZED_AS]->(recognition:Recognition {organization: "Time"})
+RETURN recognition.name AS RecognitionName;
+
+//Which magazine declared her the most dominant woman musician?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RECOGNIZED_AS]->(recognition:Recognition {organization: "Forbes"})
+RETURN recognition.name AS RecognitionName;
+
+//In which decade did the Recording Industry Association of America recognize Beyonce as the The Top Certified Artist?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RECOGNIZED_AS]->(recognition:Recognition {organization: "RIAA"})
+RETURN recognition.decade AS RecognitionDecade;
+
+//What magazine rated Beyonce as the most powerful female musician in 2015?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RECOGNIZED_AS]->(recognition:Recognition {organization: "Forbes", year: 2015})
+RETURN recognition.name AS RecognitionName;
+
+//How did Beyonce describe herself as a feminist?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:DESCRIBED_HERSELF_AS]->(description:Person {name: "modern-day feminist"})
+RETURN description.name AS FeministDescription;
+
+//In which years did Time rate Beyonce in the 100 most influential people in the world?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RECOGNIZED_AS]->(recognition:Recognition {organization: "Time"})
+RETURN recognition.year AS InfluentialYears;
+
+//How many records has Beyonce sold in her 19 year career?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:PARTICIPATED_IN]->(event:Event {name: "record sale"})
+RETURN sum(event.amount) AS TotalRecordsSold;
+
+//How many records did Beyoncé sell as part of Destiny's Child?
+
+MATCH (group:MusicGroup {name: "Destiny's Child"})-[:PARTICIPATED_IN]->(event:Event {name: "record sale"})
+RETURN sum(event.amount) AS RecordsSoldAsGroup;
+
+//After leaving Destiny's Child, how many records did Beyoncé release under her own name?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RELEASED]->(album:MusicAlbum)
+RETURN count(album) AS SoloAlbumsCount;
+
+//How many Grammy awards has Beyoncé won?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RECEIVED]->(award:Award {name: "Grammy Award"})
+RETURN count(award) AS TotalGrammysWon;
+
+//What magazine named Beyoncé as the most powerful female musician for 2015?
+
+MATCH (Beyonce:Person {name: "Beyoncé Giselle Knowles-Carter"})-[:RECOGNIZED_AS]->(recognition:Recognition {organization: "Forbes", year: 2015})
+RETURN recognition.organization AS MagazineName;
+
+
+
+

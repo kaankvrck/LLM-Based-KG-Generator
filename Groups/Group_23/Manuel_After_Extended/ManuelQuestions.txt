@@ -1,37 +1,41 @@
-// Where did Beyonce release her 5th album to a huge surprise?
-MERGE (beyonce:Person {name: "Beyoncé"})
-MERGE (itunes:Platform {name: "iTunes Store"})
-MERGE (albumBeyonce:Album {title: "Beyoncé", releaseDate: "2013-12-13"})
-MERGE (beyonce)-[:RELEASED_ON]->(itunes)
-MERGE (beyonce)-[:RELEASED]->(albumBeyonce)
+//1.
+MATCH (album:Album {title: "Beyoncé"})
+RETURN album.releaseDate AS ReleaseDate, album.salesFirstSixDays AS SalesFirstSixDays
 
-// When did Beyonce get her fifth consecutive number one hit album?
-// Already defined in albumBeyonce node
+//2. When did Beyonce get her fifth consecutive number one hit album?
+MATCH (album:Album {title: "Beyoncé"})
+RETURN album.releaseDate AS ReleaseDate
 
-// Who joined Beyonce on her On The Run Tour?
-MERGE (jayZ:Person {name: "Jay Z"})
-MERGE (onTheRunTour:Tour {name: "On the Run Tour", year: 2014})
-MERGE (beyonce)-[:JOINED_BY]->(jayZ)
-MERGE (beyonce)-[:PARTICIPATED_IN]->(onTheRunTour)
-MERGE (jayZ)-[:PARTICIPATED_IN]->(onTheRunTour)
+//3. Where was the album released?
+MATCH (album:Album {title: "Beyoncé"})
+RETURN album.releaseDate AS ReleaseDate, album.salesFirstSixDays AS SalesFirstSixDays
 
-// Who reported Beyonce to be the top earning woman in music?
-MERGE (forbes:Publisher {name: "Forbes"})
-MERGE (report2014:Report {year: 2014, amount: "115 million"})
-MERGE (forbes)-[:REPORTED]->(report2014)
-MERGE (report2014)-[:ABOUT]->(beyonce)
+//4. Who joined Beyonce on her On The Run Tour? 
+MATCH (tour:Tour {name: "On The Run Tour"})-[:FEATURED_ARTIST]->(artist:Person {name: "Jay Z"})
+RETURN artist.name AS FeaturedArtist
 
-// How much more were her earnings than the year before?
-// Already defined in report2014 node as $115 million
+//5. Who reported Beyonce to be the top earning woman in music?
+MATCH (report:Report {year: 2014, amount: "115 million"})
+RETURN report.year AS ReportYear, report.amount AS EarningsAmount
 
-// How many digital copies of her fifth album did Beyoncé sell in six days?
-// This can be added to the albumBeyonce node
-SET albumBeyonce.salesFirstSixDays = "one million"
+//6. How much more were her earnings than the year before?
+MATCH (report:Report {year: 2014})
+RETURN report.amount AS Amount
 
-// What song on Beyoncé's fifth studio album featured her husband?
-MERGE (drunkInLove:Song {name: "Drunk in Love"})
-MERGE (albumBeyonce)-[:FEATURES_SONG]->(drunkInLove)
-MERGE (drunkInLove)-[:FEATURED_ARTIST]->(jayZ)
+//7. When did Beyoncé release her fifth studio album?
+MATCH (album:Album {title: "Beyoncé"})
+RETURN album.releaseDate AS ReleaseDate
+   
+//8. How many digital copies of her fifth album did Beyoncé sell in six days?  
+MATCH (album:Album {title: "Beyoncé"})
+RETURN album.salesFirstSixDays AS SalesFirstSixDays
+   
+//9. What song on Beyoncé's fifth studio album featured her husband?
+MATCH (album:Album {title: "Beyoncé"})-[:INCLUDES]->(song:Song {features: "Jay Z"})  
+RETURN song.title AS SongTitle
 
-// What was the name of the tour featuring both Beyoncé and Jay Z?
-// Already defined in onTheRunTour node
+//10. What was the name of the tour featuring both Beyoncé and Jay Z?
+MATCH (tour:Tour {name: "On The Run Tour"})
+WHERE EXISTS((tour)-[:FEATURED_ARTIST]->(:Person {name: "Beyoncé"}))
+AND EXISTS((tour)-[:FEATURED_ARTIST]->(:Person {name: "Jay Z"}))
+RETURN tour.name AS TourName
